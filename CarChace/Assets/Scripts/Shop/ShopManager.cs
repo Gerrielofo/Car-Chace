@@ -38,15 +38,15 @@ public class ShopManager : MonoBehaviour
         UpdateImages();
     }
 
-    public void UpgradeSpeed()
+    public void UpgradeSpeed(int id)
     {
-        if (speedIndex == speedUpgrades.Length)
+        if (speedIndex == speedUpgrades.Length || speedIndex >= id || (id - speedIndex) > 1)
             return;
-        if (GameManager.Instance.CanAfford(speedUpgrades[speedIndex + 1].pointCost))
+        if (GameManager.Instance.CanAfford(speedUpgrades[speedIndex].pointCost))
         {
-            speedIndex++;
+            speedIndex = id;
             UpdateImages();
-            GameManager.Instance.UsePoints(speedUpgrades[speedIndex + 1].pointCost);
+            GameManager.Instance.UsePoints(speedUpgrades[speedIndex - 1].pointCost);
             UpdatePointCount();
             PlayerPrefs.SetInt("speedIndex", speedIndex);
         }
@@ -56,15 +56,15 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    public void UpgradeDamage()
+    public void UpgradeDamage(int id)
     {
-        if (damageIndex == damageUpgrades.Length)
+        if (damageIndex == damageUpgrades.Length || damageIndex >= id || (id - damageIndex) > 1)
             return;
-        if (GameManager.Instance.CanAfford(damageUpgrades[damageIndex + 1].pointCost))
+        if (GameManager.Instance.CanAfford(damageUpgrades[damageIndex].pointCost))
         {
-            damageIndex++;
+            damageIndex = id;
             UpdateImages();
-            GameManager.Instance.UsePoints(damageUpgrades[damageIndex + 1].pointCost);
+            GameManager.Instance.UsePoints(damageUpgrades[damageIndex - 1].pointCost);
             UpdatePointCount();
             PlayerPrefs.SetInt("damageIndex", damageIndex);
         }
@@ -74,15 +74,15 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    public void UpgradeCarMod()
+    public void UpgradeCarMod(int id)
     {
-        if (carModIndex == carModUpgrades.Length)
+        if (carModIndex == carModUpgrades.Length || carModIndex >= id || (id - carModIndex) > 1)
             return;
-        if (GameManager.Instance.CanAfford(carModUpgrades[carModIndex + 1].pointCost))
+        if (GameManager.Instance.CanAfford(carModUpgrades[carModIndex].pointCost))
         {
-            carModIndex++;
+            carModIndex = id;
             UpdateImages();
-            GameManager.Instance.UsePoints(carModUpgrades[carModIndex + 1].pointCost);
+            GameManager.Instance.UsePoints(carModUpgrades[carModIndex - 1].pointCost);
             UpdatePointCount();
             PlayerPrefs.SetInt("carModIndex", carModIndex);
         }
@@ -92,11 +92,15 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    public void ResetPlayerPrefs()
+    public void ResetUpgrades()
     {
         PlayerPrefs.SetInt("speedIndex", 0);
         PlayerPrefs.SetInt("damageIndex", 0);
         PlayerPrefs.SetInt("carModIndex", 0);
+
+        speedIndex = 0;
+        damageIndex = 0;
+        carModIndex = 0;
 
         UpdateImages();
         UpdatePointCount();
@@ -106,31 +110,31 @@ public class ShopManager : MonoBehaviour
     {
         for (int i = 0; i < _speedImages.Length; i++)
         {
-            if (i <= speedIndex)
-                _speedImages[speedIndex].sprite = _activeImage;
+            if (i < speedIndex)
+                _speedImages[i].sprite = _activeImage;
             else
             {
-                _speedImages[speedIndex].sprite = _inactiveImage;
+                _speedImages[i].sprite = _inactiveImage;
             }
         }
 
         for (int i = 0; i < _damageImages.Length; i++)
         {
-            if (i <= damageIndex)
-                _damageImages[damageIndex].sprite = _activeImage;
+            if (i < damageIndex)
+                _damageImages[i].sprite = _activeImage;
             else
             {
-                _damageImages[damageIndex].sprite = _inactiveImage;
+                _damageImages[i].sprite = _inactiveImage;
             }
         }
 
         for (int i = 0; i < _carModImages.Length; i++)
         {
-            if (i <= carModIndex)
-                _carModImages[carModIndex].sprite = _activeImage;
+            if (i < carModIndex)
+                _carModImages[i].sprite = _activeImage;
             else
             {
-                _carModImages[carModIndex].sprite = _inactiveImage;
+                _carModImages[i].sprite = _inactiveImage;
             }
         }
     }
@@ -139,8 +143,30 @@ public class ShopManager : MonoBehaviour
     {
         _pointsTxt.text = "Points: " + GameManager.Instance.points;
 
-        _speedCostTxt.text = "Cost: " + speedUpgrades[speedIndex].pointCost;
-        _damageCostTxt.text = "Cost: " + damageUpgrades[damageIndex].pointCost;
-        _carModCostTxt.text = "Cost: " + carModUpgrades[carModIndex].pointCost;
+        if (speedIndex < 3)
+        {
+            _speedCostTxt.text = "Cost: " + speedUpgrades[speedIndex].pointCost;
+        }
+        else
+        {
+            _speedCostTxt.text = "Max Uprgade";
+        }
+        if (damageIndex < 3)
+        {
+            _damageCostTxt.text = "Cost: " + damageUpgrades[damageIndex].pointCost;
+
+        }
+        else
+        {
+            _damageCostTxt.text = "Max Uprgade";
+        }
+        if (carModIndex < 3)
+        {
+            _carModCostTxt.text = "Cost: " + carModUpgrades[carModIndex].pointCost;
+        }
+        else
+        {
+            _carModCostTxt.text = "Max Uprgade";
+        }
     }
 }
