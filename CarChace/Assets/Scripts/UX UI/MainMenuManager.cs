@@ -5,9 +5,14 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class MainMenuManager : MonoBehaviour
 {
+    [Header("Player")]
+    [SerializeField] GameObject _playerObj;
+    [SerializeField] ActionBasedContinuousTurnProvider _actionBasedContinuousTurnProvider;
+    [SerializeField] ActionBasedSnapTurnProvider _actionBasedSnapTurnProvider;
     [Header("Audio")]
     [SerializeField] AudioMixer _mainMixer;
     [SerializeField] Slider _masterSlider;
@@ -34,6 +39,9 @@ public class MainMenuManager : MonoBehaviour
 
         OnChangeTime();
         OnChangeHealth();
+
+        _actionBasedContinuousTurnProvider = _playerObj.GetComponent<ActionBasedContinuousTurnProvider>();
+        _actionBasedSnapTurnProvider = _playerObj.GetComponent<ActionBasedSnapTurnProvider>();
     }
 
     // Update is called once per frame
@@ -89,6 +97,20 @@ public class MainMenuManager : MonoBehaviour
     }
 
     #endregion
+
+    public void SwitchTurnType(int value)
+    {
+        if (value == 0)
+        {
+            _actionBasedSnapTurnProvider.enabled = true;
+            _actionBasedContinuousTurnProvider.enabled = false;
+        }
+        else
+        {
+            _actionBasedSnapTurnProvider.enabled = false;
+            _actionBasedContinuousTurnProvider.enabled = true;
+        }
+    }
 
 
     public void QuitGame()

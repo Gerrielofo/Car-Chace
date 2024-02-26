@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
+[RequireComponent(typeof(XRRayInteractor))]
 public class UIRayActivation : MonoBehaviour
 {
-    public LayerMask interactionLayer;
     XRRayInteractor xRRayInteractor;
 
     private void Start()
