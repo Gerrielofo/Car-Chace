@@ -461,36 +461,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 342185750}
     m_Modifications:
-    - target: {fileID: 1759539136861841697, guid: b3d2fee8d644638459bdaa0a553a5ed6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3743909029371738899, guid: b3d2fee8d644638459bdaa0a553a5ed6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4095487382384648833, guid: b3d2fee8d644638459bdaa0a553a5ed6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4853554891390660366, guid: b3d2fee8d644638459bdaa0a553a5ed6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5191158044762739503, guid: b3d2fee8d644638459bdaa0a553a5ed6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6345286476305234859, guid: b3d2fee8d644638459bdaa0a553a5ed6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6796793912509232010, guid: b3d2fee8d644638459bdaa0a553a5ed6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -541,11 +511,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8530618435762866594, guid: b3d2fee8d644638459bdaa0a553a5ed6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8735828946961078856, guid: b3d2fee8d644638459bdaa0a553a5ed6,
         type: 3}
       propertyPath: m_Name
@@ -554,15 +519,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8735828946961078856, guid: b3d2fee8d644638459bdaa0a553a5ed6,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1877001445}
-    - targetCorrespondingSourceObject: {fileID: 8735828946961078856, guid: b3d2fee8d644638459bdaa0a553a5ed6,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1877001454}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3d2fee8d644638459bdaa0a553a5ed6, type: 3}
 --- !u!4 &983086960 stripped
 Transform:
@@ -570,60 +527,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 983086959}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1877001443 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8735828946961078856, guid: b3d2fee8d644638459bdaa0a553a5ed6,
-    type: 3}
-  m_PrefabInstance: {fileID: 983086959}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1877001445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1877001443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82b6b603a5aea46469e1ba056faddf71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInput: {fileID: 1877001454}
-  _isMove: 0
-  _isTurn: 0
-  _wheelRotationSpeed: 0
-  _frontWheelsRotation: {x: 0, y: 0, z: 0}
---- !u!114 &1877001454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1877001443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: c6b6795eed1e2514dadd7f04da8478ed,
-    type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: CarActionMap
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
