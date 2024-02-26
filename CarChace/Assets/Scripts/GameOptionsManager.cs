@@ -9,6 +9,8 @@ public class GameOptionsManager : MonoBehaviour
     public int timeLimitMinutes;
     public int enemyHealthPrc;
 
+    public int turnType;
+
     private void Awake()
     {
         if (Instance == null)

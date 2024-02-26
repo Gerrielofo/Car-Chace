@@ -100,6 +100,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void SwitchTurnType(int value)
     {
+        GameOptionsManager.Instance.turnType = value;
         if (value == 0)
         {
             _actionBasedSnapTurnProvider.enabled = true;
