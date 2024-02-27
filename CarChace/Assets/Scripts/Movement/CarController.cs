@@ -79,8 +79,8 @@ public class CarController : MonoBehaviour
         _leftFront.steerAngle = -_steerAngle;
         _rightFront.steerAngle = -_steerAngle;
 
-        _velocity = this.GetComponent<Rigidbody>().velocity.magnitude;
-        _speedTxt.text = _velocity.ToString("0#######");
+        _velocity = this.GetComponent<Rigidbody>().velocity.z;
+        _speedTxt.text = (_velocity * 10).ToString("#");
 
     }
 }
