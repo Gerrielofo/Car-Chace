@@ -4,6 +4,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -111,6 +112,12 @@ public class MainMenuManager : MonoBehaviour
             _actionBasedSnapTurnProvider.enabled = false;
             _actionBasedContinuousTurnProvider.enabled = true;
         }
+    }
+
+    public void StartGame()
+    {
+        GameManager.Instance.isPlaying = true;
+        SceneManager.LoadScene("Game");
     }
 
 

@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
 
     public int points;
 
+    public bool isPlaying;
+    public float timePassed;
+
+
     private void Awake()
     {
         if (Instance == this)
@@ -23,9 +27,31 @@ public class GameManager : MonoBehaviour
             Debug.LogError($"Had Multiple GameManager's In Scene. Destroyed The One On {gameObject.name}");
             Destroy(this);
         }
+        DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        // points = PlayerPrefs.GetInt("Points");
+    }
 
+    private void Update()
+    {
+        if (isPlaying)
+        {
+            timePassed += Time.deltaTime;
+            if (timePassed >= GameOptionsManager.Instance.timeLimitMinutes * 60)
+            {
+                isPlaying = false;
+            }
+        }
+    }
+
+    public void AddPoints(int amount)
+    {
+        points += amount;
+        // PlayerPrefs.SetInt("Points", points);
+    }
 
     public bool CanAfford(int amount)
     {
@@ -35,5 +61,6 @@ public class GameManager : MonoBehaviour
     public void UsePoints(int amount)
     {
         points -= amount;
+        // PlayerPrefs.SetInt("Points", points);
     }
 }
