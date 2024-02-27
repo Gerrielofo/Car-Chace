@@ -19,19 +19,20 @@ public class CarController : MonoBehaviour
     [SerializeField] float _minAngle;
     [SerializeField] float _maxAngle;
 
-
-    [SerializeField] float _speed;
-    [SerializeField] TMP_Text _speedTxt;
-
+    [SerializeField] float _steerSensitivity;
     [SerializeField] float _steerAngle;
-
-    [SerializeField] GameObject _steeringWheelHolder;
-    [SerializeField] Transform _steeringWheel;
     [SerializeField] float _steeringWheelRotation;
 
-    [SerializeField] float _sensitivity;
+    [SerializeField] float _acceleration;
+    [SerializeField] float _speed;
 
     [SerializeField] float _velocity;
+    [SerializeField] TMP_Text _speedTxt;
+
+
+    [SerializeField] GameObject _steeringWheelHolder;
+
+
 
     private void OnEnable()
     {
@@ -68,19 +69,22 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
-        _leftBack.motorTorque = _isMove * _speed;
-        _rightBack.motorTorque = _isMove * _speed;
+        float speed = _isMove * (_acceleration * 1000) * Time.deltaTime;
+
+        Mathf.Clamp(speed, _speed, -_speed);
+
+        _leftBack.motorTorque = speed;
+        _rightBack.motorTorque = speed;
 
         // steerAngle = _steerAngle * _isTurn;
         _steeringWheelRotation = _steeringWheelHolder.GetComponent<SteeringWheelInteractable>().CurrentAngle;
-        _steerAngle = _steeringWheelRotation / _sensitivity;
+        _steerAngle = _steeringWheelRotation / _steerSensitivity;
         Mathf.Clamp(_steerAngle, _minAngle, _maxAngle);
 
         _leftFront.steerAngle = -_steerAngle;
         _rightFront.steerAngle = -_steerAngle;
 
-        _velocity = this.GetComponent<Rigidbody>().velocity.z;
+        _velocity = this.GetComponent<Rigidbody>().velocity.magnitude;
         _speedTxt.text = (_velocity * 10).ToString("#");
-
     }
 }
