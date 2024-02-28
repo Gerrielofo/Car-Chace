@@ -117,7 +117,7 @@ public class MainMenuManager : MonoBehaviour
     public void StartGame()
     {
         GameManager.Instance.isPlaying = true;
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(GameManager.Instance.gameScene);
     }
 
 

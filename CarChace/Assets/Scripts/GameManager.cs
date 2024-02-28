@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +12,12 @@ public class GameManager : MonoBehaviour
 
     public bool isPlaying;
     public float timePassed;
+
+    [Header("Scene Names")]
+    public string mainMenuScene;
+    public string gameScene;
+
+    public event GameEnded gameEnded;
 
 
     private void Awake()
@@ -42,15 +50,27 @@ public class GameManager : MonoBehaviour
             timePassed += Time.deltaTime;
             if (timePassed >= GameOptionsManager.Instance.timeLimitMinutes * 60)
             {
-                isPlaying = false;
+                EndGame();
             }
+        }
+    }
+
+    public delegate void GameEnded();
+
+    public void EndGame()
+    {
+        isPlaying = false;
+        Time.timeScale = 0;
+        if (gameEnded != null)
+        {
+            gameEnded.Invoke();
         }
     }
 
     public void AddPoints(int amount)
     {
         points += amount;
-        // PlayerPrefs.SetInt("Points", points);
+        PlayerPrefs.SetInt("Points", points);
     }
 
     public bool CanAfford(int amount)
@@ -61,6 +81,6 @@ public class GameManager : MonoBehaviour
     public void UsePoints(int amount)
     {
         points -= amount;
-        // PlayerPrefs.SetInt("Points", points);
+        PlayerPrefs.SetInt("Points", points);
     }
 }
