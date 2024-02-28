@@ -77,7 +77,7 @@ public class CarController : MonoBehaviour
         _rightBack.motorTorque = speed;
 
         // steerAngle = _steerAngle * _isTurn;
-        _steeringWheelRotation = _steeringWheelHolder.GetComponent<SteeringWheelInteractable>().CurrentAngle;
+        // _steeringWheelRotation = _steeringWheelHolder.GetComponent<SteeringWheelInteractable>().CurrentAngle;
         _steerAngle = _steeringWheelRotation / _steerSensitivity;
         Mathf.Clamp(_steerAngle, _minAngle, _maxAngle);
 
