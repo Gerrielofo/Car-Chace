@@ -7,12 +7,9 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class SteeringWheelInteractable : XRBaseInteractable
 {
-    [SerializeField] Transform _wheelHolderTransform;
     [SerializeField] Transform _wheelTransform;
 
-
-    [SerializeField] GameObject _hand1;
-    [SerializeField] GameObject _hand2;
+    [SerializeField] float _sensitivity;
 
     [SerializeField] Vector3 zRotation;
     [SerializeField] Vector3 _rotation1;
@@ -21,27 +18,25 @@ public class SteeringWheelInteractable : XRBaseInteractable
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         base.OnSelectEntered(args);
+        _rotation2 = Vector3.zero;
         foreach (IXRSelectInteractor interactor in interactorsSelecting)
         {
             if (interactorsSelecting.Count == 1)
             {
                 _rotation1 = interactor.transform.eulerAngles - zRotation;
+                return;
             }
             else
             {
-                _rotation2 = interactor.transform.eulerAngles - zRotation;
+                _rotation2 += interactor.transform.eulerAngles / _sensitivity;
             }
-            // if (interactor.transform.gameObject == args.interactableObject.transform.gameObject && interactor.transform.gameObject == _hand1)
-            // {
-            //     _rotation1 = interactor.transform.eulerAngles - zRotation;
-            // }
         }
+        _rotation2 -= zRotation;
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
         base.OnSelectExited(args);
-        // _currentAngle = FindWheelAngle();
     }
 
     public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
@@ -52,7 +47,7 @@ public class SteeringWheelInteractable : XRBaseInteractable
         {
             if (isSelected)
             {
-                // float sharedRotation = 0;
+                Vector3 tempVec = Vector3.zero;
                 foreach (IXRSelectInteractor interactor in interactorsSelecting)
                 {
                     if (interactorsSelecting.Count == 1)
@@ -61,13 +56,11 @@ public class SteeringWheelInteractable : XRBaseInteractable
                     }
                     else
                     {
-                        Vector3 tempVec = Vector3.zero;
                         foreach (IXRSelectInteractor interactor2 in interactorsSelecting)
                         {
-                            tempVec += interactor2.transform.eulerAngles;
+                            tempVec += interactor2.transform.eulerAngles / _sensitivity;
                         }
-                        tempVec /= 2;
-                        zRotation = tempVec - ((_rotation1 + _rotation2) / 2);
+                        zRotation = tempVec - _rotation2;
                     }
                 }
                 _wheelTransform.localRotation = Quaternion.Euler(new Vector3(0, 0, zRotation.z));

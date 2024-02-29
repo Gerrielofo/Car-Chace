@@ -6787,6 +6787,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2294269692325238917, guid: 5672222dbf7f7d644a38ee97d2379de0, type: 3}
+      propertyPath: _sensitivity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2294269692325238917, guid: 5672222dbf7f7d644a38ee97d2379de0, type: 3}
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 546167791}
