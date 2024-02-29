@@ -120,7 +120,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b0a03b3255e2a2f4a84556c53b83c8f7, type: 2}
     - target: {fileID: 919132149155446097, guid: 05202a5d2a4bd4d4c8055a162fdc6a45, type: 3}
       propertyPath: m_Name
-      value: afdaling structure
+      value: Snelweg Afdaling
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -128,8 +128,38 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 05202a5d2a4bd4d4c8055a162fdc6a45, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3292866480249377611}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 05202a5d2a4bd4d4c8055a162fdc6a45, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8246936895219454913}
   m_SourcePrefab: {fileID: 100100000, guid: 05202a5d2a4bd4d4c8055a162fdc6a45, type: 3}
+--- !u!1 &8527649538865753638 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 05202a5d2a4bd4d4c8055a162fdc6a45, type: 3}
+  m_PrefabInstance: {fileID: 8834133663933322103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &8246936895219454913
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8527649538865753638}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4096881323591117253, guid: 05202a5d2a4bd4d4c8055a162fdc6a45, type: 3}
 --- !u!4 &9012719620895650972 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 05202a5d2a4bd4d4c8055a162fdc6a45, type: 3}
