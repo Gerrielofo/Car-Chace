@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f40dcede4991946b1b577d38bae95b, type: 3}
   m_Name: Gear 1
   m_EditorClassIdentifier: 
+  minimumSpeed: 0
   acceleration: 50
-  speed: 400
+  speed: 600

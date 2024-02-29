@@ -15,7 +15,7 @@ public class CarController : MonoBehaviour
     [SerializeField] WheelCollider _leftBack;
     [SerializeField] WheelCollider _rightBack;
 
-    [SerializeField] bool FrontWheelDrive;
+    [SerializeField] bool _frontWheelDrive;
 
     [SerializeField] float _isMove;
     [SerializeField] float _isTurn;
@@ -27,9 +27,13 @@ public class CarController : MonoBehaviour
     [SerializeField] float _steerAngle;
     [SerializeField] Transform _steeringWheelRotation;
 
+    [SerializeField] float _reverseDelay = 1f;
+    [SerializeField] bool _canReverse;
     [SerializeField] float _brakeForce = 1000;
     [SerializeField] float _acceleration;
     [SerializeField] float _speed;
+
+    float _reverseTimer;
 
     [SerializeField] float _velocity;
     [SerializeField] TMP_Text _speedTxt;
@@ -89,45 +93,102 @@ public class CarController : MonoBehaviour
     {
         if (_isMove >= 0)
         {
-            _leftBack.brakeTorque = 0;
-            _rightBack.brakeTorque = 0;
-
-            if (FrontWheelDrive)
+            // _canReverse = false;
+            if (_canReverse)
             {
-                _leftFront.brakeTorque = 0;
-                _rightFront.brakeTorque = 0;
+                Debug.Log("Breaking Cuz Reverse");
+                _leftBack.brakeTorque = _brakeForce;
+                _rightBack.brakeTorque = _brakeForce;
+
+                if (_frontWheelDrive)
+                {
+                    _leftFront.brakeTorque = _brakeForce;
+                    _rightFront.brakeTorque = _brakeForce;
+                }
+                if (myApproximation(_velocity, 0, 0.5f))
+                {
+                    _canReverse = false;
+
+                }
             }
-
-            _leftBack.motorTorque = speed;
-            _rightBack.motorTorque = speed;
-
-            if (FrontWheelDrive)
+            else
             {
-                _leftFront.motorTorque = speed;
-                _rightFront.motorTorque = speed;
+                _leftBack.brakeTorque = 0;
+                _rightBack.brakeTorque = 0;
+
+                if (_frontWheelDrive)
+                {
+                    _leftFront.brakeTorque = 0;
+                    _rightFront.brakeTorque = 0;
+                }
+
+                _leftBack.motorTorque = speed;
+                _rightBack.motorTorque = speed;
+
+                if (_frontWheelDrive)
+                {
+                    _leftFront.motorTorque = speed;
+                    _rightFront.motorTorque = speed;
+                }
             }
         }
         else
         {
-            _leftBack.brakeTorque = _brakeForce;
-            _rightBack.brakeTorque = _brakeForce;
-
-            if (FrontWheelDrive)
+            if (myApproximation(_velocity, 0, 0.5f) && _reverseTimer <= 0f && !_canReverse)
             {
-                _leftFront.brakeTorque = _brakeForce;
-                _rightFront.brakeTorque = _brakeForce;
+                _reverseTimer = _reverseDelay;
+            }
+            else if (_reverseTimer > 0)
+            {
+                _reverseTimer -= Time.deltaTime;
+                if (_reverseTimer <= 0)
+                {
+                    _canReverse = true;
+                }
             }
 
-            _leftBack.motorTorque = 0;
-            _rightBack.motorTorque = 0;
-
-            if (FrontWheelDrive)
+            if (_canReverse)
             {
-                _leftFront.motorTorque = 0;
-                _rightFront.motorTorque = 0;
+                Debug.Log("Put it in reverse terry");
+                _leftBack.motorTorque = speed;
+                _rightBack.motorTorque = speed;
+
+                if (_frontWheelDrive)
+                {
+                    _leftFront.motorTorque = speed;
+                    _rightFront.motorTorque = speed;
+                }
+
+                _leftBack.brakeTorque = 0;
+                _rightBack.brakeTorque = 0;
+
+                if (_frontWheelDrive)
+                {
+                    _leftFront.brakeTorque = 0;
+                    _rightFront.brakeTorque = 0;
+                }
+            }
+            else
+            {
+                _leftBack.brakeTorque = _brakeForce;
+                _rightBack.brakeTorque = _brakeForce;
+
+                if (_frontWheelDrive)
+                {
+                    _leftFront.brakeTorque = _brakeForce;
+                    _rightFront.brakeTorque = _brakeForce;
+                }
+
+                _leftBack.motorTorque = 0;
+                _rightBack.motorTorque = 0;
+
+                if (_frontWheelDrive)
+                {
+                    _leftFront.motorTorque = 0;
+                    _rightFront.motorTorque = 0;
+                }
             }
         }
-
 
         // steerAngle = _steerAngle * _isTurn;
 
@@ -170,5 +231,10 @@ public class CarController : MonoBehaviour
         speed = _gears[_currentGear].speed * _isMove;
         _acceleration = _gears[_currentGear].acceleration;
         Mathf.Clamp(speed, _speed, -_speed);
+    }
+
+    private bool myApproximation(float a, float b, float tolerance)
+    {
+        return (Mathf.Abs(a - b) < tolerance);
     }
 }
