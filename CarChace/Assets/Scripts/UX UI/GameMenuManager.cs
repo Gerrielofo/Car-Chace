@@ -14,7 +14,8 @@ public class GameMenuManager : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.gameEnded += EndGame;
+        if (GameManager.Instance != null)
+            GameManager.Instance.gameEnded += EndGame;
     }
 
     public void EndGame()
