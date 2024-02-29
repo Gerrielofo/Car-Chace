@@ -590,6 +590,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5f6e09f4714e51439244ce07b9fd061, type: 3}
+--- !u!1001 &1098434828392319482
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 395710308544292693, guid: bcf455269b0d46b41b1232898a4a3e99, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -297.9604
+      objectReference: {fileID: 0}
+    - target: {fileID: 395710308544292693, guid: bcf455269b0d46b41b1232898a4a3e99, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 134.88118
+      objectReference: {fileID: 0}
+    - target: {fileID: 395710308544292693, guid: bcf455269b0d46b41b1232898a4a3e99, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 80.72628
+      objectReference: {fileID: 0}
+    - target: {fileID: 395710308544292693, guid: bcf455269b0d46b41b1232898a4a3e99, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 395710308544292693, guid: bcf455269b0d46b41b1232898a4a3e99, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 395710308544292693, guid: bcf455269b0d46b41b1232898a4a3e99, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 395710308544292693, guid: bcf455269b0d46b41b1232898a4a3e99, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 395710308544292693, guid: bcf455269b0d46b41b1232898a4a3e99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 395710308544292693, guid: bcf455269b0d46b41b1232898a4a3e99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 395710308544292693, guid: bcf455269b0d46b41b1232898a4a3e99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1024015591571095023, guid: bcf455269b0d46b41b1232898a4a3e99, type: 3}
+      propertyPath: m_Name
+      value: Snelweg bocht weg
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bcf455269b0d46b41b1232898a4a3e99, type: 3}
 --- !u!1001 &2275927720934682385
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1029,3 +1086,4 @@ SceneRoots:
   - {fileID: 562946573003858151}
   - {fileID: 5733074937737145824}
   - {fileID: 6717105137944565810}
+  - {fileID: 1098434828392319482}
