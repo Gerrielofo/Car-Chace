@@ -20,8 +20,8 @@ public class GameMenuManager : MonoBehaviour
     public void EndGame()
     {
         _gameEndCanvas.SetActive(true);
-        _gameEndCanvas.transform.LookAt(_playerCam);
-        _gameEndCanvas.transform.position = _playerCam.position + _placementOffset;
+        // _gameEndCanvas.transform.LookAt(_playerCam);
+        // _gameEndCanvas.transform.position = _playerCam.position + _placementOffset;
     }
 
     public void Retry()
