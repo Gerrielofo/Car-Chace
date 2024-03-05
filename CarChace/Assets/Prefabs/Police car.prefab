@@ -1658,12 +1658,13 @@ Transform:
   m_GameObject: {fileID: 1502627797713764400}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -15.17, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3184721482106789921}
   - {fileID: 5967050004541074251}
+  - {fileID: 1110580099534404874}
   - {fileID: 9018978213089658040}
   - {fileID: 1718767676654408191}
   - {fileID: 3923466949462616218}
@@ -1734,14 +1735,18 @@ MonoBehaviour:
   _rightFront: {fileID: 6936258536053972803}
   _leftBack: {fileID: 535557726238129566}
   _rightBack: {fileID: 3061384756594266168}
-  wantFrontWheelDrive: 0
+  _frontWheelDrive: 0
   _isMove: 0
+  _isExtraMove: 0
   _isTurn: 0
   _minAngle: -45
   _maxAngle: 45
   _steerSensitivity: 2
   _steerAngle: 0
   _steeringWheelRotation: {fileID: 7055938073479639122}
+  _reverseDelay: 1
+  _canReverse: 0
+  _brakeForce: 1000
   _acceleration: 75
   _speed: 0
   _velocity: 0
@@ -1754,6 +1759,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ce8df23a22c5c0b4089796812c2aa36d, type: 2}
   _currentGear: 0
   _gearTxt: {fileID: 609600225506122959}
+  _camPos: {fileID: 1110580099534404874}
+  _camOffset: {fileID: 3304240154844467478}
   _steeringWheelHolder: {fileID: 6531975380067638596}
   speed: 0
 --- !u!114 &9125834235423983322
@@ -2375,7 +2382,7 @@ Transform:
   m_GameObject: {fileID: 2531716481951891900}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4, y: 1, z: 0.4}
+  m_LocalPosition: {x: -0.4, y: -0.093, z: 0.381}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2397,8 +2404,8 @@ MonoBehaviour:
   m_Camera: {fileID: 5987160805925424519}
   m_OriginBaseGameObject: {fileID: 2531716481951891900}
   m_CameraFloorOffsetObject: {fileID: 6582988914304259415}
-  m_RequestedTrackingOriginMode: 2
-  m_CameraYOffset: 1.1176
+  m_RequestedTrackingOriginMode: 0
+  m_CameraYOffset: 0
 --- !u!114 &686148276825891380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4583,6 +4590,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2626647909108802562}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5478547471991559538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1110580099534404874}
+  m_Layer: 0
+  m_Name: ResetTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1110580099534404874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5478547471991559538}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: -0.4, y: 0.435, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2274802326192200330}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &5539418790593024917
 GameObject:
   m_ObjectHideFlags: 0
@@ -5042,10 +5080,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _wheelTransform: {fileID: 7055938073479639122}
-  _sensitivity: 2
-  zRotation: {x: 0, y: 0, z: 0}
-  _rotation1: {x: 0, y: 0, z: 0}
-  _rotation2: {x: 0, y: 0, z: 0}
   _currentAngle: 0
   onTurning:
     m_PersistentCalls:

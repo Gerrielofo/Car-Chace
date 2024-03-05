@@ -8512,6 +8512,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd89c55804a2e414e843205b79acc5c1, type: 3}
+--- !u!4 &1814209826 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9018978213089658040, guid: 5672222dbf7f7d644a38ee97d2379de0, type: 3}
+  m_PrefabInstance: {fileID: 2108077887}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1832474928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9139,6 +9144,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f924e39e4e8f92949b79ccc5bc860640, type: 3}
+--- !u!1 &2061957855
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2061957856}
+  m_Layer: 0
+  m_Name: RespawnPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2061957856
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061957855}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 680.4, y: 0.89, z: 205.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2067553281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9318,6 +9354,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1110580099534404874, guid: 5672222dbf7f7d644a38ee97d2379de0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.4000244
+      objectReference: {fileID: 0}
+    - target: {fileID: 1110580099534404874, guid: 5672222dbf7f7d644a38ee97d2379de0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5125682
+      objectReference: {fileID: 0}
+    - target: {fileID: 1110580099534404874, guid: 5672222dbf7f7d644a38ee97d2379de0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.39994812
+      objectReference: {fileID: 0}
+    - target: {fileID: 1110580099534404874, guid: 5672222dbf7f7d644a38ee97d2379de0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1110580099534404874, guid: 5672222dbf7f7d644a38ee97d2379de0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000002566456
+      objectReference: {fileID: 0}
+    - target: {fileID: 1110580099534404874, guid: 5672222dbf7f7d644a38ee97d2379de0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000000012771286
+      objectReference: {fileID: 0}
+    - target: {fileID: 1110580099534404874, guid: 5672222dbf7f7d644a38ee97d2379de0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.000000049104052
+      objectReference: {fileID: 0}
     - target: {fileID: 1502627797713764400, guid: 5672222dbf7f7d644a38ee97d2379de0, type: 3}
       propertyPath: m_Name
       value: Police car
@@ -9360,6 +9424,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2274802326192200330, guid: 5672222dbf7f7d644a38ee97d2379de0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4941991555202851181, guid: 5672222dbf7f7d644a38ee97d2379de0, type: 3}
+      propertyPath: m_CameraYOffset
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842931934201162879, guid: 5672222dbf7f7d644a38ee97d2379de0, type: 3}
+      propertyPath: _resetTransform
+      value: 
+      objectReference: {fileID: 1814209826}
+    - target: {fileID: 5842931934201162879, guid: 5672222dbf7f7d644a38ee97d2379de0, type: 3}
+      propertyPath: _respawnTransform
+      value: 
+      objectReference: {fileID: 2061957856}
+    - target: {fileID: 9018978213089658040, guid: 5672222dbf7f7d644a38ee97d2379de0, type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -9639,6 +9719,7 @@ SceneRoots:
   - {fileID: 822728658}
   - {fileID: 831136167}
   - {fileID: 1714694773}
+  - {fileID: 2061957856}
   - {fileID: 2108077887}
   - {fileID: 159797510}
   - {fileID: 1906193338}

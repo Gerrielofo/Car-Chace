@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using TMPro;
 using UnityEditor;
 using System;
+using Unity.XR.CoreUtils;
 public class CarController : MonoBehaviour
 {
     [SerializeField] private PlayerInput playerInput = null;
@@ -32,7 +33,6 @@ public class CarController : MonoBehaviour
     [SerializeField] bool _canReverse;
     [SerializeField] float _brakeForce = 1000;
     [SerializeField] float _acceleration;
-    [SerializeField] float _speed;
 
     float _reverseTimer;
 
@@ -43,12 +43,14 @@ public class CarController : MonoBehaviour
     [SerializeField] int _currentGear;
     [SerializeField] TMP_Text _gearTxt;
 
-    [SerializeField] Transform _camPos;
+    [SerializeField] Transform _resetTransform;
     [SerializeField] Transform _camOffset;
 
     [SerializeField] GameObject _steeringWheelHolder;
 
-    [SerializeField] float speed;
+    [SerializeField] Transform _respawnTransform;
+
+    [SerializeField] float _speed;
 
     private void OnEnable()
     {
@@ -82,7 +84,8 @@ public class CarController : MonoBehaviour
 
     private void Start()
     {
-        _camOffset.position = _camPos.position;
+        Vector3 Cringe = new Vector3(0, Vector3.Distance(_camOffset.position, _resetTransform.position), 0);
+        _camOffset.localPosition = Cringe;
     }
 
     private void OnGas(InputAction.CallbackContext context)
@@ -112,6 +115,11 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown("r"))
+        {
+            transform.position = _respawnTransform.position;
+            transform.rotation = _respawnTransform.rotation;
+        }
         if (_isMove >= 0)
         {
             // _canReverse = false;
@@ -143,13 +151,13 @@ public class CarController : MonoBehaviour
                     _rightFront.brakeTorque = 0;
                 }
 
-                _leftBack.motorTorque = speed;
-                _rightBack.motorTorque = speed;
+                _leftBack.motorTorque = _speed;
+                _rightBack.motorTorque = _speed;
 
                 if (_frontWheelDrive)
                 {
-                    _leftFront.motorTorque = speed;
-                    _rightFront.motorTorque = speed;
+                    _leftFront.motorTorque = _speed;
+                    _rightFront.motorTorque = _speed;
                 }
             }
         }
@@ -171,13 +179,13 @@ public class CarController : MonoBehaviour
             if (_canReverse)
             {
                 Debug.Log("Put it in reverse terry");
-                _leftBack.motorTorque = speed;
-                _rightBack.motorTorque = speed;
+                _leftBack.motorTorque = _speed;
+                _rightBack.motorTorque = _speed;
 
                 if (_frontWheelDrive)
                 {
-                    _leftFront.motorTorque = speed;
-                    _rightFront.motorTorque = speed;
+                    _leftFront.motorTorque = _speed;
+                    _rightFront.motorTorque = _speed;
                 }
 
                 _leftBack.brakeTorque = 0;
@@ -236,7 +244,7 @@ public class CarController : MonoBehaviour
             {
                 _currentGear--;
             }
-            speed = _gears[_currentGear].speed;
+            _speed = _gears[_currentGear].speed;
             _acceleration = _gears[_currentGear].acceleration;
             return;
         }
@@ -249,9 +257,8 @@ public class CarController : MonoBehaviour
             _currentGear++;
         }
 
-        speed = _gears[_currentGear].speed * _isMove * (1 + _isExtraMove);
-        _acceleration = _gears[_currentGear].acceleration;
-        Mathf.Clamp(speed, _speed, -_speed);
+        _speed = _gears[_currentGear].speed * _isMove * (1 + _isExtraMove);
+        // _acceleration = _gears[_currentGear].acceleration;
     }
 
     private bool myApproximation(float a, float b, float tolerance)
