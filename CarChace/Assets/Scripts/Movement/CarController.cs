@@ -36,6 +36,9 @@ public class CarController : MonoBehaviour
 
     float _reverseTimer;
 
+    [SerializeField] Rigidbody _carRigidbody;
+    [SerializeField] Transform _carCenterOfMass;
+
     [SerializeField] float _velocity;
     [SerializeField] TMP_Text _speedTxt;
 
@@ -84,6 +87,8 @@ public class CarController : MonoBehaviour
 
     private void Start()
     {
+        // _carRigidbody.centerOfMass = _carCenterOfMass.position;
+
         Vector3 Cringe = new Vector3(0, Vector3.Distance(_camOffset.position, _resetTransform.position), 0);
         _camOffset.localPosition = Cringe;
     }
@@ -115,6 +120,8 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
+        // _carRigidbody.AddForce(Vector3.down * 9.81f);
+
         if (Input.GetKeyDown("r"))
         {
             transform.position = _respawnTransform.position;
@@ -122,7 +129,6 @@ public class CarController : MonoBehaviour
         }
         if (_isMove >= 0)
         {
-            // _canReverse = false;
             if (_canReverse)
             {
                 Debug.Log("Breaking Cuz Reverse");
@@ -178,7 +184,6 @@ public class CarController : MonoBehaviour
 
             if (_canReverse)
             {
-                Debug.Log("Put it in reverse terry");
                 _leftBack.motorTorque = _speed;
                 _rightBack.motorTorque = _speed;
 
@@ -219,8 +224,6 @@ public class CarController : MonoBehaviour
             }
         }
 
-        // steerAngle = _steerAngle * _isTurn;
-
         _steerAngle = _steeringWheelRotation.eulerAngles.z / _steerSensitivity;
         Mathf.Clamp(_steerAngle, _minAngle, _maxAngle);
 
@@ -228,7 +231,8 @@ public class CarController : MonoBehaviour
         _rightFront.steerAngle = -_steerAngle;
 
         _velocity = GetComponent<Rigidbody>().velocity.magnitude;
-        _speedTxt.text = (_velocity * 10).ToString("0##");
+
+        _speedTxt.text = (_velocity * 10).ToString("0");
 
         if (_gearTxt != null)
             _gearTxt.text = (_currentGear + 1).ToString();
@@ -258,7 +262,6 @@ public class CarController : MonoBehaviour
         }
 
         _speed = _gears[_currentGear].speed * _isMove * (1 + _isExtraMove);
-        // _acceleration = _gears[_currentGear].acceleration;
     }
 
     private bool myApproximation(float a, float b, float tolerance)
