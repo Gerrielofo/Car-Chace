@@ -1748,7 +1748,8 @@ MonoBehaviour:
   _canReverse: 0
   _brakeForce: 1000
   _acceleration: 75
-  _speed: 0
+  _carRigidbody: {fileID: 0}
+  _carCenterOfMass: {fileID: 0}
   _velocity: 0
   _speedTxt: {fileID: 8162806114895348112}
   _gears:
@@ -1759,10 +1760,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ce8df23a22c5c0b4089796812c2aa36d, type: 2}
   _currentGear: 0
   _gearTxt: {fileID: 609600225506122959}
-  _camPos: {fileID: 1110580099534404874}
+  _resetTransform: {fileID: 0}
   _camOffset: {fileID: 3304240154844467478}
   _steeringWheelHolder: {fileID: 6531975380067638596}
-  speed: 0
+  _respawnTransform: {fileID: 0}
+  _isReset: 0
+  _speed: 0
 --- !u!114 &9125834235423983322
 MonoBehaviour:
   m_ObjectHideFlags: 0

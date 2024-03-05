@@ -52,6 +52,7 @@ public class CarController : MonoBehaviour
     [SerializeField] GameObject _steeringWheelHolder;
 
     [SerializeField] Transform _respawnTransform;
+    [SerializeField] bool _isReset;
 
     [SerializeField] float _speed;
 
@@ -61,13 +62,17 @@ public class CarController : MonoBehaviour
         playerInput.actions.FindAction("GasBrake").performed += OnGas;
         playerInput.actions.FindAction("GasBrake").canceled += OnGas;
 
-        playerInput.actions.FindAction("Turn").started += OnTurn;
-        playerInput.actions.FindAction("Turn").performed += OnTurn;
-        playerInput.actions.FindAction("Turn").canceled += OnTurn;
+        playerInput.actions.FindAction("Turn").started += OnSteer;
+        playerInput.actions.FindAction("Turn").performed += OnSteer;
+        playerInput.actions.FindAction("Turn").canceled += OnSteer;
 
         playerInput.actions.FindAction("ExtraGasBrake").started += OnExtraMove;
         playerInput.actions.FindAction("ExtraGasBrake").performed += OnExtraMove;
         playerInput.actions.FindAction("ExtraGasBrake").canceled += OnExtraMove;
+
+        playerInput.actions.FindAction("Reset").started += OnRespawm;
+        // playerInput.actions.FindAction("Reset").performed += OnReset;
+        playerInput.actions.FindAction("Reset").canceled += OnRespawm;
     }
 
     private void OnDisable()
@@ -76,13 +81,17 @@ public class CarController : MonoBehaviour
         playerInput.actions.FindAction("GasBrake").performed -= OnGas;
         playerInput.actions.FindAction("GasBrake").canceled -= OnGas;
 
-        playerInput.actions.FindAction("Turn").started -= OnTurn;
-        playerInput.actions.FindAction("Turn").performed -= OnTurn;
-        playerInput.actions.FindAction("Turn").canceled -= OnTurn;
+        playerInput.actions.FindAction("Turn").started -= OnSteer;
+        playerInput.actions.FindAction("Turn").performed -= OnSteer;
+        playerInput.actions.FindAction("Turn").canceled -= OnSteer;
 
         playerInput.actions.FindAction("ExtraGasBrake").started -= OnExtraMove;
         playerInput.actions.FindAction("ExtraGasBrake").performed -= OnExtraMove;
         playerInput.actions.FindAction("ExtraGasBrake").canceled -= OnExtraMove;
+
+        playerInput.actions.FindAction("Reset").started -= OnRespawm;
+        // playerInput.actions.FindAction("Reset").performed -= OnReset;
+        playerInput.actions.FindAction("Reset").canceled -= OnRespawm;
     }
 
     private void Start()
@@ -107,7 +116,7 @@ public class CarController : MonoBehaviour
         }
     }
 
-    private void OnTurn(InputAction.CallbackContext context)
+    private void OnSteer(InputAction.CallbackContext context)
     {
         _isTurn = context.ReadValue<Vector2>().x;
     }
@@ -116,6 +125,12 @@ public class CarController : MonoBehaviour
     {
         _isExtraMove = context.ReadValue<Vector2>().y;
         _isExtraMove /= 2;
+    }
+
+    private void OnRespawm(InputAction.CallbackContext context)
+    {
+        transform.position = _respawnTransform.position;
+        transform.rotation = _respawnTransform.rotation;
     }
 
     private void Update()
