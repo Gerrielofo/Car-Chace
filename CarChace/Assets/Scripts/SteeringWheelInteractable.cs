@@ -10,12 +10,6 @@ public class SteeringWheelInteractable : XRBaseInteractable
 {
     [SerializeField] Transform _wheelTransform;
 
-    [SerializeField] float _sensitivity;
-
-    [SerializeField] Vector3 zRotation;
-    [SerializeField] Vector3 _rotation1;
-    [SerializeField] Vector3 _rotation2;
-
     [SerializeField] float _currentAngle;
 
     public UnityEvent<float> onTurning;
@@ -23,20 +17,6 @@ public class SteeringWheelInteractable : XRBaseInteractable
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         base.OnSelectEntered(args);
-        // _rotation2 = Vector3.zero;
-        // foreach (IXRSelectInteractor interactor in interactorsSelecting)
-        // {
-        //     if (interactorsSelecting.Count == 1)
-        //     {
-        //         _rotation1 = interactor.transform.localEulerAngles - zRotation;
-        //         return;
-        //     }
-        //     else
-        //     {
-        //         _rotation2 += interactor.transform.localEulerAngles / _sensitivity;
-        //     }
-        // }
-        // _rotation2 -= zRotation;
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args)
@@ -52,23 +32,6 @@ public class SteeringWheelInteractable : XRBaseInteractable
         {
             if (isSelected && isHovered)
             {
-                // Vector3 tempVec = Vector3.zero;
-                // foreach (IXRSelectInteractor interactor in interactorsSelecting)
-                // {
-                //     if (interactorsSelecting.Count == 1)
-                //     {
-                //         zRotation = interactor.transform.localEulerAngles - _rotation1;
-                //     }
-                //     else
-                //     {
-                //         foreach (IXRSelectInteractor interactor2 in interactorsSelecting)
-                //         {
-                //             tempVec += interactor2.transform.localEulerAngles / _sensitivity;
-                //         }
-                //         zRotation = tempVec - _rotation2;
-                //     }
-                // }
-                // _wheelTransform.localRotation = Quaternion.Euler(new Vector3(0, 0, zRotation.z));
                 RotateWheel();
             }
         }
@@ -105,7 +68,7 @@ public class SteeringWheelInteractable : XRBaseInteractable
 
     private float ConvertToAngle(Vector2 direction)
     {
-        return Vector2.SignedAngle(transform.up, direction);
+        return Vector2.SignedAngle(Vector3.up, direction);
     }
 
     private float FindRotationSensitivity()

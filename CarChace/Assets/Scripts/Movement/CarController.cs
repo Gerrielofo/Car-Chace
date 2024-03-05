@@ -18,6 +18,7 @@ public class CarController : MonoBehaviour
     [SerializeField] bool _frontWheelDrive;
 
     [SerializeField] float _isMove;
+    [SerializeField] float _isExtraMove;
     [SerializeField] float _isTurn;
 
     [SerializeField] float _minAngle;
@@ -58,6 +59,10 @@ public class CarController : MonoBehaviour
         playerInput.actions.FindAction("Turn").started += OnTurn;
         playerInput.actions.FindAction("Turn").performed += OnTurn;
         playerInput.actions.FindAction("Turn").canceled += OnTurn;
+
+        playerInput.actions.FindAction("ExtraGasBrake").started += OnExtraMove;
+        playerInput.actions.FindAction("ExtraGasBrake").performed += OnExtraMove;
+        playerInput.actions.FindAction("ExtraGasBrake").canceled += OnExtraMove;
     }
 
     private void OnDisable()
@@ -70,6 +75,9 @@ public class CarController : MonoBehaviour
         playerInput.actions.FindAction("Turn").performed -= OnTurn;
         playerInput.actions.FindAction("Turn").canceled -= OnTurn;
 
+        playerInput.actions.FindAction("ExtraGasBrake").started -= OnExtraMove;
+        playerInput.actions.FindAction("ExtraGasBrake").performed -= OnExtraMove;
+        playerInput.actions.FindAction("ExtraGasBrake").canceled -= OnExtraMove;
     }
 
     private void Start()
@@ -94,6 +102,12 @@ public class CarController : MonoBehaviour
     private void OnTurn(InputAction.CallbackContext context)
     {
         _isTurn = context.ReadValue<Vector2>().x;
+    }
+
+    private void OnExtraMove(InputAction.CallbackContext context)
+    {
+        _isExtraMove = context.ReadValue<Vector2>().y;
+        _isExtraMove /= 2;
     }
 
     private void Update()
@@ -235,7 +249,7 @@ public class CarController : MonoBehaviour
             _currentGear++;
         }
 
-        speed = _gears[_currentGear].speed * _isMove;
+        speed = _gears[_currentGear].speed * _isMove * (1 + _isExtraMove);
         _acceleration = _gears[_currentGear].acceleration;
         Mathf.Clamp(speed, _speed, -_speed);
     }
