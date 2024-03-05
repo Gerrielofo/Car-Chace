@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8603632113601989776}
   - component: {fileID: 3546167969392669698}
   - component: {fileID: 1678306975262626424}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Oprit wegstuk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 7771116962558949860}
   - component: {fileID: 3110483224667246611}
   - component: {fileID: 7566258794039205140}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: snelweg wegstuk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 9136743768579970283}
   - component: {fileID: 6248599126557582343}
   - component: {fileID: 969547290923205910}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Snelweg Support
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5447544479937357647}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Snelweg oprit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 6472716210396091894}
   - component: {fileID: 431369135460100393}
   - component: {fileID: 3608968285465247705}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Oprit OnderWeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}

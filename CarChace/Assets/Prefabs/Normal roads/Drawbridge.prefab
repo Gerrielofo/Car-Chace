@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2656690030770671660}
   - component: {fileID: 352288415298307234}
   - component: {fileID: 3130640371303028902}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Normal crossing (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,15 +116,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 24302820e8f82e24bbdfd45712dc35ae, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 403.03506
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 24302820e8f82e24bbdfd45712dc35ae, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 24302820e8f82e24bbdfd45712dc35ae, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 510.1738
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 24302820e8f82e24bbdfd45712dc35ae, type: 3}
       propertyPath: m_LocalRotation.w
@@ -162,14 +162,54 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ba17da0f1b99317449f4d13a83816909, type: 2}
+    - target: {fileID: -2333425436210669850, guid: 24302820e8f82e24bbdfd45712dc35ae, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -1237641461598926964, guid: 24302820e8f82e24bbdfd45712dc35ae, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -1137996661277675226, guid: 24302820e8f82e24bbdfd45712dc35ae, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -604826726783884822, guid: 24302820e8f82e24bbdfd45712dc35ae, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 295757254919281598, guid: 24302820e8f82e24bbdfd45712dc35ae, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 24302820e8f82e24bbdfd45712dc35ae, type: 3}
       propertyPath: m_Name
       value: Drawbridge
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 24302820e8f82e24bbdfd45712dc35ae, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2710643442008286679, guid: 24302820e8f82e24bbdfd45712dc35ae, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3404479842494080887, guid: 24302820e8f82e24bbdfd45712dc35ae, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ba17da0f1b99317449f4d13a83816909, type: 2}
+    - target: {fileID: 6392448647320541484, guid: 24302820e8f82e24bbdfd45712dc35ae, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036213049465896255, guid: 24302820e8f82e24bbdfd45712dc35ae, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7166000259969576014, guid: 24302820e8f82e24bbdfd45712dc35ae, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8879528566716807029, guid: 24302820e8f82e24bbdfd45712dc35ae, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
@@ -185,6 +225,10 @@ PrefabInstance:
     - target: {fileID: 8879528566716807029, guid: 24302820e8f82e24bbdfd45712dc35ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 9114772898675105519, guid: 24302820e8f82e24bbdfd45712dc35ae, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

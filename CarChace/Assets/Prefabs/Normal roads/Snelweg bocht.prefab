@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6ba7adb65edd1e242ae45931aa1b5865, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -297.9604
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6ba7adb65edd1e242ae45931aa1b5865, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 134.88118
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6ba7adb65edd1e242ae45931aa1b5865, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 80.72628
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6ba7adb65edd1e242ae45931aa1b5865, type: 3}
       propertyPath: m_LocalRotation.w
@@ -54,7 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3717a7dace3d70c4aa2a529ff1a07373, type: 2}
     - target: {fileID: 919132149155446097, guid: 6ba7adb65edd1e242ae45931aa1b5865, type: 3}
       propertyPath: m_Name
-      value: Snelweg bocht weg
+      value: Snelweg bocht
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6ba7adb65edd1e242ae45931aa1b5865, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -154,6 +158,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cba18f6d71a251848a6a39f2b645f994, type: 3}
       propertyPath: m_Name
       value: Snelweg bocht structure
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cba18f6d71a251848a6a39f2b645f994, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
