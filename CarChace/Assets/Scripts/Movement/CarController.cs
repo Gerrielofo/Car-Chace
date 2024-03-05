@@ -42,6 +42,8 @@ public class CarController : MonoBehaviour
     [SerializeField] int _currentGear;
     [SerializeField] TMP_Text _gearTxt;
 
+    [SerializeField] Transform _camPos;
+    [SerializeField] Transform _camOffset;
 
     [SerializeField] GameObject _steeringWheelHolder;
 
@@ -68,6 +70,11 @@ public class CarController : MonoBehaviour
         playerInput.actions.FindAction("Turn").performed -= OnTurn;
         playerInput.actions.FindAction("Turn").canceled -= OnTurn;
 
+    }
+
+    private void Start()
+    {
+        _camOffset.position = _camPos.position;
     }
 
     private void OnGas(InputAction.CallbackContext context)
