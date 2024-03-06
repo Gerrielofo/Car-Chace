@@ -46,6 +46,8 @@ public class CarAI : MonoBehaviour
     private int Fails;
     private float MovementTorque = 1;
 
+    public bool isAlive;
+
     void Awake()
     {
         currentWayPoint = 0;
@@ -61,9 +63,17 @@ public class CarAI : MonoBehaviour
 
     void FixedUpdate()
     {
-        UpdateWheels();
-        ApplySteering();
-        PathProgress();
+        if (isAlive)
+        {
+            UpdateWheels();
+            ApplySteering();
+            PathProgress();
+        }
+        else
+        {
+            ApplyBrakes();
+        }
+
     }
 
     private void CalculateNavMashLayerBite()
@@ -117,8 +127,8 @@ public class CarAI : MonoBehaviour
                 }
             }
             else
-               CustomPath(CustomDestination);
-            
+                CustomPath(CustomDestination);
+
         }
 
         void ListOptimizer()
@@ -206,7 +216,7 @@ public class CarAI : MonoBehaviour
             if (NavMesh.SamplePosition(destination, out NavMeshHit hit, 150, NavMeshAreaBite) &&
                 NavMesh.CalculatePath(sourcePostion, hit.position, NavMeshAreaBite, path))
             {
-                if (path.corners.ToList().Count() > 1&& CheckForAngle(path.corners[1], sourcePostion, direction))
+                if (path.corners.ToList().Count() > 1 && CheckForAngle(path.corners[1], sourcePostion, direction))
                 {
                     waypoints.AddRange(path.corners.ToList());
                     debug("Custom Path generated successfully", false);
@@ -245,7 +255,7 @@ public class CarAI : MonoBehaviour
             return false;
     }
 
-    private void ApplyBrakes() // Apply brake torque 
+    public void ApplyBrakes() // Apply brake torque 
     {
         frontLeft.brakeTorque = 5000;
         frontRight.brakeTorque = 5000;
@@ -269,7 +279,8 @@ public class CarAI : MonoBehaviour
         Vector3 pos;
         Quaternion rot;
         targetWheel.GetWorldPose(out pos, out rot);
-        wheel.position = pos;
+        // wheel.position = pos;
+
         wheel.rotation = rot;
     }
 
@@ -316,7 +327,7 @@ public class CarAI : MonoBehaviour
             }
             else
                 ApplyBrakes();
-            
+
         }
         else
             ApplyBrakes();

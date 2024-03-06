@@ -283,4 +283,12 @@ public class CarController : MonoBehaviour
     {
         return (Mathf.Abs(a - b) < tolerance);
     }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.transform.CompareTag("Enemy"))
+        {
+            other.transform.GetComponent<Enemy>().TakeDamage(_velocity);
+        }
+    }
 }
