@@ -13,7 +13,7 @@ public class CarPart : MonoBehaviour
     {
         car = GetComponentInParent<CarCrash>();
         force = new Vector3(Random.Range(car.partSpeed.y, car.partSpeed.x), Random.Range(car.partSpeed.y, car.partSpeed.x), Random.Range(car.partSpeed.y, car.partSpeed.x));
-        Debug.Log(force + " Force");
+        // Debug.Log(force + " Force");
     }
 
     public void Crash()
