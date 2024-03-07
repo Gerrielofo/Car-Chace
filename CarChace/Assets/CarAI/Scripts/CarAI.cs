@@ -23,6 +23,7 @@ public class CarAI : MonoBehaviour
 
     [Header("General Parameters")]// Look at the documentation for a detailed explanation 
     public List<string> NavMeshLayers;
+    [SerializeField] float _aIFOV = 60;
     public int MaxSteeringAngle = 45;
     public int MaxRPM = 150;
     public float WaypointCheckDistance = 3;
@@ -39,7 +40,6 @@ public class CarAI : MonoBehaviour
 
     private Vector3 PostionToFollow = Vector3.zero;
     private int currentWayPoint;
-    private float AIFOV = 60;
     private bool allowMovement;
     private int NavMeshLayerBite;
     private List<Vector3> waypoints = new List<Vector3>();
@@ -250,7 +250,7 @@ public class CarAI : MonoBehaviour
         float CosAngle = Vector3.Dot(distance, direction);
         float Angle = Mathf.Acos(CosAngle) * Mathf.Rad2Deg;
 
-        if (Angle < AIFOV)
+        if (Angle < _aIFOV)
             return true;
         else
             return false;
@@ -368,7 +368,7 @@ public class CarAI : MonoBehaviour
         void CalculateFOV()
         {
             Gizmos.color = Color.white;
-            float totalFOV = AIFOV * 2;
+            float totalFOV = _aIFOV * 2;
             float rayRange = 10.0f;
             float halfFOV = totalFOV / 2.0f;
             Quaternion leftRayRotation = Quaternion.AngleAxis(-halfFOV, Vector3.up);
