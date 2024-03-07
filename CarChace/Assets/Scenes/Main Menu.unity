@@ -6212,9 +6212,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c4b3361c3f72aa4fb94f7fd098b5cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterAudioSource: {fileID: 0}
-  musicAudioSource: {fileID: 0}
-  sfxAudioSource: {fileID: 0}
+  masterAudioSource: {fileID: 640470627}
+  musicAudioSource: {fileID: 640470631}
+  sfxAudioSource: {fileID: 640470630}
   _mainMenuMusic: {fileID: 0}
   _gameMusic: {fileID: 0}
   _endGameMusic: {fileID: 0}
@@ -10544,7 +10544,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1035188554}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1367093249}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1035188554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14047,8 +14059,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerObj: {fileID: 749499008}
-  _actionBasedContinuousTurnProvider: {fileID: 0}
-  _actionBasedSnapTurnProvider: {fileID: 0}
+  _actionBasedContinuousTurnProvider: {fileID: 749499015}
+  _actionBasedSnapTurnProvider: {fileID: 749499016}
   _mainMixer: {fileID: 24100000, guid: 87e6ae95f3e99a744a81bd067a8130f2, type: 2}
   _masterSlider: {fileID: 1227918711}
   _musicSlider: {fileID: 257080289}
@@ -16642,7 +16654,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1798507990}
   - component: {fileID: 1798507989}
-  - component: {fileID: 1798507991}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -16666,7 +16677,7 @@ MonoBehaviour:
   isPlaying: 0
   timePassed: 0
   mainMenuScene: Main Menu
-  gameScene: Game
+  gameScene: Marnix Map
 --- !u!4 &1798507990
 Transform:
   m_ObjectHideFlags: 0
@@ -16682,21 +16693,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1798507991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1798507988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 233f7c9018941de4fa0e112212992195, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  float1: 17.37595
-  float2: 12.62405
-  outcome: 0
 --- !u!1 &1803219152
 GameObject:
   m_ObjectHideFlags: 0
@@ -18870,7 +18866,7 @@ MonoBehaviour:
   m_TimeToAutoDeselect: 3
   m_EnableUIInteraction: 1
   m_BlockUIOnInteractableSelection: 1
-  m_AllowAnchorControl: 1
+  m_AllowAnchorControl: 0
   m_UseForceGrab: 1
   m_RotateSpeed: 180
   m_TranslateSpeed: 1

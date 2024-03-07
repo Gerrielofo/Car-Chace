@@ -56,6 +56,11 @@ public class CarController : MonoBehaviour
 
     [SerializeField] float _speed;
 
+    [SerializeField] AudioSource _sirenAudio;
+    [SerializeField] Animator _sirenAnimator;
+    [SerializeField] GameObject _redLightGO;
+    [SerializeField] GameObject _blueLightGO;
+
     private void OnEnable()
     {
         playerInput.actions.FindAction("GasBrake").started += OnGas;
@@ -289,6 +294,22 @@ public class CarController : MonoBehaviour
         if (other.transform.CompareTag("Enemy"))
         {
             other.transform.GetComponent<Enemy>().TakeDamage(_velocity);
+        }
+    }
+
+    public void ToggleSiren()
+    {
+        if (_sirenAudio.isPlaying)
+        {
+            _sirenAudio.Stop();
+            _sirenAnimator.SetBool("Siren", false);
+            _redLightGO.SetActive(false);
+            _blueLightGO.SetActive(false);
+        }
+        else
+        {
+            _sirenAudio.Play();
+            _sirenAnimator.SetBool("Siren", true);
         }
     }
 }

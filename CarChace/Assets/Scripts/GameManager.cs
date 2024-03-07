@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Scene Names")]
     public string mainMenuScene;
-    public string gameScene;
+    public string gameScene = "Marnix Map";
 
     public event GameEnded gameEnded;
 
