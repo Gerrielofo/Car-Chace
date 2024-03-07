@@ -25,6 +25,7 @@ public class CarAI : MonoBehaviour
     public List<string> NavMeshLayers;
     public int MaxSteeringAngle = 45;
     public int MaxRPM = 150;
+    public float WaypointCheckDistance = 3;
 
     [Header("Debug")]
     public bool ShowGizmos;
@@ -106,7 +107,7 @@ public class CarAI : MonoBehaviour
             {
                 PostionToFollow = waypoints[currentWayPoint];
                 allowMovement = true;
-                if (Vector3.Distance(carFront.position, PostionToFollow) < 2)
+                if (Vector3.Distance(carFront.position, PostionToFollow) < WaypointCheckDistance)
                     currentWayPoint++;
             }
 
@@ -279,7 +280,7 @@ public class CarAI : MonoBehaviour
         Vector3 pos;
         Quaternion rot;
         targetWheel.GetWorldPose(out pos, out rot);
-        // wheel.position = pos;
+        wheel.position = pos;
 
         wheel.rotation = rot;
     }
