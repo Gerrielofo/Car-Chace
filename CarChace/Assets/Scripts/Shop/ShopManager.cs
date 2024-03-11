@@ -2,19 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
     [Header("Upgrades")]
+    #region  Upgrades
+
     public int speedIndex;
     public int damageIndex;
     public int carModIndex;
+
     public ShopUpgrade[] speedUpgrades;
     public ShopUpgrade[] damageUpgrades;
     public ShopUpgrade[] carModUpgrades;
 
+    #endregion
+
+    [Header("Power Ups")]
+    #region PowerUps
+
+    [SerializeField] int _maxPowerUps = 5;
+
+    [SerializeField] PowerUp[] _powerUps;
+    [SerializeField] int[] _powerUpAmounts;
+    [SerializeField] List<PowerUp> _ownedPowerUps = new();
+
+
+    #endregion
     [Header("UI")]
+    #region UI
+
     [SerializeField] TMP_Text _pointsTxt;
     [SerializeField] Sprite _activeImage;
     [SerializeField] Sprite _inactiveImage;
@@ -27,6 +46,13 @@ public class ShopManager : MonoBehaviour
     [SerializeField] TMP_Text _damageCostTxt;
     [SerializeField] TMP_Text _carModCostTxt;
 
+    [SerializeField] TMP_Text _maxPowerUpsTxt;
+
+    [SerializeField] TMP_Text[] _powerUpAmountTxt;
+    [SerializeField] TMP_Text[] _powerupCostTxt;
+
+    #endregion
+
     private void Start()
     {
         speedIndex = PlayerPrefs.GetInt("speedIndex");
@@ -36,6 +62,59 @@ public class ShopManager : MonoBehaviour
 
         UpdatePointCount();
         UpdateImages();
+        UpdateCostText();
+    }
+
+
+
+    public void BuyPowerUp(int index)
+    {
+        PowerUp powerUpToBuy = _powerUps[index];
+        if (powerUpToBuy.powerUpPrice > GameManager.Instance.points)
+        {
+            Debug.Log("Could Not Afford PowerUp");
+        }
+        else if (GetTotalPowerUpAmount() >= _maxPowerUps)
+        {
+            Debug.Log("Reached Maximum PowerUps!");
+        }
+        else
+        {
+            _ownedPowerUps.Add(powerUpToBuy);
+            UpdatePowerUpText();
+        }
+    }
+
+
+
+    void UpdateCostText()
+    {
+        _maxPowerUpsTxt.text = "POWERUPS: " + GetTotalPowerUpAmount() + "/" + _maxPowerUps.ToString();
+
+        for (int i = 0; i < _powerupCostTxt.Length; i++)
+        {
+            _powerupCostTxt[i].text = "COST :" + _powerUps[i].powerUpPrice.ToString();
+        }
+    }
+
+    void UpdatePowerUpText()
+    {
+        for (int i = 0; i < _ownedPowerUps.Count; i++)
+        {
+            _powerUpAmounts[i]++;
+            _powerUpAmountTxt[i].text = "OWNED: " + _powerUpAmounts[i].ToString();
+        }
+
+    }
+
+    int GetTotalPowerUpAmount()
+    {
+        int total = 0;
+        for (int i = 0; i < _powerUpAmounts.Length; i++)
+        {
+            total += _powerUpAmounts[i];
+        }
+        return total;
     }
 
     public void UpgradeSpeed(int id)

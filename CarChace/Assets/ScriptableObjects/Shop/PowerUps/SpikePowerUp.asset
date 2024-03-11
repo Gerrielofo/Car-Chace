@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b90831e8a5d4ed46bfb4ac9b790aab3, type: 3}
+  m_Name: SpikePowerUp
+  m_EditorClassIdentifier: 
+  powerUpType: 1
+  powerUpDuration: 120
+  powerUpAmount: 1
+  powerUpImage: {fileID: 21300000, guid: 9d0fa4b81fd4e9e468d7f50151c129e8, type: 3}
+  powerUpPrice: 500

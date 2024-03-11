@@ -61,6 +61,8 @@ public class CarController : MonoBehaviour
     [SerializeField] GameObject _redLightGO;
     [SerializeField] GameObject _blueLightGO;
 
+    [SerializeField] float _speedMultiplier = 1;
+
     private void OnEnable()
     {
         playerInput.actions.FindAction("GasBrake").started += OnGas;
@@ -281,7 +283,7 @@ public class CarController : MonoBehaviour
             _currentGear++;
         }
 
-        _speed = _gears[_currentGear].speed * _isMove * (1 + _isExtraMove);
+        _speed = _gears[_currentGear].speed * _isMove * (1 + _isExtraMove) * _speedMultiplier;
     }
 
     private bool myApproximation(float a, float b, float tolerance)
@@ -311,5 +313,17 @@ public class CarController : MonoBehaviour
             _sirenAudio.Play();
             _sirenAnimator.SetBool("Siren", true);
         }
+    }
+
+    public void SpeedBoost(float multiplier, float duration)
+    {
+        _speedMultiplier = multiplier;
+        StartCoroutine(StopSpeedBoost(duration));
+    }
+
+    private IEnumerator StopSpeedBoost(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        _speedMultiplier = 1;
     }
 }
