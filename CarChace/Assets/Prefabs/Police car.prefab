@@ -678,7 +678,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb789116fdac79b448f656a5d9e0deaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doUICheck: 0
 --- !u!1 &226750763093529838
 GameObject:
   m_ObjectHideFlags: 0
@@ -1643,7 +1642,7 @@ GameObject:
   - component: {fileID: 4952242240330877173}
   - component: {fileID: 5842931934201162879}
   - component: {fileID: 9125834235423983322}
-  - component: {fileID: 5624255749550587415}
+  - component: {fileID: 2894082383176259268}
   m_Layer: 0
   m_Name: Police car
   m_TagString: Untagged
@@ -1772,6 +1771,7 @@ MonoBehaviour:
   _sirenAnimator: {fileID: 0}
   _redLightGO: {fileID: 0}
   _blueLightGO: {fileID: 0}
+  _speedMultiplier: 1
 --- !u!114 &9125834235423983322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1802,7 +1802,7 @@ MonoBehaviour:
   m_DefaultActionMap: CarActionMap
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!208 &5624255749550587415
+--- !u!208 &2894082383176259268
 NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6346,7 +6346,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb789116fdac79b448f656a5d9e0deaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doUICheck: 0
 --- !u!1 &8173828592294614953
 GameObject:
   m_ObjectHideFlags: 0
@@ -7735,7 +7734,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6969179471305564558, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
       propertyPath: m_Name
-      value: GameOverCanvas
+      value: LaptopCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 7509838786299444420, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
       propertyPath: m_IsActive
@@ -7905,11 +7904,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 884020912684249465, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.0444
+      value: 0.04437256
       objectReference: {fileID: 0}
     - target: {fileID: 884020912684249465, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0251
+      value: 0.02508545
       objectReference: {fileID: 0}
     - target: {fileID: 1656180467340795504, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
       propertyPath: m_SizeDelta.x
@@ -7949,11 +7948,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2774471455995825107, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.029
+      value: -0.0289917
       objectReference: {fileID: 0}
     - target: {fileID: 2774471455995825107, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0251
+      value: 0.02508545
       objectReference: {fileID: 0}
     - target: {fileID: 3216640009382722364, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
       propertyPath: m_AnchorMax.x
@@ -7977,7 +7976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3216640009382722364, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000000014901161
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3216640009382722364, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -8013,7 +8012,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6969179471305564558, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
       propertyPath: m_Name
-      value: GameOverCanvas (1)
+      value: CarScreenCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 7243884601026562682, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
       propertyPath: m_DynamicPixelsPerUnit
