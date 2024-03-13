@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 3420642175070230052}
   - component: {fileID: 7312676101098424008}
   - component: {fileID: 1736481521935956847}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Waypoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,13 +78,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 2
-  _waypointType: 0
-  _wayPoint: {fileID: 3420642175070230052}
+  _wayPointIndex: 2
+  _possibleNextWaypoints: []
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
+  transforms1: []
+  transforms2: []
 --- !u!65 &1736481521935956847
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -117,7 +118,7 @@ GameObject:
   - component: {fileID: 5281346815885193489}
   - component: {fileID: 6073893171794596650}
   - component: {fileID: 2110655081670276803}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Waypoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,13 +152,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 1
-  _waypointType: 0
-  _wayPoint: {fileID: 5281346815885193489}
+  _wayPointIndex: 1
+  _possibleNextWaypoints: []
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
+  transforms1: []
+  transforms2: []
 --- !u!65 &2110655081670276803
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -190,7 +192,7 @@ GameObject:
   - component: {fileID: 695800301169297499}
   - component: {fileID: 6586155547920597506}
   - component: {fileID: 6557944228692191276}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Waypoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,13 +226,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 2
-  _waypointType: 0
-  _wayPoint: {fileID: 695800301169297499}
+  _wayPointIndex: 2
+  _possibleNextWaypoints: []
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
+  transforms1: []
+  transforms2: []
 --- !u!65 &6557944228692191276
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -296,7 +299,7 @@ GameObject:
   - component: {fileID: 1107149642649342663}
   - component: {fileID: 98749086160500066}
   - component: {fileID: 3337534750850557835}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Waypoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,13 +333,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 1
-  _waypointType: 0
-  _wayPoint: {fileID: 1107149642649342663}
+  _wayPointIndex: 1
+  _possibleNextWaypoints: []
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
+  transforms1: []
+  transforms2: []
 --- !u!65 &3337534750850557835
 BoxCollider:
   m_ObjectHideFlags: 0

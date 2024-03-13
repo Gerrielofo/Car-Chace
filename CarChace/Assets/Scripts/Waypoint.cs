@@ -5,36 +5,64 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour
 {
-    [SerializeField] int _wayPointPart;
-    public int WayPointPart
+    [SerializeField] int _wayPointIndex;
+    public int WayPointIndex
     {
-        get { return _wayPointPart; }
-        set { _wayPointPart = value; }
+        get { return _wayPointIndex; }
+        set { _wayPointIndex = value; }
     }
 
-    // [SerializeField] WaypointType _waypointType;
+    public Transform[] _possibleNextWaypoints;
 
-    // private enum WaypointType
-    // {
-    //     IDKYET,
-    //     BEGIN,
-    //     MIDDLE,
-    //     END,
-    // }
-
-    public Transform _wayPoint;
     [SerializeField] LayerMask _wayPointMask;
     [SerializeField] float _wayPointRadius;
 
+    [SerializeField] List<Transform> transforms1 = new();
+    [SerializeField] List<Transform> transforms2 = new();
+
     private void Start()
     {
-        _wayPoint = this.transform;
+        if (WayPointIndex == 0)
+        {
+            Intersection();
+        }
+        else
+        {
+            GetNextWayPoints();
+        }
+    }
+
+    void Intersection()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _wayPointRadius, _wayPointMask);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].GetComponent<Waypoint>()._wayPointIndex == 1 && colliders[i].transform != this.transform)
+            {
+                transforms1.Add(colliders[i].transform);
+            }
+            else if (colliders[i].GetComponent<Waypoint>()._wayPointIndex == 2 && colliders[i].transform != this.transform)
+            {
+                transforms2.Add(colliders[i].transform);
+            }
+        }
+
+
+        for (int i = 0; i < transforms1.Count; i++)
+        {
+            transforms1[i].GetComponent<Waypoint>()._possibleNextWaypoints = GetWayPointConnections(1, transforms1[i]).ToArray();
+        }
+
+        for (int i = 0; i < transforms2.Count; i++)
+        {
+            transforms2[i].GetComponent<Waypoint>()._possibleNextWaypoints = GetWayPointConnections(2, transforms2[i]).ToArray();
+        }
     }
 
     public List<Transform> GetNextWayPoints()
     {
         List<Transform> transforms = new();
-        Collider[] colliders = Physics.OverlapSphere(_wayPoint.position, _wayPointRadius, _wayPointMask);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _wayPointRadius, _wayPointMask);
         for (int i = 0; i < colliders.Length; i++)
         {
             if (colliders[i].transform != this.transform)
@@ -45,31 +73,42 @@ public class Waypoint : MonoBehaviour
         return transforms;
     }
 
-    public List<Transform> GetWayPointConnections(int wayPointPart)
+    public List<Transform> GetWayPointConnections(int wayPointIndex, Transform excludedTransform = null)
     {
         List<Transform> transforms = new();
-        Collider[] colliders = Physics.OverlapSphere(_wayPoint.position, _wayPointRadius, _wayPointMask);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _wayPointRadius, _wayPointMask);
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (colliders[i].GetComponent<Waypoint>()._wayPointPart == wayPointPart && colliders[i].transform != this.transform)
+            if (colliders[i].GetComponent<Waypoint>()._wayPointIndex == wayPointIndex && colliders[i].transform != this.transform)
             {
+                if (excludedTransform != null)
+                {
+                    if (colliders[i].transform == excludedTransform)
+                    {
+                        continue;
+                    }
+                }
+
                 transforms.Add(colliders[i].transform);
+
             }
         }
         return transforms;
     }
 
+
+
     private void OnDrawGizmos()
     {
-        if (_wayPointPart == 1)
+        if (_wayPointIndex == 1)
         {
             Gizmos.color = Color.green;
         }
-        else if (_wayPointPart == 2)
+        else if (_wayPointIndex == 2)
         {
             Gizmos.color = Color.red;
         }
 
-        Gizmos.DrawWireSphere(_wayPoint.position, _wayPointRadius);
+        Gizmos.DrawWireSphere(transform.position, _wayPointRadius);
     }
 }

@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 1
+  _wayPointIndex: 1
   _wayPoint: {fileID: 8900279886833571372}
   _wayPointMask:
     serializedVersion: 2
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 2
+  _wayPointIndex: 2
   _wayPoint: {fileID: 2456872604063682395}
   _wayPointMask:
     serializedVersion: 2
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 1
+  _wayPointIndex: 1
   _wayPoint: {fileID: 5592786279296204106}
   _wayPointMask:
     serializedVersion: 2
@@ -513,7 +513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 2
+  _wayPointIndex: 2
   _wayPoint: {fileID: 2224867565627682159}
   _wayPointMask:
     serializedVersion: 2
@@ -585,7 +585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 1
+  _wayPointIndex: 1
   _wayPoint: {fileID: 3663278809926429834}
   _wayPointMask:
     serializedVersion: 2
@@ -800,7 +800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 2
+  _wayPointIndex: 2
   _wayPoint: {fileID: 3588565885197995822}
   _wayPointMask:
     serializedVersion: 2
@@ -872,7 +872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 2
+  _wayPointIndex: 2
   _wayPoint: {fileID: 2726599872263439197}
   _wayPointMask:
     serializedVersion: 2
@@ -944,7 +944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 2
+  _wayPointIndex: 2
   _wayPoint: {fileID: 3163706314943721287}
   _wayPointMask:
     serializedVersion: 2
@@ -1122,7 +1122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 1
+  _wayPointIndex: 1
   _wayPoint: {fileID: 3310384660248022678}
   _wayPointMask:
     serializedVersion: 2
@@ -1194,7 +1194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 2
+  _wayPointIndex: 2
   _wayPoint: {fileID: 1163081841870177766}
   _wayPointMask:
     serializedVersion: 2
@@ -1266,7 +1266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 1
+  _wayPointIndex: 1
   _wayPoint: {fileID: 990933402396161582}
   _wayPointMask:
     serializedVersion: 2
@@ -1338,7 +1338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 2
+  _wayPointIndex: 2
   _wayPoint: {fileID: 4629420812295943038}
   _wayPointMask:
     serializedVersion: 2
@@ -1410,7 +1410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 1
+  _wayPointIndex: 1
   _wayPoint: {fileID: 5760623689986947574}
   _wayPointMask:
     serializedVersion: 2
@@ -1482,7 +1482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 2
+  _wayPointIndex: 2
   _wayPoint: {fileID: 1331704292459952431}
   _wayPointMask:
     serializedVersion: 2
@@ -1554,7 +1554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 1
+  _wayPointIndex: 1
   _wayPoint: {fileID: 234172938818511485}
   _wayPointMask:
     serializedVersion: 2
@@ -1666,7 +1666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 2
+  _wayPointIndex: 2
   _wayPoint: {fileID: 1530551669424989426}
   _wayPointMask:
     serializedVersion: 2
@@ -1738,7 +1738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 1
+  _wayPointIndex: 1
   _wayPoint: {fileID: 3976380833842678711}
   _wayPointMask:
     serializedVersion: 2
@@ -1810,7 +1810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 1
+  _wayPointIndex: 1
   _wayPoint: {fileID: 6426012852856651328}
   _wayPointMask:
     serializedVersion: 2

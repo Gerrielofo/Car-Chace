@@ -79,15 +79,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 1
-  _waypointType: 1
+  _wayPointIndex: 1
   _wayPoint: {fileID: 2799894891977577508}
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  _sameRoadWayPoints: []
-  _nextWayPoints: []
 --- !u!65 &1450703545511029156
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -188,17 +185,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 2
-  _waypointType: 0
+  _wayPointIndex: 2
   _wayPoint: {fileID: 8684053309442682780}
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  _sameRoadWayPoints:
-  - {fileID: 8131348351351730419}
-  - {fileID: 1052364215603503666}
-  _nextWayPoints: []
 --- !u!65 &8189228335627465839
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -265,17 +257,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 2
-  _waypointType: 2
+  _wayPointIndex: 2
   _wayPoint: {fileID: 8131348351351730419}
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  _sameRoadWayPoints:
-  - {fileID: 1052364215603503666}
-  - {fileID: 8684053309442682780}
-  _nextWayPoints: []
 --- !u!65 &8399945466611035948
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -342,15 +329,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 2
-  _waypointType: 1
+  _wayPointIndex: 2
   _wayPoint: {fileID: 1052364215603503666}
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  _sameRoadWayPoints: []
-  _nextWayPoints: []
 --- !u!65 &5204692116158946400
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -417,17 +401,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 1
-  _waypointType: 2
+  _wayPointIndex: 1
   _wayPoint: {fileID: 4429929909427504424}
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  _sameRoadWayPoints:
-  - {fileID: 4430434089301700238}
-  - {fileID: 2799894891977577508}
-  _nextWayPoints: []
 --- !u!65 &7017608544007725963
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -494,17 +473,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointPart: 1
-  _waypointType: 0
+  _wayPointIndex: 1
   _wayPoint: {fileID: 4430434089301700238}
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  _sameRoadWayPoints:
-  - {fileID: 2799894891977577508}
-  - {fileID: 4429929909427504424}
-  _nextWayPoints: []
 --- !u!65 &2448992873860984257
 BoxCollider:
   m_ObjectHideFlags: 0
