@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPointIndex: 1
-  _possibleNextWaypoints: []
+  _possibleNextWaypoints:
+  - {fileID: 3671581680528669306}
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -153,7 +154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPointIndex: 2
-  _possibleNextWaypoints: []
+  _possibleNextWaypoints:
+  - {fileID: 8128079372179590387}
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512

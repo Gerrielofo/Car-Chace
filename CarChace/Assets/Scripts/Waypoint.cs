@@ -22,13 +22,13 @@ public class Waypoint : MonoBehaviour
 
     private void Start()
     {
-        if (WayPointIndex == 0)
+        if (WayPointIndex == 0 && _possibleNextWaypoints.Length == 0)
         {
             Intersection();
         }
-        else
+        else if (_possibleNextWaypoints.Length == 0)
         {
-            GetNextWayPoints();
+            _possibleNextWaypoints = GetNextWayPoints().ToArray();
         }
     }
 

@@ -19,7 +19,7 @@ public class CarAgent : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] float _fov;
-    [SerializeField] float _minWaypointDistance = 0.5f;
+    [SerializeField] float _minWaypointDistance = 1.8f;
 
     [SerializeField] int _maxWaypoints = 5;
     [SerializeField] float _range;
@@ -31,7 +31,7 @@ public class CarAgent : MonoBehaviour
         if (!runCode)
             return;
         _carAgent = GetComponent<NavMeshAgent>();
-        GetNewRANDOMWaypoints();
+        GetNextWaypoint();
     }
 
     void GetNextWaypoint()
@@ -40,7 +40,7 @@ public class CarAgent : MonoBehaviour
             return;
         if (_currentWaypoint == null)
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 30f);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 30f, _wayPointMask);
             Transform closestTransform = null;
             float minRange = Mathf.Infinity;
             for (int i = 0; i < colliders.Length; i++)
@@ -56,6 +56,7 @@ public class CarAgent : MonoBehaviour
         }
         else
         {
+            Debug.Log($"Possible Next Waypoint Lenght: {_currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints.Length}");
             if (_currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints.Length != 0)
                 _currentWaypoint = _currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints[Random.Range(0, _currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints.Length - 1)];
         }
@@ -108,18 +109,23 @@ public class CarAgent : MonoBehaviour
             float distanceFromWP = Vector3.Distance(transform.position, _currentWaypoint.position);
             if (distanceFromWP <= _minWaypointDistance)
             {
+                Debug.Log("IS CLOSE ENOUGH TO POINT");
                 if (_passedWaypoints.Count >= _maxWaypoints)
                 {
                     _passedWaypoints.RemoveAt(_passedWaypoints.Count - 1);
                 }
                 _passedWaypoints.Add(_currentWaypoint);
 
-                GetNewRANDOMWaypoints();
+                GetNextWaypoint();
             }
+            // else
+            // {
+            //     Debug.Log($"Distance To Current Waypoint: {distanceFromWP}");
+            // }
         }
         if (_currentWaypoint == null)
         {
-            GetNewRANDOMWaypoints();
+            GetNextWaypoint();
         }
         else
         {

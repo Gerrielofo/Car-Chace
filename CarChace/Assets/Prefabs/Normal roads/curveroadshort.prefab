@@ -80,11 +80,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPointIndex: 1
-  _wayPoint: {fileID: 4445421840267027616}
+  _possibleNextWaypoints: []
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
+  transforms1: []
+  transforms2: []
 --- !u!65 &4987161558528888097
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -152,11 +154,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPointIndex: 1
-  _wayPoint: {fileID: 6772104699955479863}
+  _possibleNextWaypoints:
+  - {fileID: 6772104699955479863}
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
+  transforms1: []
+  transforms2: []
 --- !u!65 &3999373592848640749
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -224,11 +229,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPointIndex: 1
-  _wayPoint: {fileID: 3788028830205091162}
+  _possibleNextWaypoints:
+  - {fileID: 6772104699955479863}
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
+  transforms1: []
+  transforms2: []
 --- !u!65 &172466836750765124
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -329,11 +337,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPointIndex: 2
-  _wayPoint: {fileID: 6199057776888845002}
+  _possibleNextWaypoints:
+  - {fileID: 7494632490016966274}
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
+  transforms1: []
+  transforms2: []
 --- !u!65 &3011792641342463426
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -401,11 +412,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPointIndex: 2
-  _wayPoint: {fileID: 7494632490016966274}
+  _possibleNextWaypoints: []
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
+  transforms1: []
+  transforms2: []
 --- !u!65 &6648322241786166470
 BoxCollider:
   m_ObjectHideFlags: 0
