@@ -14,6 +14,7 @@ public class CarAgentFollow : MonoBehaviour
 
     [SerializeField] Transform[] _wheelTransforms;
 
+    [SerializeField] float _maxSpeedDif = 2;
     [SerializeField] float _desiredSpeed = 5;
     [SerializeField] float _maxSteerAngle;
     [SerializeField] float _maxWheelTorque;
@@ -33,7 +34,7 @@ public class CarAgentFollow : MonoBehaviour
     {
         _carAgent = Instantiate(_carAgentPrefab, transform.position + Vector3.forward * 2, transform.rotation).GetComponent<NavMeshAgent>();
         _carAgent.GetComponent<CarAgent>().carTransform = transform;
-        _preferredDistanceFromAgent = _carAgent.GetComponent<CarAgent>().CarRange / 2;
+        _preferredDistanceFromAgent = _carAgent.GetComponent<CarAgent>().CarRange / 2.5f;
     }
 
     // Update is called once per frame
@@ -69,28 +70,35 @@ public class CarAgentFollow : MonoBehaviour
     {
         if (targetAngle > _maxSteerAngle)
         {
-            Brake(2);
+            Brake();
             Debug.Log("Target Angle Was Greater Then SteerAngle");
         }
         if (_distanceFromAgent < _preferredDistanceFromAgent)
         {
-            Brake(1);
+            Brake();
         }
         else
         {
-            _wheelColliders[2].motorTorque = _maxWheelTorque;
-            _wheelColliders[3].motorTorque = _maxWheelTorque;
+            if (_currentSpeed < _carAgent.speed)
+            {
+                UnBrake();
+                _wheelColliders[2].motorTorque = _maxWheelTorque;
+                _wheelColliders[3].motorTorque = _maxWheelTorque;
+            }
+            else
+            {
+                Idle(_currentSpeed / _carAgent.speed);
+            }
 
-            UnBrake();
         }
     }
 
-    void Brake(int multiplier)
+    void Brake()
     {
         Debug.Log("BRAKING");
         for (int i = 0; i < _wheelColliders.Length; i++)
         {
-            _wheelColliders[i].brakeTorque = _brakeTorque * multiplier;
+            _wheelColliders[i].brakeTorque = _brakeTorque * _currentSpeed;
             _wheelColliders[i].motorTorque = 0;
         }
     }
@@ -103,12 +111,13 @@ public class CarAgentFollow : MonoBehaviour
         }
     }
 
-    void Idle()
+    void Idle(float currentSpeed)
     {
+        Debug.Log("Idle");
         for (int i = 0; i < _wheelColliders.Length; i++)
         {
             _wheelColliders[i].brakeTorque = 0;
-            _wheelColliders[i].motorTorque = 0;
+            _wheelColliders[i].motorTorque = currentSpeed;
         }
     }
 }

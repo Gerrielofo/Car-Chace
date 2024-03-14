@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 3017646360269791916}
   - component: {fileID: 5563387902145201776}
   - component: {fileID: 609846492562123591}
-  m_Layer: 0
+  - component: {fileID: 5594696220248086806}
+  m_Layer: 11
   m_Name: CarAgent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,6 +106,7 @@ MonoBehaviour:
   carTransform: {fileID: 0}
   _fov: 0
   _minWaypointDistance: 1.8
+  _baseSpeed: 10
   _maxWaypoints: 5
   _waypointCheckRange: 10
   _carRange: 7
@@ -127,7 +129,7 @@ NavMeshAgent:
   m_Speed: 10
   m_Acceleration: 100
   avoidancePriority: 50
-  m_AngularSpeed: 10
+  m_AngularSpeed: 40
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
@@ -136,3 +138,19 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!208 &5594696220248086806
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683989270592892080}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.75}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: -0.5, z: -5}
+  m_TimeToStationary: 0.5

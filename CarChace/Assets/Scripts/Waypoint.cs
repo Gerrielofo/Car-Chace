@@ -16,6 +16,8 @@ public class Waypoint : MonoBehaviour
 
     public Transform interSection;
 
+    public float angleToNextPoint;
+
     [SerializeField] LayerMask _wayPointMask;
     [SerializeField] float _wayPointRadius;
 
@@ -31,7 +33,18 @@ public class Waypoint : MonoBehaviour
         else if (_possibleNextWaypoints.Length == 0)
         {
             _possibleNextWaypoints = GetNextWayPoints().ToArray();
+            if (_possibleNextWaypoints.Length != 0)
+            {
+                angleToNextPoint = Vector3.Angle(transform.position, _possibleNextWaypoints[0].position);
+            }
         }
+        else
+        {
+            Vector3 targetDir = _possibleNextWaypoints[0].position - transform.position;
+
+            angleToNextPoint = Vector3.Angle(targetDir, transform.forward);
+        }
+
     }
 
     void Intersection()

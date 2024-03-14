@@ -20,6 +20,7 @@ public class CarAgent : MonoBehaviour
     [Header("Settings")]
     [SerializeField] float _fov;
     [SerializeField] float _minWaypointDistance = 1.8f;
+    [SerializeField] float _baseSpeed = 10f;
 
     [SerializeField] int _maxWaypoints = 5;
     [SerializeField] float _waypointCheckRange = 10;
@@ -31,6 +32,7 @@ public class CarAgent : MonoBehaviour
 
     bool _onIntersection;
 
+    float _distanceFromWaypoint;
 
     private void Start()
     {
@@ -38,6 +40,8 @@ public class CarAgent : MonoBehaviour
             return;
         _carAgent = GetComponent<NavMeshAgent>();
         GetNextWaypoint();
+        _carAgent.speed = _baseSpeed;
+
     }
 
     void GetNextWaypoint()
@@ -134,6 +138,14 @@ public class CarAgent : MonoBehaviour
         if (_currentWaypoint != null)
         {
             float distanceFromCar = Vector3.Distance(transform.position, carTransform.position);
+
+            float angleBetweenWayPoints = _currentWaypoint.GetComponent<Waypoint>().angleToNextPoint;
+
+            float newDesiredSpeed = _baseSpeed - ((360 - angleBetweenWayPoints) / 100);
+            _carAgent.speed = newDesiredSpeed;
+
+            // Debug.Log($"New Speed: {newDesiredSpeed}");
+
             if (distanceFromCar > _carRange)
             {
                 _carAgent.isStopped = true;
@@ -142,8 +154,8 @@ public class CarAgent : MonoBehaviour
             {
                 _carAgent.isStopped = false;
             }
-            float distanceFromWP = Vector3.Distance(transform.position, _currentWaypoint.position);
-            if (distanceFromWP <= _minWaypointDistance)
+            _distanceFromWaypoint = Vector3.Distance(transform.position, _currentWaypoint.position);
+            if (_distanceFromWaypoint <= _minWaypointDistance)
             {
                 Debug.Log("IS CLOSE ENOUGH TO POINT");
                 if (_passedWaypoints.Count >= _maxWaypoints)
@@ -163,6 +175,15 @@ public class CarAgent : MonoBehaviour
         {
             _carAgent.destination = _currentWaypoint.position;
         }
+    }
+
+    float DistanceSpeedModifier(float distance)
+    {
+        float distanceSpeedModifier = 0;
+
+        distanceSpeedModifier = (100 + distance) / 100;
+
+        return distanceSpeedModifier;
     }
 
     private void OnDrawGizmos()
