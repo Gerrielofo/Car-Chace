@@ -2151,7 +2151,7 @@ GameObject:
   - component: {fileID: 5029930753189215839}
   - component: {fileID: 293246646162671677}
   - component: {fileID: 5351442351713840742}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AiCar
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2223,8 +2223,10 @@ MonoBehaviour:
   - {fileID: 6167629723794015934}
   _maxSteerAngle: 45
   _maxWheelTorque: 400
+  _brakeTorque: 2000
   localTarget: {x: 0, y: 0, z: 0}
   targetAngle: 0
+  _preferredDistanceFromAgent: 0
 --- !u!54 &8062819118473807388
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -14,6 +14,8 @@ public class Waypoint : MonoBehaviour
 
     public Transform[] _possibleNextWaypoints;
 
+    public Transform interSection;
+
     [SerializeField] LayerMask _wayPointMask;
     [SerializeField] float _wayPointRadius;
 
@@ -50,12 +52,12 @@ public class Waypoint : MonoBehaviour
 
         for (int i = 0; i < transforms1.Count; i++)
         {
-            transforms1[i].GetComponent<Waypoint>()._possibleNextWaypoints = GetWayPointConnections(1, transforms1[i]).ToArray();
+            transforms1[i].GetComponent<Waypoint>().interSection = this.transform;
         }
 
         for (int i = 0; i < transforms2.Count; i++)
         {
-            transforms2[i].GetComponent<Waypoint>()._possibleNextWaypoints = GetWayPointConnections(2, transforms2[i]).ToArray();
+            transforms2[i].GetComponent<Waypoint>().interSection = this.transform;
         }
     }
 
@@ -95,8 +97,6 @@ public class Waypoint : MonoBehaviour
         }
         return transforms;
     }
-
-
 
     private void OnDrawGizmos()
     {

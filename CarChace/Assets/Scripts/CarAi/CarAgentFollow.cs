@@ -14,22 +14,35 @@ public class CarAgentFollow : MonoBehaviour
 
     [SerializeField] Transform[] _wheelTransforms;
 
+    [SerializeField] float _desiredSpeed = 5;
     [SerializeField] float _maxSteerAngle;
     [SerializeField] float _maxWheelTorque;
+    [SerializeField] float _brakeTorque;
 
     [Header("Info")]
+    [SerializeField] float _currentSpeed;
     [SerializeField] Vector3 localTarget;
     [SerializeField] float targetAngle;
+
+
+    [SerializeField] float _preferredDistanceFromAgent;
+    float _distanceFromAgent;
 
     // Start is called before the first frame update
     void Start()
     {
         _carAgent = Instantiate(_carAgentPrefab, transform.position + Vector3.forward * 2, transform.rotation).GetComponent<NavMeshAgent>();
+        _carAgent.GetComponent<CarAgent>().carTransform = transform;
+        _preferredDistanceFromAgent = _carAgent.GetComponent<CarAgent>().CarRange / 2;
     }
 
     // Update is called once per frame
     void Update()
     {
+        _distanceFromAgent = Vector3.Distance(transform.position, _carAgent.transform.position);
+        _currentSpeed = GetComponent<Rigidbody>().velocity.magnitude;
+
+
         localTarget = transform.InverseTransformPoint(_carAgent.transform.position);
         targetAngle = Mathf.Atan2(localTarget.x, localTarget.z) * Mathf.Rad2Deg;
 
@@ -54,7 +67,48 @@ public class CarAgentFollow : MonoBehaviour
 
     void HandleAcceleration()
     {
-        _wheelColliders[2].motorTorque = _maxWheelTorque;
-        _wheelColliders[3].motorTorque = _maxWheelTorque;
+        if (targetAngle > _maxSteerAngle)
+        {
+            Brake(2);
+            Debug.Log("Target Angle Was Greater Then SteerAngle");
+        }
+        if (_distanceFromAgent < _preferredDistanceFromAgent)
+        {
+            Brake(1);
+        }
+        else
+        {
+            _wheelColliders[2].motorTorque = _maxWheelTorque;
+            _wheelColliders[3].motorTorque = _maxWheelTorque;
+
+            UnBrake();
+        }
+    }
+
+    void Brake(int multiplier)
+    {
+        Debug.Log("BRAKING");
+        for (int i = 0; i < _wheelColliders.Length; i++)
+        {
+            _wheelColliders[i].brakeTorque = _brakeTorque * multiplier;
+            _wheelColliders[i].motorTorque = 0;
+        }
+    }
+
+    void UnBrake()
+    {
+        for (int i = 0; i < _wheelColliders.Length; i++)
+        {
+            _wheelColliders[i].brakeTorque = 0;
+        }
+    }
+
+    void Idle()
+    {
+        for (int i = 0; i < _wheelColliders.Length; i++)
+        {
+            _wheelColliders[i].brakeTorque = 0;
+            _wheelColliders[i].motorTorque = 0;
+        }
     }
 }

@@ -102,13 +102,18 @@ MonoBehaviour:
   _currentRoadIndex: 0
   _colliders: []
   _passedWaypoints: []
+  carTransform: {fileID: 0}
   _fov: 0
   _minWaypointDistance: 1.8
   _maxWaypoints: 5
-  _range: 10
+  _waypointCheckRange: 10
+  _carRange: 7
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
+  _carMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!195 &609846492562123591
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -122,7 +127,7 @@ NavMeshAgent:
   m_Speed: 10
   m_Acceleration: 100
   avoidancePriority: 50
-  m_AngularSpeed: 40
+  m_AngularSpeed: 10
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0

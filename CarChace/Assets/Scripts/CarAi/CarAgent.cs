@@ -16,14 +16,20 @@ public class CarAgent : MonoBehaviour
     [SerializeField] Collider[] _colliders;
     [SerializeField] List<Transform> _passedWaypoints = new();
 
-
+    public Transform carTransform;
     [Header("Settings")]
     [SerializeField] float _fov;
     [SerializeField] float _minWaypointDistance = 1.8f;
 
     [SerializeField] int _maxWaypoints = 5;
-    [SerializeField] float _range;
+    [SerializeField] float _waypointCheckRange = 10;
+    [SerializeField] float _carRange = 8;
     [SerializeField] LayerMask _wayPointMask;
+    [SerializeField] LayerMask _carMask;
+
+    public float CarRange { get { return _carRange; } }
+
+    bool _onIntersection;
 
 
     private void Start()
@@ -56,9 +62,30 @@ public class CarAgent : MonoBehaviour
         }
         else
         {
-            Debug.Log($"Possible Next Waypoint Lenght: {_currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints.Length}");
-            if (_currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints.Length != 0)
-                _currentWaypoint = _currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints[Random.Range(0, _currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints.Length - 1)];
+            Waypoint waypoint = _currentWaypoint.GetComponent<Waypoint>();
+            if (waypoint.interSection != null && !_onIntersection)
+            {
+                Transform[] availableWaypoints = waypoint.interSection.GetComponent<Waypoint>().GetWayPointConnections(waypoint.WayPointIndex, _currentWaypoint).ToArray();
+                _onIntersection = true;
+                if (availableWaypoints.Length == 0)
+                {
+                    Debug.LogError("Intersection Did Not Have Any Availlable Connections");
+                    return;
+                }
+                _currentWaypoint = availableWaypoints[Random.Range(0, availableWaypoints.Length - 1)];
+            }
+            else
+            {
+                int rng = Random.Range(0, _currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints.Length - 1);
+
+                if (_currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints.Length != 0)
+                    _currentWaypoint = _currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints[rng];
+                if (_onIntersection)
+                {
+                    Debug.Log("Came Of Intersection");
+                    _onIntersection = false;
+                }
+            }
         }
     }
 
@@ -68,7 +95,7 @@ public class CarAgent : MonoBehaviour
             return;
         Debug.LogWarning("Getting New Waypoints");
 
-        _colliders = Physics.OverlapSphere(transform.position, _range, _wayPointMask);
+        _colliders = Physics.OverlapSphere(transform.position, _waypointCheckRange, _wayPointMask);
 
         List<Transform> validWaypoints = new();
         for (int i = 0; i < _colliders.Length; i++)
@@ -106,6 +133,15 @@ public class CarAgent : MonoBehaviour
             return;
         if (_currentWaypoint != null)
         {
+            float distanceFromCar = Vector3.Distance(transform.position, carTransform.position);
+            if (distanceFromCar > _carRange)
+            {
+                _carAgent.isStopped = true;
+            }
+            else
+            {
+                _carAgent.isStopped = false;
+            }
             float distanceFromWP = Vector3.Distance(transform.position, _currentWaypoint.position);
             if (distanceFromWP <= _minWaypointDistance)
             {
@@ -118,10 +154,6 @@ public class CarAgent : MonoBehaviour
 
                 GetNextWaypoint();
             }
-            // else
-            // {
-            //     Debug.Log($"Distance To Current Waypoint: {distanceFromWP}");
-            // }
         }
         if (_currentWaypoint == null)
         {
@@ -135,8 +167,9 @@ public class CarAgent : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
-
-        Gizmos.DrawWireSphere(transform.position, _range);
+        Gizmos.color = Color.gray;
+        Gizmos.DrawWireSphere(transform.position, _waypointCheckRange);
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere(transform.position, _carRange);
     }
 }

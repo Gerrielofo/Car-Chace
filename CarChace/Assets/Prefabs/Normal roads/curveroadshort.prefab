@@ -81,6 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wayPointIndex: 1
   _possibleNextWaypoints: []
+  interSection: {fileID: 0}
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -155,7 +156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wayPointIndex: 1
   _possibleNextWaypoints:
-  - {fileID: 6772104699955479863}
+  - {fileID: 4445421840267027616}
+  interSection: {fileID: 0}
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -231,6 +233,7 @@ MonoBehaviour:
   _wayPointIndex: 1
   _possibleNextWaypoints:
   - {fileID: 6772104699955479863}
+  interSection: {fileID: 0}
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -339,6 +342,7 @@ MonoBehaviour:
   _wayPointIndex: 2
   _possibleNextWaypoints:
   - {fileID: 7494632490016966274}
+  interSection: {fileID: 0}
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -413,6 +417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wayPointIndex: 2
   _possibleNextWaypoints: []
+  interSection: {fileID: 0}
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
