@@ -100,6 +100,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fa1a3eb709d89a948bc19030875f09f4, type: 2}
+    - target: {fileID: -6512529358122604648, guid: 8f0509351be47374f878d1eedddd20ed, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fa1a3eb709d89a948bc19030875f09f4, type: 2}
     - target: {fileID: -6210140211802405587, guid: 8f0509351be47374f878d1eedddd20ed, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -172,6 +176,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fa1a3eb709d89a948bc19030875f09f4, type: 2}
+    - target: {fileID: -543543634113928503, guid: 8f0509351be47374f878d1eedddd20ed, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fa1a3eb709d89a948bc19030875f09f4, type: 2}
     - target: {fileID: -490477879519846104, guid: 8f0509351be47374f878d1eedddd20ed, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -214,7 +222,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: fa1a3eb709d89a948bc19030875f09f4, type: 2}
     - target: {fileID: 919132149155446097, guid: 8f0509351be47374f878d1eedddd20ed, type: 3}
       propertyPath: m_Name
-      value: Thief Car (3)
+      value: Thief Car
       objectReference: {fileID: 0}
     - target: {fileID: 1291904737867691219, guid: 8f0509351be47374f878d1eedddd20ed, type: 3}
       propertyPath: m_Materials.Array.data[0]
