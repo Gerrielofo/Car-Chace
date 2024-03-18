@@ -2229,6 +2229,7 @@ MonoBehaviour:
   _currentSpeed: 0
   localTarget: {x: 0, y: 0, z: 0}
   targetAngle: 0
+  isAlive: 0
   _preferredDistanceFromAgent: 0
 --- !u!54 &8062819118473807388
 Rigidbody:

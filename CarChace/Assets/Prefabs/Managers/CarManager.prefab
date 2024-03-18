@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6447011543802420526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2166182510940785577}
+  - component: {fileID: 5854317558536574761}
+  m_Layer: 0
+  m_Name: CarManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2166182510940785577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6447011543802420526}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5854317558536574761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6447011543802420526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7a484211a27cc4daee39dd61c424af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _carController: {fileID: 0}
+  _speedUpgrades:
+  - {fileID: 11400000, guid: f5887bb4b63bda840b43e517095f842d, type: 2}
+  - {fileID: 11400000, guid: aff16f0765cf0cd4fb2925df41c98d36, type: 2}
+  - {fileID: 11400000, guid: b991ea7d3ac53994484a3bd081ad132d, type: 2}
+  _damageUpgrades:
+  - {fileID: 11400000, guid: 46bf8964f5d5d9548b33307e20a2e9a0, type: 2}
+  - {fileID: 11400000, guid: 8c4ccd5515f3ec44abe35259d06b2511, type: 2}
+  - {fileID: 11400000, guid: 271760540566e404d835cdbc15925446, type: 2}
+  _carModUpgrades:
+  - {fileID: 11400000, guid: a56c09d13e1eb7c4d9707efbef8adb3d, type: 2}
+  - {fileID: 11400000, guid: a8fe21c3749d92d4b80805c41dbb07e0, type: 2}
+  - {fileID: 11400000, guid: 5260d21fdbcd1234cb22eb647e716036, type: 2}
+  _powerUpParent: {fileID: 0}
+  _powerUpBtnPrefab: {fileID: 8469808663446361605, guid: f182069a7af848b47b63e40c2bfd705e, type: 3}
+  _powerUpBtns: []
+  _powerUps:
+  - {fileID: 11400000, guid: 00b8be9b913114347b0e5da43b62a623, type: 2}
+  - {fileID: 11400000, guid: 4c747a5366290524dbb4ce3fe832ba20, type: 2}
+  - {fileID: 11400000, guid: 70edadc1817c75a498ff2f997974d1d8, type: 2}
+  - {fileID: 11400000, guid: d6260f32a06d92247b4e0500b51c24fb, type: 2}
+  _powerUpAmounts: 
