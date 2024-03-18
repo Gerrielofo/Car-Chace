@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -49,6 +51,24 @@ public class GameManager : MonoBehaviour
         // points = PlayerPrefs.GetInt("Points");
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneloaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneloaded;
+    }
+
+    private void OnSceneloaded(Scene scene, LoadSceneMode sceneLoadMode)
+    {
+        if (scene.name == mainMenuScene)
+        {
+            timePassed = 0f;
+        }
+    }
+
     private void Update()
     {
         if (isPlaying)
@@ -62,6 +82,7 @@ public class GameManager : MonoBehaviour
     }
 
     public delegate void GameEnded();
+
 
     public void EndGame()
     {
