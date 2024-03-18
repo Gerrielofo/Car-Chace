@@ -121,6 +121,10 @@ public class Waypoint : MonoBehaviour
         {
             Gizmos.color = Color.red;
         }
+        else if (_wayPointIndex == 3)
+        {
+            Gizmos.color = Color.blue;
+        }
 
         Gizmos.DrawWireSphere(transform.position, _wayPointRadius);
     }
