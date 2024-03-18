@@ -45,8 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointIndex: 1
+  _wayPointIndex: 2
   _possibleNextWaypoints: []
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -119,9 +121,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointIndex: 1
+  _wayPointIndex: 2
   _possibleNextWaypoints:
   - {fileID: 4602117448403100039}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -230,6 +234,8 @@ MonoBehaviour:
   _wayPointIndex: 2
   _possibleNextWaypoints:
   - {fileID: 695800301169297499}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -371,6 +377,8 @@ MonoBehaviour:
   _wayPointIndex: 1
   _possibleNextWaypoints:
   - {fileID: 1107149642649342663}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -443,8 +451,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointIndex: 2
+  _wayPointIndex: 1
   _possibleNextWaypoints: []
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -519,6 +529,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wayPointIndex: 2
   _possibleNextWaypoints: []
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -626,6 +638,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wayPointIndex: 1
   _possibleNextWaypoints: []
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -698,9 +712,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wayPointIndex: 2
+  _wayPointIndex: 1
   _possibleNextWaypoints:
   - {fileID: 5433537768265756606}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
