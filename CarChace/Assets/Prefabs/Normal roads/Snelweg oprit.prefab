@@ -154,6 +154,8 @@ MonoBehaviour:
   _wayPointIndex: 1
   _possibleNextWaypoints:
   - {fileID: 6426012852856651328}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -218,6 +220,8 @@ Transform:
   - {fileID: 3163706314943721287}
   - {fileID: 4629420812295943038}
   - {fileID: 1163081841870177766}
+  - {fileID: 2149328900401912684}
+  - {fileID: 4434734669857783703}
   - {fileID: 2456872604063682395}
   m_Father: {fileID: 5447544479937357647}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -268,6 +272,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wayPointIndex: 2
   _possibleNextWaypoints: []
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -344,6 +350,8 @@ MonoBehaviour:
   _possibleNextWaypoints:
   - {fileID: 3310384660248022678}
   - {fileID: 234172938818511485}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -525,6 +533,8 @@ MonoBehaviour:
   _wayPointIndex: 2
   _possibleNextWaypoints:
   - {fileID: 3588565885197995822}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -601,6 +611,8 @@ MonoBehaviour:
   _possibleNextWaypoints:
   - {fileID: 5592786279296204106}
   - {fileID: 5760623689986947574}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -820,6 +832,8 @@ MonoBehaviour:
   _possibleNextWaypoints:
   - {fileID: 1331704292459952431}
   - {fileID: 2726599872263439197}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -893,7 +907,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPointIndex: 2
-  _possibleNextWaypoints: []
+  _possibleNextWaypoints:
+  - {fileID: 1017218591701918821}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -967,7 +984,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPointIndex: 2
-  _possibleNextWaypoints: []
+  _possibleNextWaypoints:
+  - {fileID: 4434734669857783703}
+  - {fileID: 5760623689986947574}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -981,6 +1002,160 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4862108914070162123}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &5143262241281406675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1017218591701918821}
+  - component: {fileID: 3656180815716143870}
+  - component: {fileID: 4805471389613408571}
+  m_Layer: 9
+  m_Name: Waypoint 1 snelweg (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1017218591701918821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5143262241281406675}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -126, y: 8.25, z: 6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3930782016687165036}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3656180815716143870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5143262241281406675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wayPointIndex: 1
+  _possibleNextWaypoints: []
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
+  _wayPointMask:
+    serializedVersion: 2
+    m_Bits: 512
+  _wayPointRadius: 3
+  transforms1: []
+  transforms2: []
+--- !u!65 &4805471389613408571
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5143262241281406675}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &5220668971689334041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3677244456550662296}
+  - component: {fileID: 7245053653931311868}
+  - component: {fileID: 9174030319220589130}
+  m_Layer: 9
+  m_Name: Waypoint 1 snelweg (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3677244456550662296
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5220668971689334041}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 126, y: 8.25, z: 6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3930782016687165036}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7245053653931311868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5220668971689334041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wayPointIndex: 1
+  _possibleNextWaypoints:
+  - {fileID: 1017218591701918821}
+  - {fileID: 8900279886833571372}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
+  _wayPointMask:
+    serializedVersion: 2
+    m_Bits: 512
+  _wayPointRadius: 3
+  transforms1: []
+  transforms2: []
+--- !u!65 &9174030319220589130
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5220668971689334041}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1149,6 +1324,8 @@ MonoBehaviour:
   _wayPointIndex: 1
   _possibleNextWaypoints:
   - {fileID: 3976380833842678711}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -1224,6 +1401,8 @@ MonoBehaviour:
   _wayPointIndex: 2
   _possibleNextWaypoints:
   - {fileID: 2456872604063682395}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -1237,6 +1416,84 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5604903884819299645}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &5999923758667334499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2149328900401912684}
+  - component: {fileID: 4525681110748544604}
+  - component: {fileID: 9121162483062763766}
+  m_Layer: 9
+  m_Name: Waypoint 2 snelweg  (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2149328900401912684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5999923758667334499}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -126, y: 8.25, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 966085302820168864}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4525681110748544604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5999923758667334499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wayPointIndex: 2
+  _possibleNextWaypoints:
+  - {fileID: 4434734669857783703}
+  - {fileID: 4629420812295943038}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
+  _wayPointMask:
+    serializedVersion: 2
+    m_Bits: 512
+  _wayPointRadius: 3
+  transforms1: []
+  transforms2: []
+--- !u!65 &9121162483062763766
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5999923758667334499}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1299,6 +1556,8 @@ MonoBehaviour:
   _wayPointIndex: 1
   _possibleNextWaypoints:
   - {fileID: 3663278809926429834}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -1374,6 +1633,8 @@ MonoBehaviour:
   _wayPointIndex: 2
   _possibleNextWaypoints:
   - {fileID: 1163081841870177766}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -1448,6 +1709,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wayPointIndex: 1
   _possibleNextWaypoints: []
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -1524,6 +1787,8 @@ MonoBehaviour:
   _possibleNextWaypoints:
   - {fileID: 1530551669424989426}
   - {fileID: 2456872604063682395}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -1598,6 +1863,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wayPointIndex: 1
   _possibleNextWaypoints: []
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -1662,6 +1929,8 @@ Transform:
   - {fileID: 3976380833842678711}
   - {fileID: 8900279886833571372}
   - {fileID: 6426012852856651328}
+  - {fileID: 3677244456550662296}
+  - {fileID: 1017218591701918821}
   - {fileID: 234172938818511485}
   m_Father: {fileID: 5447544479937357647}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1713,6 +1982,8 @@ MonoBehaviour:
   _wayPointIndex: 2
   _possibleNextWaypoints:
   - {fileID: 3163706314943721287}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -1786,7 +2057,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPointIndex: 1
-  _possibleNextWaypoints: []
+  _possibleNextWaypoints:
+  - {fileID: 1017218591701918821}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -1800,6 +2074,82 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7562081780228367307}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &8347304744588828678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4434734669857783703}
+  - component: {fileID: 5965023537216907586}
+  - component: {fileID: 8356818712413125752}
+  m_Layer: 9
+  m_Name: Waypoint 2 snelweg (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4434734669857783703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8347304744588828678}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 126, y: 8.25, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 966085302820168864}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5965023537216907586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8347304744588828678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b14717fa60dc70a488b404a83af06602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wayPointIndex: 2
+  _possibleNextWaypoints: []
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
+  _wayPointMask:
+    serializedVersion: 2
+    m_Bits: 512
+  _wayPointRadius: 3
+  transforms1: []
+  transforms2: []
+--- !u!65 &8356818712413125752
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8347304744588828678}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1862,6 +2212,8 @@ MonoBehaviour:
   _wayPointIndex: 1
   _possibleNextWaypoints:
   - {fileID: 234172938818511485}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
