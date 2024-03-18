@@ -27,8 +27,11 @@ public class ShopManager : MonoBehaviour
 
     [SerializeField] PowerUp[] _powerUps;
     [SerializeField] int[] _powerUpAmounts;
-    [SerializeField] List<PowerUp> _ownedPowerUps = new();
 
+    [SerializeField] int _speedPowerUpAmount;
+    [SerializeField] int _spikePowerUpAmount;
+    [SerializeField] int _helicopterPowerUpAmount;
+    [SerializeField] int _reinforcementPowerUpAmount;
 
     #endregion
     [Header("UI")]
@@ -59,13 +62,16 @@ public class ShopManager : MonoBehaviour
         damageIndex = PlayerPrefs.GetInt("damageIndex");
         carModIndex = PlayerPrefs.GetInt("carModIndex");
 
+        _speedPowerUpAmount = PlayerPrefs.GetInt(GameManager.Instance.speedPower);
+        _spikePowerUpAmount = PlayerPrefs.GetInt(GameManager.Instance.spikePower);
+        _helicopterPowerUpAmount = PlayerPrefs.GetInt(GameManager.Instance.helicopterPower);
+        _reinforcementPowerUpAmount = PlayerPrefs.GetInt(GameManager.Instance.reinforcementPower);
 
+        UpdatePowerUpText();
         UpdatePointCount();
         UpdateImages();
         UpdateCostText();
     }
-
-
 
     public void BuyPowerUp(int index)
     {
@@ -73,24 +79,57 @@ public class ShopManager : MonoBehaviour
         if (powerUpToBuy.powerUpPrice > GameManager.Instance.points)
         {
             Debug.Log("Could Not Afford PowerUp");
+            return;
         }
         else if (GetTotalPowerUpAmount() >= _maxPowerUps)
         {
             Debug.Log("Reached Maximum PowerUps!");
+            return;
         }
-        else
+
+        switch (powerUpToBuy.powerUpType)
         {
-            _ownedPowerUps.Add(powerUpToBuy);
-            UpdatePowerUpText();
+            case PowerUp.PowerUpType.SPEED:
+                _speedPowerUpAmount++;
+                PlayerPrefs.SetInt(GameManager.Instance.speedPower, _speedPowerUpAmount);
+                break;
+            case PowerUp.PowerUpType.SPIKE:
+                _spikePowerUpAmount++;
+                PlayerPrefs.SetInt(GameManager.Instance.spikePower, _spikePowerUpAmount);
+                break;
+            case PowerUp.PowerUpType.HELICOPTER:
+                _helicopterPowerUpAmount++;
+                PlayerPrefs.SetInt(GameManager.Instance.helicopterPower, _helicopterPowerUpAmount);
+                break;
+            case PowerUp.PowerUpType.REINFORCEMENTS:
+                _reinforcementPowerUpAmount++;
+                PlayerPrefs.SetInt(GameManager.Instance.reinforcementPower, _reinforcementPowerUpAmount);
+                break;
+            default:
+                Debug.LogError("PowerUpType Not Found");
+                break;
         }
+        GameManager.Instance.UsePoints(powerUpToBuy.powerUpPrice);
+        UpdatePowerUpText();
     }
 
+    public void ResetPowerUps()
+    {
+        PlayerPrefs.SetInt(GameManager.Instance.speedPower, 0);
+        PlayerPrefs.SetInt(GameManager.Instance.spikePower, 0);
+        PlayerPrefs.SetInt(GameManager.Instance.helicopterPower, 0);
+        PlayerPrefs.SetInt(GameManager.Instance.reinforcementPower, 0);
 
+        _speedPowerUpAmount = 0;
+        _spikePowerUpAmount = 0;
+        _helicopterPowerUpAmount = 0;
+        _reinforcementPowerUpAmount = 0;
+
+        UpdatePowerUpText();
+    }
 
     void UpdateCostText()
     {
-        _maxPowerUpsTxt.text = "POWERUPS: " + GetTotalPowerUpAmount() + "/" + _maxPowerUps.ToString();
-
         for (int i = 0; i < _powerupCostTxt.Length; i++)
         {
             _powerupCostTxt[i].text = "COST :" + _powerUps[i].powerUpPrice.ToString();
@@ -99,12 +138,18 @@ public class ShopManager : MonoBehaviour
 
     void UpdatePowerUpText()
     {
-        for (int i = 0; i < _ownedPowerUps.Count; i++)
+        _powerUpAmounts[0] = _speedPowerUpAmount;
+        _powerUpAmounts[1] = _spikePowerUpAmount;
+        _powerUpAmounts[2] = _helicopterPowerUpAmount;
+        _powerUpAmounts[3] = _reinforcementPowerUpAmount;
+
+        for (int i = 0; i < _powerUpAmountTxt.Length; i++)
         {
-            _powerUpAmounts[i]++;
             _powerUpAmountTxt[i].text = "OWNED: " + _powerUpAmounts[i].ToString();
         }
 
+        _maxPowerUpsTxt.text = "POWER-UPS: " + GetTotalPowerUpAmount() + "/" + _maxPowerUps.ToString();
+        UpdatePointCount();
     }
 
     int GetTotalPowerUpAmount()

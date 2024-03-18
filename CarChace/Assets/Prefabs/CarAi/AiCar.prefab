@@ -2148,9 +2148,9 @@ GameObject:
   - component: {fileID: 8693758855903660830}
   - component: {fileID: 4206205821001249498}
   - component: {fileID: 8062819118473807388}
-  - component: {fileID: 5029930753189215839}
   - component: {fileID: 293246646162671677}
   - component: {fileID: 5351442351713840742}
+  - component: {fileID: 8963663766137750896}
   m_Layer: 10
   m_Name: AiCar
   m_TagString: Enemy
@@ -2257,22 +2257,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!208 &5029930753189215839
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2108462753893103753}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.095, y: 0.5, z: 1.085}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 0
-  m_Center: {x: 0, y: 0.49, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!65 &293246646162671677
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2367,6 +2351,30 @@ MonoBehaviour:
   - {fileID: 964669952758556920}
   partSpeed: {x: -20, y: 20}
   crash: 0
+--- !u!114 &8963663766137750896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108462753893103753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f897be27e868ac7438a98a7eb75a279d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startHealth: 1000
+  _startSpeed: 10
+  _damageMultiplier: 5
+  _maxPointGain: 500
+  _damageInterval: 1
+  _canvas: {fileID: 8507729387660658487}
+  _healthSlider: {fileID: 455908098609148609}
+  _healthShowTime: 3
+  _health: 0
+  _currentSpeed: 0
+  _isAlive: 0
+  _timeAlive: 0
 --- !u!1 &2233797541765398681
 GameObject:
   m_ObjectHideFlags: 0
@@ -3282,7 +3290,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8507729387660658487
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5168,8 +5176,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7289853258188816064}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

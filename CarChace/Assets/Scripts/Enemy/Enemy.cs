@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    CarAI _carAI;
+    CarAgentFollow _carAI;
     [Header("Enemy Settings")]
     [SerializeField] float _startHealth;
     [SerializeField] float _startSpeed;
@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _carAI = GetComponent<CarAI>();
+        _carAI = GetComponent<CarAgentFollow>();
         _health = _startHealth;
         _healthSlider.maxValue = _startHealth;
         _healthSlider.value = _health;

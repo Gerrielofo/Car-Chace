@@ -13,11 +13,17 @@ public class GameManager : MonoBehaviour
     public bool isPlaying;
     public float timePassed;
 
+    public event GameEnded gameEnded;
     [Header("Scene Names")]
     public string mainMenuScene;
     public string gameScene = "Marnix Map";
 
-    public event GameEnded gameEnded;
+
+    [Header("Playprefs Names")]
+    public string speedPower = "speedPowerUps";
+    public string spikePower = "spikePowerUps";
+    public string helicopterPower = "helicopterPowerUps";
+    public string reinforcementPower = "reinformentPowerUps";
 
 
     private void Awake()
@@ -65,6 +71,11 @@ public class GameManager : MonoBehaviour
         {
             gameEnded.Invoke();
         }
+    }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene(mainMenuScene);
     }
 
     public void AddPoints(int amount)

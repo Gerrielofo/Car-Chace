@@ -7,7 +7,7 @@ public class PowerUp : ScriptableObject
     public float powerUpDuration;
     public float powerUpAmount;
     public Sprite powerUpImage;
-    public float powerUpPrice;
+    public int powerUpPrice;
 
     public enum PowerUpType
     {

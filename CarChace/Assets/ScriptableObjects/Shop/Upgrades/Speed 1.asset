@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Speed 1
   m_EditorClassIdentifier: 
   pointCost: 100
-  upgradePrc: 125
+  upgradePrc: 111
   upgradeType: 0

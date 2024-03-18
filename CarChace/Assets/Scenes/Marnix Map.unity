@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.51004404, g: 0.6914333, b: 0.92620295, a: 1}
+  m_IndirectSpecularColor: {r: 0.22221136, g: 0.43037522, b: 0.824119, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3439,6 +3439,72 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2120590651373239601, guid: 5b341faa9cd0785408a9386bb0be6688, type: 3}
   m_PrefabInstance: {fileID: 419271293}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &421309301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 421309303}
+  - component: {fileID: 421309302}
+  m_Layer: 0
+  m_Name: CarManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &421309302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421309301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7a484211a27cc4daee39dd61c424af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _carController: {fileID: 2108077889}
+  _speedUpgrades:
+  - {fileID: 11400000, guid: f5887bb4b63bda840b43e517095f842d, type: 2}
+  - {fileID: 11400000, guid: aff16f0765cf0cd4fb2925df41c98d36, type: 2}
+  - {fileID: 11400000, guid: b991ea7d3ac53994484a3bd081ad132d, type: 2}
+  _damageUpgrades:
+  - {fileID: 11400000, guid: 46bf8964f5d5d9548b33307e20a2e9a0, type: 2}
+  - {fileID: 11400000, guid: 8c4ccd5515f3ec44abe35259d06b2511, type: 2}
+  - {fileID: 11400000, guid: 271760540566e404d835cdbc15925446, type: 2}
+  _carModUpgrades:
+  - {fileID: 11400000, guid: a56c09d13e1eb7c4d9707efbef8adb3d, type: 2}
+  - {fileID: 11400000, guid: a8fe21c3749d92d4b80805c41dbb07e0, type: 2}
+  - {fileID: 11400000, guid: 5260d21fdbcd1234cb22eb647e716036, type: 2}
+  _powerUpParent: {fileID: 857223121}
+  _powerUpBtnPrefab: {fileID: 8469808663446361605, guid: f182069a7af848b47b63e40c2bfd705e, type: 3}
+  _powerUpBtns: []
+  _powerUps:
+  - {fileID: 11400000, guid: 00b8be9b913114347b0e5da43b62a623, type: 2}
+  - {fileID: 11400000, guid: 4c747a5366290524dbb4ce3fe832ba20, type: 2}
+  - {fileID: 11400000, guid: 70edadc1817c75a498ff2f997974d1d8, type: 2}
+  - {fileID: 11400000, guid: d6260f32a06d92247b4e0500b51c24fb, type: 2}
+  _powerUpAmounts: 
+--- !u!4 &421309303
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421309301}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &429039491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19203,6 +19269,18 @@ PrefabInstance:
       propertyPath: m_CameraYOffset
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 5142966288727967664, guid: 5672222dbf7f7d644a38ee97d2379de0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 421309302}
+    - target: {fileID: 5142966288727967664, guid: 5672222dbf7f7d644a38ee97d2379de0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142966288727967664, guid: 5672222dbf7f7d644a38ee97d2379de0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CarManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5517243365315253266, guid: 5672222dbf7f7d644a38ee97d2379de0, type: 3}
       propertyPath: m_Name
       value: LaptopCanvas
@@ -19850,17 +19928,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 126722678107253788, guid: 6a259804e3434fb4da46f60debd217eb, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 126722678107253788, guid: 6a259804e3434fb4da46f60debd217eb, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 126722678107253788, guid: 6a259804e3434fb4da46f60debd217eb, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2108462753893103753, guid: 6a259804e3434fb4da46f60debd217eb, type: 3}
       propertyPath: m_Name
       value: AiCar
       objectReference: {fileID: 0}
-    - target: {fileID: 4206205821001249498, guid: 6a259804e3434fb4da46f60debd217eb, type: 3}
-      propertyPath: showVar
+    - target: {fileID: 3705073696820260501, guid: 6a259804e3434fb4da46f60debd217eb, type: 3}
+      propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5029930753189215839, guid: 6a259804e3434fb4da46f60debd217eb, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8693758855903660830, guid: 6a259804e3434fb4da46f60debd217eb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21811,6 +21897,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 320680040}
+  - {fileID: 421309303}
   - {fileID: 1101883535}
   - {fileID: 287342432}
   - {fileID: 2108077887}

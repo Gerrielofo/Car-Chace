@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fc50ccb98512545b0695a8cc28b983, type: 3}
-  m_Name: Damage 3
+  m_Script: {fileID: 11500000, guid: 03bc68f14d65e7747a59d5ff74bd199b, type: 3}
+  m_Name: OculusLoader
   m_EditorClassIdentifier: 
-  pointCost: 600
-  upgradePrc: 150
-  upgradeType: 1

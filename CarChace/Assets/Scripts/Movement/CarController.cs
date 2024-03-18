@@ -61,7 +61,9 @@ public class CarController : MonoBehaviour
     [SerializeField] GameObject _redLightGO;
     [SerializeField] GameObject _blueLightGO;
 
+    [SerializeField] float _speedBoost = 1;
     [SerializeField] float _speedMultiplier = 1;
+    [SerializeField] float _damageMultiplier = 1;
 
     private void OnEnable()
     {
@@ -283,7 +285,7 @@ public class CarController : MonoBehaviour
             _currentGear++;
         }
 
-        _speed = _gears[_currentGear].speed * _isMove * (1 + _isExtraMove) * _speedMultiplier;
+        _speed = _gears[_currentGear].speed * _isMove * (1 + _isExtraMove) * _speedMultiplier * _speedBoost;
     }
 
     private bool myApproximation(float a, float b, float tolerance)
@@ -295,7 +297,7 @@ public class CarController : MonoBehaviour
     {
         if (other.transform.CompareTag("Enemy"))
         {
-            other.transform.GetComponent<Enemy>().TakeDamage(_velocity);
+            other.transform.GetComponent<Enemy>().TakeDamage(_velocity * _damageMultiplier);
         }
     }
 
@@ -317,8 +319,18 @@ public class CarController : MonoBehaviour
 
     public void SpeedBoost(float multiplier, float duration)
     {
-        _speedMultiplier = multiplier;
+        _speedBoost = multiplier / 100;
         StartCoroutine(StopSpeedBoost(duration));
+    }
+
+    public void SetSpeedMultiplier(float prc)
+    {
+        _speedBoost = prc / 100;
+    }
+
+    public void SetDamageMutliplier(float prc)
+    {
+        _damageMultiplier = prc / 100;
     }
 
     private IEnumerator StopSpeedBoost(float duration)

@@ -24,6 +24,7 @@ public class CarAgentFollow : MonoBehaviour
     [SerializeField] float _currentSpeed;
     [SerializeField] Vector3 localTarget;
     [SerializeField] float targetAngle;
+    public bool isAlive;
 
 
     [SerializeField] float _preferredDistanceFromAgent;
@@ -73,7 +74,7 @@ public class CarAgentFollow : MonoBehaviour
             Brake();
             Debug.Log("Target Angle Was Greater Then SteerAngle");
         }
-        if (_distanceFromAgent < _preferredDistanceFromAgent)
+        else if (_distanceFromAgent < _preferredDistanceFromAgent)
         {
             Brake();
         }
