@@ -26,7 +26,6 @@ public class CarManager : MonoBehaviour
     [Header("UI")]
     [SerializeField] Transform _powerUpParent;
     [SerializeField] GameObject _powerUpBtnPrefab;
-    [SerializeField] List<GameObject> _powerUpBtns = new();
 
     public PowerUp[] _powerUps;
     public List<int> _powerUpAmounts = new();
@@ -46,8 +45,14 @@ public class CarManager : MonoBehaviour
         _reinforcementPowerUpAmount = PlayerPrefs.GetInt(GameManager.Instance.reinforcementPower);
         AddPowerUps();
 
-        _carController.SetSpeedMultiplier(_speedUpgrades[_speedIndex].upgradePrc);
-        _carController.SetDamageMutliplier(_damageUpgrades[_damageIndex].upgradePrc);
+        if (_speedIndex > 0)
+        {
+            _carController.SetSpeedMultiplier(_speedUpgrades[_speedIndex - 1].upgradePrc);
+        }
+        if (_damageIndex > 0)
+        {
+            _carController.SetDamageMutliplier(_damageUpgrades[_damageIndex - 1].upgradePrc);
+        }
         RefreshPowerUpUI();
     }
 
@@ -65,8 +70,8 @@ public class CarManager : MonoBehaviour
         {
             if (_powerUpAmounts[i] > 0)
             {
-                _powerUpBtns.Add(Instantiate(_powerUpBtnPrefab, _powerUpParent));
-                _powerUpBtns[i].GetComponent<PowerUpBtn>().SetPowerUpButton(_powerUps[i], _powerUpAmounts[i]);
+                GameObject tempBtn = Instantiate(_powerUpBtnPrefab, _powerUpParent);
+                tempBtn.GetComponent<PowerUpBtn>().SetPowerUpButton(_powerUps[i], _powerUpAmounts[i]);
             }
         }
     }

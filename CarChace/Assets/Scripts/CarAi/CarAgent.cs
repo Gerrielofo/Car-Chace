@@ -157,7 +157,6 @@ public class CarAgent : MonoBehaviour
             _distanceFromWaypoint = Vector3.Distance(transform.position, _currentWaypoint.position);
             if (_distanceFromWaypoint <= _minWaypointDistance)
             {
-                Debug.Log("IS CLOSE ENOUGH TO POINT");
                 if (_passedWaypoints.Count >= _maxWaypoints)
                 {
                     _passedWaypoints.RemoveAt(_passedWaypoints.Count - 1);

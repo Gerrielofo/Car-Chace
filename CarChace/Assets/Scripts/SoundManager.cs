@@ -28,11 +28,11 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Found Multiple SoundManagers In Scene. Destroyed The One On " + gameObject.name);
             Destroy(this);
         }
 
         SceneManager.activeSceneChanged += PlayMusic;
+        DontDestroyOnLoad(this);
     }
 
 

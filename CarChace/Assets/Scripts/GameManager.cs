@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError($"Had Multiple GameManager's In Scene. Destroyed The One On {gameObject.name}");
             Destroy(this);
         }
         DontDestroyOnLoad(gameObject);
@@ -48,7 +47,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // points = PlayerPrefs.GetInt("Points");
+        points = PlayerPrefs.GetInt("Points");
+        AddPoints(1000);
     }
 
     private void OnEnable()

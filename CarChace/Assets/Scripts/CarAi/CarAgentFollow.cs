@@ -14,6 +14,7 @@ public class CarAgentFollow : MonoBehaviour
 
     [SerializeField] Transform[] _wheelTransforms;
 
+    [SerializeField] float _minSpeedForTurn = 2f;
     [SerializeField] float _maxSpeedDif = 2;
     [SerializeField] float _desiredSpeed = 5;
     [SerializeField] float _maxSteerAngle;
@@ -69,10 +70,9 @@ public class CarAgentFollow : MonoBehaviour
 
     void HandleAcceleration()
     {
-        if (targetAngle > _maxSteerAngle)
+        if (targetAngle > _maxSteerAngle && _currentSpeed > _minSpeedForTurn)
         {
             Brake();
-            Debug.Log("Target Angle Was Greater Then SteerAngle");
         }
         else if (_distanceFromAgent < _preferredDistanceFromAgent)
         {
@@ -96,7 +96,6 @@ public class CarAgentFollow : MonoBehaviour
 
     void Brake()
     {
-        Debug.Log("BRAKING");
         for (int i = 0; i < _wheelColliders.Length; i++)
         {
             _wheelColliders[i].brakeTorque = _brakeTorque * _currentSpeed;

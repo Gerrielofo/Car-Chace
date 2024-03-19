@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameMenuManager : MonoBehaviour
 {
     [SerializeField] GameObject[] _gameEndCanvases;
+    [SerializeField] TMP_Text[] _timeSurvivedText;
 
 
     private void Start()
@@ -17,6 +19,14 @@ public class GameMenuManager : MonoBehaviour
         for (int i = 0; i < _gameEndCanvases.Length; i++)
         {
             _gameEndCanvases[i].SetActive(false);
+        }
+    }
+
+    private void Update()
+    {
+        for (int i = 0; i < _timeSurvivedText.Length; i++)
+        {
+            _timeSurvivedText[i].text = $"Time Survived:\n{GameManager.Instance.timePassed}";
         }
     }
 
