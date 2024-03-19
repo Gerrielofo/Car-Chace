@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Damage 1
   m_EditorClassIdentifier: 
   pointCost: 150
-  upgradePrc: 120
+  upgradePrc: 140
   upgradeType: 1

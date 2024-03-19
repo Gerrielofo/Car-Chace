@@ -70,8 +70,7 @@ public class PowerUpBtn : MonoBehaviour
             return;
         _powerUpAmount--;
         PlayerPrefs.SetInt(GameManager.Instance.spikePower, _powerUpAmount);
-
-        // _carController.SpeedBoost(_powerUp.powerUpAmount, _powerUp.powerUpDuration);
+        _carController.SpawnSpikeStrip(_powerUp.powerUpAmount, _powerUp.powerUpDuration);
         if (_powerUpAmount < 1)
         {
             Destroy(gameObject);

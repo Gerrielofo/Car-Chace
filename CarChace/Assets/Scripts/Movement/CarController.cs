@@ -65,6 +65,9 @@ public class CarController : MonoBehaviour
     [SerializeField] float _speedMultiplier = 1;
     [SerializeField] float _damageMultiplier = 1;
 
+    [SerializeField] GameObject _spikestripPrefab;
+    [SerializeField] Transform _spikestripSpawnPoint;
+
     private void OnEnable()
     {
         playerInput.actions.FindAction("GasBrake").started += OnGas;
@@ -123,6 +126,12 @@ public class CarController : MonoBehaviour
         {
             _isMove = -1;
         }
+    }
+
+    public void SpawnSpikeStrip(float amount, float duration)
+    {
+        GameObject spike = Instantiate(_spikestripPrefab, _spikestripSpawnPoint.position, _spikestripSpawnPoint.rotation);
+        spike.GetComponent<SpikeStrip>().duration = duration;
     }
 
     private void OnSteer(InputAction.CallbackContext context)

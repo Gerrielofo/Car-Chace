@@ -21,6 +21,8 @@ public class CarAgentFollow : MonoBehaviour
     [SerializeField] float _maxWheelTorque;
     [SerializeField] float _brakeTorque;
 
+    [SerializeField] float _spikedFriction = 10f;
+
     [Header("Info")]
     [SerializeField] float _currentSpeed;
     [SerializeField] Vector3 localTarget;
@@ -65,6 +67,16 @@ public class CarAgentFollow : MonoBehaviour
             _wheelColliders[i].GetWorldPose(out pos, out rot);
             _wheelTransforms[i].position = pos;
             _wheelTransforms[i].rotation = rot;
+        }
+    }
+
+    public void Spike()
+    {
+        for (int i = 0; i < _wheelColliders.Length; i++)
+        {
+            WheelFrictionCurve curve = _wheelColliders[i].sidewaysFriction;
+            curve.extremumSlip = 1f;
+            _wheelColliders[i].sidewaysFriction = curve;
         }
     }
 
