@@ -9548,7 +9548,7 @@ MonoBehaviour:
   isPlaying: 0
   timePassed: 0
   mainMenuScene: Main Menu
-  gameScene: Marnix Map
+  gameScene: Game
   speedPower: speedPowerUps
   spikePower: spikePowerUps
   helicopterPower: helicopterPowerUps

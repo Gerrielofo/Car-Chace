@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Marnix Map.unity
     guid: 8bcb9df89b3f55d4c8bfe7ebfcd3e624
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: 1a2cdce1444a541459ee65653a377a0a
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 23929dc00393dbd4088fa3618e0b05a4, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 5bbf58d2050d140439b6c4d3d37e50e8, type: 2}

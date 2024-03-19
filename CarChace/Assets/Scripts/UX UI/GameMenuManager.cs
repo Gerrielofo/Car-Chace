@@ -6,23 +6,26 @@ using UnityEngine.SceneManagement;
 
 public class GameMenuManager : MonoBehaviour
 {
-    [SerializeField] GameObject _gameEndCanvas;
-
-    [SerializeField] Transform _playerCam;
-    [SerializeField] Vector3 _placementOffset;
+    [SerializeField] GameObject[] _gameEndCanvases;
 
 
     private void Start()
     {
         if (GameManager.Instance != null)
             GameManager.Instance.gameEnded += EndGame;
+
+        for (int i = 0; i < _gameEndCanvases.Length; i++)
+        {
+            _gameEndCanvases[i].SetActive(false);
+        }
     }
 
     public void EndGame()
     {
-        _gameEndCanvas.SetActive(true);
-        // _gameEndCanvas.transform.LookAt(_playerCam);
-        // _gameEndCanvas.transform.position = _playerCam.position + _placementOffset;
+        for (int i = 0; i < _gameEndCanvases.Length; i++)
+        {
+            _gameEndCanvases[i].SetActive(true);
+        }
     }
 
     public void Retry()
