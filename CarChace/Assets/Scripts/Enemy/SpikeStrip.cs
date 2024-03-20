@@ -17,16 +17,20 @@ public class SpikeStrip : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void OnCollisionEnter(Collision other)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.GetComponentInParent<CarAgentFollow>())
+        Debug.Log($"Collided With {other.gameObject.name}");
+        if (other.transform.GetComponent<WheelCollider>())
         {
-            other.transform.GetComponentInParent<CarAgentFollow>().Spike();
-            Destroy(gameObject);
+            Spike(other.transform.GetComponent<WheelCollider>());
         }
-        else if (other.transform.GetComponent<CarAgentFollow>())
-        {
-            other.transform.GetComponent<CarAgentFollow>().Spike();
-        }
+    }
+
+    public void Spike(WheelCollider wheel)
+    {
+        WheelFrictionCurve curve = wheel.sidewaysFriction;
+        curve.extremumSlip = 2f;
+        wheel.sidewaysFriction = curve;
     }
 }

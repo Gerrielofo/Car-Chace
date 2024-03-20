@@ -33,7 +33,6 @@ public class CarAgentFollow : MonoBehaviour
     [SerializeField] float _preferredDistanceFromAgent;
     float _distanceFromAgent;
 
-    // Start is called before the first frame update
     void Start()
     {
         _carAgent = Instantiate(_carAgentPrefab, transform.position + Vector3.forward * 2, transform.rotation).GetComponent<NavMeshAgent>();
@@ -41,9 +40,10 @@ public class CarAgentFollow : MonoBehaviour
         _preferredDistanceFromAgent = _carAgent.GetComponent<CarAgent>().CarRange / 2.5f;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (!isAlive)
+            return;
         _distanceFromAgent = Vector3.Distance(transform.position, _carAgent.transform.position);
         _currentSpeed = GetComponent<Rigidbody>().velocity.magnitude;
 
@@ -67,16 +67,6 @@ public class CarAgentFollow : MonoBehaviour
             _wheelColliders[i].GetWorldPose(out pos, out rot);
             _wheelTransforms[i].position = pos;
             _wheelTransforms[i].rotation = rot;
-        }
-    }
-
-    public void Spike()
-    {
-        for (int i = 0; i < _wheelColliders.Length; i++)
-        {
-            WheelFrictionCurve curve = _wheelColliders[i].sidewaysFriction;
-            curve.extremumSlip = 1f;
-            _wheelColliders[i].sidewaysFriction = curve;
         }
     }
 
@@ -125,11 +115,17 @@ public class CarAgentFollow : MonoBehaviour
 
     void Idle(float currentSpeed)
     {
-        Debug.Log("Idle");
         for (int i = 0; i < _wheelColliders.Length; i++)
         {
             _wheelColliders[i].brakeTorque = 0;
             _wheelColliders[i].motorTorque = currentSpeed;
         }
+    }
+
+    public void Die()
+    {
+        isAlive = false;
+        Destroy(_carAgent.gameObject);
+        Destroy(gameObject, 5f);
     }
 }

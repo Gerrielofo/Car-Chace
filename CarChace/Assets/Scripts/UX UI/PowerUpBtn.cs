@@ -31,6 +31,7 @@ public class PowerUpBtn : MonoBehaviour
                 _button.onClick.AddListener(delegate { UseSpeedPowerup(); });
                 break;
             case PowerUp.PowerUpType.SPIKE:
+                _carController = FindObjectOfType<CarController>();
                 _button.onClick.AddListener(delegate { UseSpikePowerup(); });
                 break;
             case PowerUp.PowerUpType.HELICOPTER:
@@ -70,7 +71,7 @@ public class PowerUpBtn : MonoBehaviour
             return;
         _powerUpAmount--;
         PlayerPrefs.SetInt(GameManager.Instance.spikePower, _powerUpAmount);
-        _carController.SpawnSpikeStrip(_powerUp.powerUpAmount, _powerUp.powerUpDuration);
+        _carController.SpawnSpikeStrip(_powerUp.powerUpDuration);
         if (_powerUpAmount < 1)
         {
             Destroy(gameObject);

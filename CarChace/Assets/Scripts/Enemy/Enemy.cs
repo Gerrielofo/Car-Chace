@@ -87,6 +87,7 @@ public class Enemy : MonoBehaviour
         }
 
         GetComponent<CarCrash>().crash = true;
-        Destroy(gameObject, 5f);
+
+        GetComponent<CarAgentFollow>().Die();
     }
 }

@@ -128,7 +128,7 @@ public class CarController : MonoBehaviour
         }
     }
 
-    public void SpawnSpikeStrip(float amount, float duration)
+    public void SpawnSpikeStrip(float duration)
     {
         GameObject spike = Instantiate(_spikestripPrefab, _spikestripSpawnPoint.position, _spikestripSpawnPoint.rotation);
         spike.GetComponent<SpikeStrip>().duration = duration;
@@ -168,11 +168,18 @@ public class CarController : MonoBehaviour
                 _leftBack.brakeTorque = _brakeForce;
                 _rightBack.brakeTorque = _brakeForce;
 
+                _leftBack.motorTorque = 0;
+                _rightBack.motorTorque = 0;
+
                 if (_frontWheelDrive)
                 {
                     _leftFront.brakeTorque = _brakeForce;
                     _rightFront.brakeTorque = _brakeForce;
+
+                    _leftFront.motorTorque = 0;
+                    _rightFront.motorTorque = 0;
                 }
+
                 if (myApproximation(_velocity, 0, 0.5f))
                 {
                     _canReverse = false;
