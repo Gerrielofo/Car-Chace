@@ -98,13 +98,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4477b97218650c34981578edda327a22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runCode: 1
   _currentWaypoint: {fileID: 0}
+  _policeTarget: {fileID: 0}
   _currentRoadIndex: 0
   _colliders: []
   _passedWaypoints: []
   carTransform: {fileID: 0}
-  _fov: 0
+  isPoliceAgent: 0
+  _fov: 80
   _minWaypointDistance: 1.8
   _baseSpeed: 10
   _maxWaypoints: 5
@@ -116,6 +117,11 @@ MonoBehaviour:
   _carMask:
     serializedVersion: 2
     m_Bits: 1024
+  _enemyMask:
+    serializedVersion: 2
+    m_Bits: 0
+  _currentLifeSpan: 0
+  maxLifeSpan: 0
 --- !u!195 &609846492562123591
 NavMeshAgent:
   m_ObjectHideFlags: 0

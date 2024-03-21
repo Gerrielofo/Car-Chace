@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     public string helicopterPower = "helicopterPowerUps";
     public string reinforcementPower = "reinformentPowerUps";
 
-
+    ShopManager _shopManager;
     private void Awake()
     {
         if (Instance == this)
@@ -47,8 +47,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        _shopManager = FindObjectOfType<ShopManager>();
         points = PlayerPrefs.GetInt("Points");
         AddPoints(1000);
+        _shopManager.UpdatePointCount();
     }
 
     private void OnEnable()
@@ -68,9 +70,13 @@ public class GameManager : MonoBehaviour
             timePassed = 0f;
         }
     }
-
+    public bool updateCount;
     private void Update()
     {
+        if (updateCount)
+        {
+            _shopManager.UpdatePointCount();
+        }
         if (isPlaying)
         {
             timePassed += Time.deltaTime;
@@ -102,6 +108,7 @@ public class GameManager : MonoBehaviour
     public void AddPoints(int amount)
     {
         points += amount;
+        Debug.Log($"Added {amount} points");
         PlayerPrefs.SetInt("Points", points);
     }
 

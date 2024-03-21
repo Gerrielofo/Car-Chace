@@ -10,6 +10,7 @@ public class CarAgent : MonoBehaviour
 
     [Header("Info")]
     [SerializeField] Transform _currentWaypoint;
+    [SerializeField] Transform _policeTarget;
     [SerializeField] int _currentRoadIndex;
 
     [SerializeField] Collider[] _colliders;
@@ -17,9 +18,9 @@ public class CarAgent : MonoBehaviour
 
     public Transform carTransform;
     [Header("Settings")]
-    [SerializeField] bool _isPoliceAgent;
+    public bool isPoliceAgent;
 
-    [SerializeField] float _fov;
+    [SerializeField] float _fov = 80;
     [SerializeField] float _minWaypointDistance = 1.8f;
     [SerializeField] float _baseSpeed = 10f;
 
@@ -42,9 +43,11 @@ public class CarAgent : MonoBehaviour
     private void Start()
     {
         _carAgent = GetComponent<NavMeshAgent>();
-        if (_isPoliceAgent)
+        if (isPoliceAgent)
         {
+            Debug.Log($"Closest Enemy: {GetClosestEnemy()}");
             _carAgent.destination = GetClosestEnemy().position;
+            _policeTarget = GetClosestEnemy();
         }
         else
         {
@@ -63,6 +66,10 @@ public class CarAgent : MonoBehaviour
 
         for (int i = 0; i < carAgents.Length; i++)
         {
+            if (carAgents[i].isPoliceAgent)
+            {
+                continue;
+            }
             float dist = Vector3.Distance(transform.position, carAgents[i].transform.position);
             if (dist < minRange)
             {
@@ -118,6 +125,8 @@ public class CarAgent : MonoBehaviour
                 }
             }
         }
+        _carAgent.destination = _currentWaypoint.position;
+
     }
 
     void GetNewRANDOMWaypoints()
@@ -156,7 +165,6 @@ public class CarAgent : MonoBehaviour
         _colliders = null;
     }
 
-
     private void Update()
     {
         if (_currentWaypoint != null)
@@ -188,12 +196,12 @@ public class CarAgent : MonoBehaviour
                 GetNextWaypoint();
             }
         }
-        else if (_isPoliceAgent)
+        else if (isPoliceAgent)
         {
             _currentLifeSpan += Time.deltaTime;
             if (_currentLifeSpan > maxLifeSpan)
             {
-                Destroy(carTransform);
+                Destroy(carTransform.gameObject);
                 Destroy(this);
             }
             float distanceFromCar = Vector3.Distance(transform.position, carTransform.position);
@@ -206,6 +214,7 @@ public class CarAgent : MonoBehaviour
             {
                 _carAgent.isStopped = false;
             }
+            _carAgent.destination = _policeTarget.position;
         }
     }
 

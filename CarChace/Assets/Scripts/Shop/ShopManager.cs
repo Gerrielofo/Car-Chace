@@ -76,7 +76,7 @@ public class ShopManager : MonoBehaviour
     public void BuyPowerUp(int index)
     {
         PowerUp powerUpToBuy = _powerUps[index];
-        if (powerUpToBuy.powerUpPrice > GameManager.Instance.points)
+        if (!GameManager.Instance.CanAfford(powerUpToBuy.powerUpPrice))
         {
             Debug.Log("Could Not Afford PowerUp");
             return;
@@ -128,7 +128,7 @@ public class ShopManager : MonoBehaviour
         UpdatePowerUpText();
     }
 
-    void UpdateCostText()
+    public void UpdateCostText()
     {
         for (int i = 0; i < _powerupCostTxt.Length; i++)
         {
@@ -263,7 +263,7 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    void UpdatePointCount()
+    public void UpdatePointCount()
     {
         _pointsTxt.text = "Points: " + GameManager.Instance.points;
 

@@ -144,6 +144,13 @@ MonoBehaviour:
   _maxSteerAngle: 45
   _maxWheelTorque: 400
   _brakeTorque: 1000
+  _maxArrestSpeed: 1
+  _timeToArrest: 3
+  _arrestTimer: 0
+  _arrestRange: 4
+  _policeMask:
+    serializedVersion: 2
+    m_Bits: 4096
   _spikedFriction: 10
   _currentSpeed: 0
   localTarget: {x: 0, y: 0, z: 0}

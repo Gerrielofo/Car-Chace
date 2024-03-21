@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5563387902145201776}
   - component: {fileID: 609846492562123591}
   - component: {fileID: 5594696220248086806}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: PoliceCarAgent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,14 +99,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentWaypoint: {fileID: 0}
+  _policeTarget: {fileID: 0}
   _currentRoadIndex: 0
   _colliders: []
   _passedWaypoints: []
   carTransform: {fileID: 0}
-  _isPoliceAgent: 1
-  _fov: 0
+  isPoliceAgent: 1
+  _fov: 80
   _minWaypointDistance: 1.8
-  _baseSpeed: 15
+  _baseSpeed: 10
   _maxWaypoints: 5
   _waypointCheckRange: 10
   _carRange: 7

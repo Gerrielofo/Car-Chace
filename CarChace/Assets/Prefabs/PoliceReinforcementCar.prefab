@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 3714486434235912344}
   - component: {fileID: 4952242240330877173}
   - component: {fileID: 4006519355412284263}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PoliceReinforcementCar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _carAgent: {fileID: 0}
-  _carAgentPrefab: {fileID: 683989270592892080, guid: 841be4e7a9a4d21448c710d0cd9cb7ba, type: 3}
+  _carAgentPrefab: {fileID: 683989270592892080, guid: 19113c039a553ba41abb55180ddcbf88, type: 3}
   _wheelColliders:
   - {fileID: 3130912272675548066}
   - {fileID: 6936258536053972803}
@@ -2170,7 +2170,7 @@ AudioSource:
       outWeight: 0.22382659
     - serializedVersion: 3
       time: 1
-      value: 1.0029411
+      value: 0
       inSlope: 0.05572842
       outSlope: 0.05572842
       tangentMode: 0

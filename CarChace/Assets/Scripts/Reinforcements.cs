@@ -8,20 +8,24 @@ public class Reinforcements : MonoBehaviour
     [SerializeField] Transform _spawnTransform;
     [SerializeField] float _spawnDelay;
 
+    float amountToSpawn;
+
     public void SpawnReinforcements(float amount, float duration)
     {
-        StartCoroutine(SpawnCar(_spawnDelay, amount, duration));
+        amountToSpawn = amount;
+        StartCoroutine(SpawnCar(_spawnDelay, duration));
     }
 
-    IEnumerator SpawnCar(float spawnDelay, float amount, float duration)
+    IEnumerator SpawnCar(float spawnDelay, float duration)
     {
+
         yield return new WaitForSeconds(spawnDelay);
         GameObject car = Instantiate(_reinforcementPrefab, _spawnTransform.position, _spawnTransform.rotation);
         car.GetComponent<PoliceAgentFollow>().maxLifeSpan = duration;
-
-        if (amount >= 1)
+        amountToSpawn--;
+        if (amountToSpawn > 0)
         {
-            StartCoroutine(SpawnCar(spawnDelay, amount - 1, duration));
+            StartCoroutine(SpawnCar(_spawnDelay, duration));
         }
     }
 }

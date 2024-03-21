@@ -33,7 +33,7 @@ public class PoliceAgentFollow : MonoBehaviour
 
     void Start()
     {
-        _carAgent = Instantiate(_carAgentPrefab, transform.position + Vector3.forward * 2, transform.rotation).GetComponent<NavMeshAgent>();
+        _carAgent = Instantiate(_carAgentPrefab, transform.position + transform.forward * 3, transform.rotation).GetComponent<NavMeshAgent>();
         _carAgent.GetComponent<CarAgent>().carTransform = transform;
         _preferredDistanceFromAgent = _carAgent.GetComponent<CarAgent>().CarRange / 2.5f;
 
@@ -45,7 +45,6 @@ public class PoliceAgentFollow : MonoBehaviour
 
     void Update()
     {
-
         _distanceFromAgent = Vector3.Distance(transform.position, _carAgent.transform.position);
         _currentSpeed = GetComponent<Rigidbody>().velocity.magnitude;
 
@@ -95,6 +94,14 @@ public class PoliceAgentFollow : MonoBehaviour
                 Idle(_currentSpeed / _carAgent.speed);
             }
 
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.transform.CompareTag("Enemy"))
+        {
+            other.transform.GetComponent<Enemy>().TakeDamage(_currentSpeed);
         }
     }
 

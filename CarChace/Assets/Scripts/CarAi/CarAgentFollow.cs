@@ -20,6 +20,12 @@ public class CarAgentFollow : MonoBehaviour
     [SerializeField] float _maxSteerAngle;
     [SerializeField] float _maxWheelTorque;
     [SerializeField] float _brakeTorque;
+    [Header("Arrest Setting")]
+    [SerializeField] float _maxArrestSpeed = 1f;
+    [SerializeField] float _timeToArrest = 3f;
+    [SerializeField] float _arrestTimer;
+    [SerializeField] float _arrestRange = 4f;
+    [SerializeField] LayerMask _policeMask;
 
     [SerializeField] float _spikedFriction = 10f;
 
@@ -34,7 +40,7 @@ public class CarAgentFollow : MonoBehaviour
 
     void Start()
     {
-        _carAgent = Instantiate(_carAgentPrefab, transform.position + Vector3.forward * 2, transform.rotation).GetComponent<NavMeshAgent>();
+        _carAgent = Instantiate(_carAgentPrefab, transform.position + transform.forward * 2, transform.rotation).GetComponent<NavMeshAgent>();
         _carAgent.GetComponent<CarAgent>().carTransform = transform;
         _preferredDistanceFromAgent = _carAgent.GetComponent<CarAgent>().CarRange / 2.5f;
     }
@@ -43,6 +49,16 @@ public class CarAgentFollow : MonoBehaviour
     {
         if (!isAlive)
             return;
+
+        if (_currentSpeed < _maxArrestSpeed)
+        {
+            CheckArrest();
+        }
+        else
+        {
+            _arrestTimer = 0f;
+        }
+
         _distanceFromAgent = Vector3.Distance(transform.position, _carAgent.transform.position);
         _currentSpeed = GetComponent<Rigidbody>().velocity.magnitude;
 
@@ -52,6 +68,24 @@ public class CarAgentFollow : MonoBehaviour
 
         CalculateSteerAngle();
         HandleAcceleration();
+    }
+
+    void CheckArrest()
+    {
+        Debug.Log($"{gameObject.name} Can Be Arrested");
+        int amountOfPolice;
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _arrestRange, _policeMask);
+        amountOfPolice = colliders.Length;
+
+        if (_arrestTimer < _timeToArrest)
+        {
+            _arrestTimer += Time.deltaTime * amountOfPolice;
+        }
+        else
+        {
+            Debug.Log("Ay you arrested that fool yo");
+            Die();
+        }
     }
 
     void CalculateSteerAngle()
@@ -124,7 +158,15 @@ public class CarAgentFollow : MonoBehaviour
     public void Die()
     {
         isAlive = false;
+        GetComponent<CarCrash>().crash = true;
         Destroy(_carAgent.gameObject);
         Destroy(gameObject, 5f);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _arrestRange);
+
     }
 }
