@@ -13,8 +13,6 @@ public class GameOptionsManager : MonoBehaviour
 
     public int turnType;
 
-    [SerializeField] CarController _carController;
-
     private void Awake()
     {
         if (Instance == null)

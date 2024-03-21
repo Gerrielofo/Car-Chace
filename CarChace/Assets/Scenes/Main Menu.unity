@@ -9553,6 +9553,7 @@ MonoBehaviour:
   spikePower: spikePowerUps
   helicopterPower: helicopterPowerUps
   reinforcementPower: reinformentPowerUps
+  updateCount: 0
 --- !u!4 &1798507990
 Transform:
   m_ObjectHideFlags: 0
@@ -12395,8 +12396,8 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 159944441}
   - {fileID: 1798507990}
+  - {fileID: 159944441}
   - {fileID: 1367093250}
   - {fileID: 1341246076}
   - {fileID: 1179335131}

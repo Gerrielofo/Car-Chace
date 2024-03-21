@@ -114,6 +114,8 @@ MonoBehaviour:
   _wayPointIndex: 2
   _possibleNextWaypoints:
   - {fileID: 1461781502433504732}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -135,7 +137,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -272,6 +274,8 @@ MonoBehaviour:
   _wayPointIndex: 1
   _possibleNextWaypoints:
   - {fileID: 1588581098769920992}
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -293,7 +297,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -346,6 +350,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wayPointIndex: 2
   _possibleNextWaypoints: []
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -367,7 +373,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -526,6 +532,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wayPointIndex: 1
   _possibleNextWaypoints: []
+  interSection: {fileID: 0}
+  angleToNextPoint: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -547,7 +555,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
