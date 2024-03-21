@@ -341,7 +341,6 @@ GameObject:
   - component: {fileID: 2274802326192200330}
   - component: {fileID: 3714486434235912344}
   - component: {fileID: 4952242240330877173}
-  - component: {fileID: 2624263772724499948}
   - component: {fileID: 4006519355412284263}
   m_Layer: 0
   m_Name: PoliceReinforcementCar
@@ -417,22 +416,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!208 &2624263772724499948
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1502627797713764400}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.095, y: 0.5, z: 1.325}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 0
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!114 &4006519355412284263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,14 +444,13 @@ MonoBehaviour:
   _maxSpeedDif: 2
   _desiredSpeed: 5
   _maxSteerAngle: 45
-  _maxWheelTorque: 400
+  _maxWheelTorque: 500
   _brakeTorque: 1000
-  _spikedFriction: 10
   _currentSpeed: 0
   localTarget: {x: 0, y: 0, z: 0}
   targetAngle: 0
-  isAlive: 0
   _preferredDistanceFromAgent: 0
+  maxLifeSpan: 0
 --- !u!1 &1876947644727847882
 GameObject:
   m_ObjectHideFlags: 0

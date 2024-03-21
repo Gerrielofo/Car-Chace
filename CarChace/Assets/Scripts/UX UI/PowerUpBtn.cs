@@ -12,6 +12,7 @@ public class PowerUpBtn : MonoBehaviour
     [SerializeField] Button _button;
     [SerializeField] CarController _carController;
     [SerializeField] Helicopter _helicopter;
+    [SerializeField] Reinforcements _reinforcements;
     [SerializeField] PowerUp _powerUp;
 
     [SerializeField] float _useDelay = 5f;
@@ -39,6 +40,7 @@ public class PowerUpBtn : MonoBehaviour
                 _button.onClick.AddListener(delegate { UseHelicopterPowerup(); });
                 break;
             case PowerUp.PowerUpType.REINFORCEMENTS:
+                _reinforcements = FindObjectOfType<Reinforcements>();
                 _button.onClick.AddListener(delegate { UseReinforcementsPowerup(); });
                 break;
             default:
@@ -103,8 +105,7 @@ public class PowerUpBtn : MonoBehaviour
             return;
         _powerUpAmount--;
         PlayerPrefs.SetInt(GameManager.Instance.reinforcementPower, _powerUpAmount);
-
-        // _carController.SpeedBoost(_powerUp.powerUpAmount, _powerUp.powerUpDuration);
+        _reinforcements.SpawnReinforcements(_powerUp.powerUpAmount, _powerUp.powerUpDuration);
         if (_powerUpAmount < 1)
         {
             Destroy(gameObject);
@@ -123,6 +124,4 @@ public class PowerUpBtn : MonoBehaviour
         yield return new WaitForSeconds(_useDelay);
         _canUse = true;
     }
-
-
 }

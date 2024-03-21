@@ -7,7 +7,7 @@ public class PoliceAgentFollow : MonoBehaviour
 {
     [SerializeField] NavMeshAgent _carAgent;
 
-    [Header("settings")]
+    [Header("Settings")]
     [SerializeField] GameObject _carAgentPrefab;
 
     [SerializeField] WheelCollider[] _wheelColliders;
@@ -26,6 +26,9 @@ public class PoliceAgentFollow : MonoBehaviour
     [SerializeField] Vector3 localTarget;
     [SerializeField] float targetAngle;
     [SerializeField] float _preferredDistanceFromAgent;
+
+    public float maxLifeSpan;
+
     float _distanceFromAgent;
 
     void Start()
@@ -33,10 +36,16 @@ public class PoliceAgentFollow : MonoBehaviour
         _carAgent = Instantiate(_carAgentPrefab, transform.position + Vector3.forward * 2, transform.rotation).GetComponent<NavMeshAgent>();
         _carAgent.GetComponent<CarAgent>().carTransform = transform;
         _preferredDistanceFromAgent = _carAgent.GetComponent<CarAgent>().CarRange / 2.5f;
+
+        if (maxLifeSpan > 0)
+        {
+            _carAgent.GetComponent<CarAgent>().maxLifeSpan = maxLifeSpan;
+        }
     }
 
     void Update()
     {
+
         _distanceFromAgent = Vector3.Distance(transform.position, _carAgent.transform.position);
         _currentSpeed = GetComponent<Rigidbody>().velocity.magnitude;
 

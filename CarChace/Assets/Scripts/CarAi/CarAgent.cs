@@ -7,7 +7,6 @@ using System.Linq;
 public class CarAgent : MonoBehaviour
 {
     NavMeshAgent _carAgent;
-    public bool runCode = true;
 
     [Header("Info")]
     [SerializeField] Transform _currentWaypoint;
@@ -18,6 +17,8 @@ public class CarAgent : MonoBehaviour
 
     public Transform carTransform;
     [Header("Settings")]
+    [SerializeField] bool _isPoliceAgent;
+
     [SerializeField] float _fov;
     [SerializeField] float _minWaypointDistance = 1.8f;
     [SerializeField] float _baseSpeed = 10f;
@@ -27,6 +28,10 @@ public class CarAgent : MonoBehaviour
     [SerializeField] float _carRange = 8;
     [SerializeField] LayerMask _wayPointMask;
     [SerializeField] LayerMask _carMask;
+    [SerializeField] LayerMask _enemyMask;
+
+    [SerializeField] float _currentLifeSpan;
+    public float maxLifeSpan;
 
     public float CarRange { get { return _carRange; } }
 
@@ -36,18 +41,40 @@ public class CarAgent : MonoBehaviour
 
     private void Start()
     {
-        if (!runCode)
-            return;
         _carAgent = GetComponent<NavMeshAgent>();
-        GetNextWaypoint();
+        if (_isPoliceAgent)
+        {
+            _carAgent.destination = GetClosestEnemy().position;
+        }
+        else
+        {
+            GetNextWaypoint();
+        }
         _carAgent.speed = _baseSpeed;
 
     }
 
+    Transform GetClosestEnemy()
+    {
+        Transform closestEnemy = null;
+        CarAgent[] carAgents = FindObjectsOfType<CarAgent>();
+
+        float minRange = Mathf.Infinity;
+
+        for (int i = 0; i < carAgents.Length; i++)
+        {
+            float dist = Vector3.Distance(transform.position, carAgents[i].transform.position);
+            if (dist < minRange)
+            {
+                minRange = dist;
+                closestEnemy = carAgents[i].transform;
+            }
+        }
+        return closestEnemy;
+    }
+
     void GetNextWaypoint()
     {
-        if (!runCode)
-            return;
         if (_currentWaypoint == null)
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, 30f, _wayPointMask);
@@ -95,8 +122,6 @@ public class CarAgent : MonoBehaviour
 
     void GetNewRANDOMWaypoints()
     {
-        if (!runCode)
-            return;
         Debug.LogWarning("Getting New Waypoints");
 
         _colliders = Physics.OverlapSphere(transform.position, _waypointCheckRange, _wayPointMask);
@@ -131,10 +156,9 @@ public class CarAgent : MonoBehaviour
         _colliders = null;
     }
 
+
     private void Update()
     {
-        if (!runCode)
-            return;
         if (_currentWaypoint != null)
         {
             float distanceFromCar = Vector3.Distance(transform.position, carTransform.position);
@@ -143,8 +167,6 @@ public class CarAgent : MonoBehaviour
 
             float newDesiredSpeed = _baseSpeed - ((360 - angleBetweenWayPoints) / 100);
             _carAgent.speed = newDesiredSpeed;
-
-            // Debug.Log($"New Speed: {newDesiredSpeed}");
 
             if (distanceFromCar > _carRange)
             {
@@ -166,13 +188,24 @@ public class CarAgent : MonoBehaviour
                 GetNextWaypoint();
             }
         }
-        if (_currentWaypoint == null)
+        else if (_isPoliceAgent)
         {
-            GetNextWaypoint();
-        }
-        else
-        {
-            _carAgent.destination = _currentWaypoint.position;
+            _currentLifeSpan += Time.deltaTime;
+            if (_currentLifeSpan > maxLifeSpan)
+            {
+                Destroy(carTransform);
+                Destroy(this);
+            }
+            float distanceFromCar = Vector3.Distance(transform.position, carTransform.position);
+
+            if (distanceFromCar > _carRange)
+            {
+                _carAgent.isStopped = true;
+            }
+            else
+            {
+                _carAgent.isStopped = false;
+            }
         }
     }
 

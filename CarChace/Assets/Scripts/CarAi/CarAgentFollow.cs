@@ -29,7 +29,6 @@ public class CarAgentFollow : MonoBehaviour
     [SerializeField] float targetAngle;
     public bool isAlive;
 
-
     [SerializeField] float _preferredDistanceFromAgent;
     float _distanceFromAgent;
 

@@ -354,4 +354,5 @@ public class CarController : MonoBehaviour
         yield return new WaitForSeconds(duration);
         _speedMultiplier = 1;
     }
+
 }
