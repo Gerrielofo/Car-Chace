@@ -11,6 +11,8 @@ public class SoundManager : MonoBehaviour
     public AudioSource musicAudioSource;
     public AudioSource sfxAudioSource;
 
+    [SerializeField] bool _isMainMenuManager;
+
     [Header("Music")]
     [SerializeField] AudioClip _mainMenuMusic;
     [SerializeField] AudioClip _gameMusic;
@@ -20,43 +22,33 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioClip _clickSound;
     [SerializeField] AudioClip _scrollSound;
 
-    private void Awake()
+
+    private void Start()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
 
-        SceneManager.activeSceneChanged += PlayMusic;
-        DontDestroyOnLoad(this);
     }
-
-
 
     #region Play Sounds
 
-    public void PlayMusic(Scene oldScene, Scene newScene)
+    public void PlayMusic()
     {
-        if (newScene.name == "Game")
+        if (!GameManager.Instance.isPlaying)
         {
-            if (!GameManager.Instance.isPlaying)
-            {
-                musicAudioSource.clip = _endGameMusic;
-                musicAudioSource.Play();
-                return;
-            }
-            musicAudioSource.clip = _gameMusic;
+            musicAudioSource.clip = _endGameMusic;
             musicAudioSource.Play();
+            return;
         }
-        else if (newScene.name == "Main Menu")
+
+        if (_isMainMenuManager)
         {
             musicAudioSource.clip = _mainMenuMusic;
-            musicAudioSource.Play();
         }
+        else
+        {
+            musicAudioSource.clip = _gameMusic;
+        }
+        musicAudioSource.Play();
+
     }
 
     public void ClickSound()

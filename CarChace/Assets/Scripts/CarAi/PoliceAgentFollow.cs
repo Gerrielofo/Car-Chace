@@ -15,8 +15,6 @@ public class PoliceAgentFollow : MonoBehaviour
     [SerializeField] Transform[] _wheelTransforms;
 
     [SerializeField] float _minSpeedForTurn = 2f;
-    [SerializeField] float _maxSpeedDif = 2f;
-    [SerializeField] float _desiredSpeed = 5f;
     [SerializeField] float _maxSteerAngle = 45f;
     [SerializeField] float _maxWheelTorque = 400f;
     [SerializeField] float _brakeTorque = 1000f;

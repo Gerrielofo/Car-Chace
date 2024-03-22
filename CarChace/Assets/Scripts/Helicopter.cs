@@ -34,6 +34,7 @@ public class Helicopter : MonoBehaviour
 
     public void StartHelicopter(float flyTime)
     {
+        GetComponent<AudioSource>().Play();
         _animator.SetTrigger("ToggleFly");
         _maxFlyTime = flyTime;
 
@@ -100,6 +101,7 @@ public class Helicopter : MonoBehaviour
                 transform.position = _startPos.position;
                 transform.rotation = _startPos.rotation;
                 _animator.SetTrigger("ToggleFly");
+                GetComponent<AudioSource>().Stop();
                 _flyTime = 0;
             }
         }

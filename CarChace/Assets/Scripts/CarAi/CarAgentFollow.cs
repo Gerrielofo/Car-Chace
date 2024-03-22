@@ -15,8 +15,6 @@ public class CarAgentFollow : MonoBehaviour
     [SerializeField] Transform[] _wheelTransforms;
 
     [SerializeField] float _minSpeedForTurn = 2f;
-    [SerializeField] float _maxSpeedDif = 2;
-    [SerializeField] float _desiredSpeed = 5;
     [SerializeField] float _maxSteerAngle;
     [SerializeField] float _maxWheelTorque;
     [SerializeField] float _brakeTorque;
@@ -26,8 +24,6 @@ public class CarAgentFollow : MonoBehaviour
     [SerializeField] float _arrestTimer;
     [SerializeField] float _arrestRange = 4f;
     [SerializeField] LayerMask _policeMask;
-
-    [SerializeField] float _spikedFriction = 10f;
 
     [Header("Info")]
     [SerializeField] float _currentSpeed;
