@@ -24,6 +24,7 @@ public class CarAgentFollow : MonoBehaviour
     [SerializeField] float _arrestTimer;
     [SerializeField] float _arrestRange = 4f;
     [SerializeField] LayerMask _policeMask;
+    [SerializeField] MeshRenderer[] _colorChangeParts;
 
     [Header("Info")]
     [SerializeField] float _currentSpeed;
@@ -39,6 +40,14 @@ public class CarAgentFollow : MonoBehaviour
         _carAgent = Instantiate(_carAgentPrefab, transform.position + transform.forward * 2, transform.rotation).GetComponent<NavMeshAgent>();
         _carAgent.GetComponent<CarAgent>().carTransform = transform;
         _preferredDistanceFromAgent = _carAgent.GetComponent<CarAgent>().CarRange / 2.5f;
+    }
+
+    public void ChangeColor(Color newColor)
+    {
+        for (int i = 0; i < _colorChangeParts.Length; i++)
+        {
+            _colorChangeParts[i].material.color = newColor;
+        }
     }
 
     void Update()

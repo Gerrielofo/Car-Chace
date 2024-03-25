@@ -13,10 +13,14 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] GameObject _enemyPrefab;
     [SerializeField] int _enemiesToSpawn = 3;
     [SerializeField] float _spawnDelay = 1f;
+    [SerializeField] Color[] _possibleColors;
 
     [Header("Info")]
     [SerializeField] int _enemyCount;
     [SerializeField] bool _isSpawning;
+
+
+
     private void Start()
     {
         _allWaypoints = FindObjectsOfType<Waypoint>();
@@ -44,11 +48,17 @@ public class EnemyManager : MonoBehaviour
 
     IEnumerator SpawnEnemy(int amountToSpawn)
     {
+        Debug.Log("IsSpawning");
         _isSpawning = true;
 
         Transform randomTransform = GetRandomSpawnPoint();
         _enemies.Add(Instantiate(_enemyPrefab, randomTransform.position, randomTransform.rotation).GetComponent<Enemy>());
         _enemyCount = _enemies.Count;
+
+        int randomColorIndex = Random.Range(0, _possibleColors.Length);
+
+        _enemies[_enemies.Count - 1].GetComponent<CarAgentFollow>().ChangeColor(_possibleColors[randomColorIndex]);
+
         yield return new WaitForSeconds(_spawnDelay);
 
         if (amountToSpawn > 0)

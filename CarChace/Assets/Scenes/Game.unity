@@ -1262,6 +1262,17 @@ MonoBehaviour:
   _enemyPrefab: {fileID: 2108462753893103753, guid: 6a259804e3434fb4da46f60debd217eb, type: 3}
   _enemiesToSpawn: 3
   _spawnDelay: 1
+  _possibleColors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  - {r: 0.6, g: 0, b: 0, a: 1}
+  - {r: 0.3207547, g: 0.15932913, b: 0, a: 1}
+  - {r: 0.1, g: 0, b: 0.6, a: 1}
+  - {r: 0.81875443, g: 1, b: 0.4509434, a: 1}
+  - {r: 0, g: 0.4566037, b: 0.02898494, a: 1}
+  - {r: 1, g: 0.57858646, b: 0, a: 1}
+  - {r: 0.4566037, g: 0, b: 0.24171875, a: 1}
   _enemyCount: 0
   _isSpawning: 0
 --- !u!1001 &600659045
