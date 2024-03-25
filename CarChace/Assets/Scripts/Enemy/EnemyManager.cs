@@ -19,8 +19,6 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] int _enemyCount;
     [SerializeField] bool _isSpawning;
 
-
-
     private void Start()
     {
         _allWaypoints = FindObjectsOfType<Waypoint>();
@@ -40,6 +38,7 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
+        _enemyCount = _enemies.Count;
         if (_enemyCount < _enemiesToSpawn && !_isSpawning)
         {
             StartCoroutine(SpawnEnemy(_enemiesToSpawn - _enemyCount));
@@ -69,6 +68,11 @@ public class EnemyManager : MonoBehaviour
         {
             _isSpawning = false;
         }
+    }
+
+    public void RemoveEnemy(Enemy enemy)
+    {
+        _enemies.Remove(enemy);
     }
 
     Transform GetRandomSpawnPoint()

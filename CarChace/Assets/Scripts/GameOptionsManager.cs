@@ -9,7 +9,7 @@ public class GameOptionsManager : MonoBehaviour
     public static GameOptionsManager Instance;
 
     public int timeLimitMinutes;
-    public int enemyHealthPrc;
+    public float enemyHealthPrc;
 
     public int turnType;
 

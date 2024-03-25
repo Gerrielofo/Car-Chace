@@ -36,6 +36,8 @@ public class CarAgent : MonoBehaviour
 
     public float CarRange { get { return _carRange; } }
 
+    Vector3 _returnPoint;
+
     bool _onIntersection;
 
     float _distanceFromWaypoint;
@@ -54,7 +56,7 @@ public class CarAgent : MonoBehaviour
             GetNextWaypoint();
         }
         _carAgent.speed = _baseSpeed;
-
+        _returnPoint = transform.position;
     }
 
     Transform GetClosestEnemy()
@@ -198,12 +200,23 @@ public class CarAgent : MonoBehaviour
         }
         else if (isPoliceAgent)
         {
-            _currentLifeSpan += Time.deltaTime;
-            if (_currentLifeSpan > maxLifeSpan)
+            if (_policeTarget == null || _currentLifeSpan > maxLifeSpan)
             {
-                Destroy(carTransform.gameObject);
-                Destroy(this);
+                float distanceFromReturn = Vector3.Distance(carTransform.position, _returnPoint);
+                _carAgent.destination = _returnPoint;
+                if (distanceFromReturn < 2f)
+                {
+                    Destroy(carTransform.gameObject);
+                    Destroy(gameObject);
+                    return;
+                }
             }
+            else
+            {
+                _carAgent.destination = _policeTarget.position;
+            }
+            _currentLifeSpan += Time.deltaTime;
+
             float distanceFromCar = Vector3.Distance(transform.position, carTransform.position);
 
             if (distanceFromCar > _carRange)
@@ -214,7 +227,6 @@ public class CarAgent : MonoBehaviour
             {
                 _carAgent.isStopped = false;
             }
-            _carAgent.destination = _policeTarget.position;
         }
     }
 

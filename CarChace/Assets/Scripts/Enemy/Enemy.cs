@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
     {
         _carAI = GetComponent<CarAgentFollow>();
         _health = _startHealth * (GameOptionsManager.Instance.enemyHealthPrc / 100);
-        _healthSlider.maxValue = _startHealth;
+        _healthSlider.maxValue = _startHealth * (GameOptionsManager.Instance.enemyHealthPrc / 100);
         _healthSlider.value = _health;
         _carAI.isAlive = true;
         _isAlive = true;

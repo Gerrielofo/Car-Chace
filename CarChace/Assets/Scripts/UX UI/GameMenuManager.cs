@@ -26,11 +26,11 @@ public class GameMenuManager : MonoBehaviour
     {
         for (int i = 0; i < _timeSurvivedText.Length; i++)
         {
-            _timeSurvivedText[i].text = $"Time Survived:\n{GetTimeText()}";
+            _timeSurvivedText[i].text = $"{GetTimeText()}";
         }
     }
 
-    string GetTimeText()
+    public string GetTimeText()
     {
         float totalTime = GameManager.Instance.timePassed;
         int seconds = (int)totalTime % 60;
@@ -49,6 +49,7 @@ public class GameMenuManager : MonoBehaviour
 
     public void Retry()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(GameManager.Instance.gameScene);
     }
 
