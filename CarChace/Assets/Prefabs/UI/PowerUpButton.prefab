@@ -74,8 +74,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -284,4 +284,7 @@ MonoBehaviour:
   _powerUpAmountTxt: {fileID: 1591275901210137309}
   _button: {fileID: 6720962394485545415}
   _carController: {fileID: 0}
+  _helicopter: {fileID: 0}
+  _reinforcements: {fileID: 0}
   _powerUp: {fileID: 0}
+  _useDelay: 5
