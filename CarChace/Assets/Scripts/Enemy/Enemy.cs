@@ -25,18 +25,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] bool _isAlive;
     [SerializeField] float _timeAlive;
 
-    // Start is called before the first frame update
     void Start()
     {
         _carAI = GetComponent<CarAgentFollow>();
-        _health = _startHealth;
+        _health = _startHealth * (GameOptionsManager.Instance.enemyHealthPrc / 100);
         _healthSlider.maxValue = _startHealth;
         _healthSlider.value = _health;
         _carAI.isAlive = true;
         _isAlive = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         _timeAlive += Time.deltaTime;
@@ -52,7 +50,6 @@ public class Enemy : MonoBehaviour
 
         _currentSpeed = GetComponent<Rigidbody>().velocity.magnitude;
     }
-
 
     public void TakeDamage(float playerSpeed)
     {

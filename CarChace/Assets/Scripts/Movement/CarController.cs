@@ -68,6 +68,9 @@ public class CarController : MonoBehaviour
     [SerializeField] GameObject _spikestripPrefab;
     [SerializeField] Transform _spikestripSpawnPoint;
 
+    ParticleSystem _speedParticle;
+    [SerializeField] float _minSpeedForParticle = 10;
+
     private void OnEnable()
     {
         playerInput.actions.FindAction("GasBrake").started += OnGas;
@@ -109,6 +112,7 @@ public class CarController : MonoBehaviour
     private void Start()
     {
         // _carRigidbody.centerOfMass = _carCenterOfMass.position;
+        _speedParticle = GetComponentInChildren<ParticleSystem>();
 
         Vector3 Cringe = new Vector3(0, Vector3.Distance(_camOffset.position, _resetTransform.position), 0);
         _camOffset.localPosition = Cringe;
@@ -154,6 +158,10 @@ public class CarController : MonoBehaviour
     private void Update()
     {
         // _carRigidbody.AddForce(Vector3.down * 9.81f);
+        if (_velocity > _minSpeedForParticle)
+        {
+            EmitParticles();
+        }
 
         if (Input.GetKeyDown("r"))
         {
@@ -280,6 +288,7 @@ public class CarController : MonoBehaviour
         HandleSpeed();
     }
 
+
     void HandleSpeed()
     {
         if (_currentGear + 1 == _gears.Length)
@@ -315,6 +324,12 @@ public class CarController : MonoBehaviour
         {
             other.transform.GetComponent<Enemy>().TakeDamage(_velocity * _damageMultiplier);
         }
+    }
+
+    void EmitParticles()
+    {
+        int emitionAmount = (int)(_speed / 500);
+        _speedParticle.Emit(emitionAmount);
     }
 
     public void ToggleSiren()

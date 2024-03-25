@@ -26,8 +26,17 @@ public class GameMenuManager : MonoBehaviour
     {
         for (int i = 0; i < _timeSurvivedText.Length; i++)
         {
-            _timeSurvivedText[i].text = $"Time Survived:\n{GameManager.Instance.timePassed}";
+            _timeSurvivedText[i].text = $"Time Survived:\n{GetTimeText()}";
         }
+    }
+
+    string GetTimeText()
+    {
+        float totalTime = GameManager.Instance.timePassed;
+        int seconds = (int)totalTime % 60;
+        int minutes = (int)totalTime / 60;
+
+        return string.Format("{0:00} : {1:00}", minutes, seconds);
     }
 
     public void EndGame()
