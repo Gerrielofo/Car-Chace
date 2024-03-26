@@ -47,6 +47,7 @@ public class EnemyManager : MonoBehaviour
 
     IEnumerator SpawnEnemy(int amountToSpawn)
     {
+        Debug.Log($"Spawning {amountToSpawn} more enemies");
         Debug.Log("IsSpawning");
         _isSpawning = true;
 
@@ -60,7 +61,7 @@ public class EnemyManager : MonoBehaviour
 
         yield return new WaitForSeconds(_spawnDelay);
 
-        if (amountToSpawn > 0)
+        if (amountToSpawn > 1)
         {
             StartCoroutine(SpawnEnemy(amountToSpawn - 1));
         }

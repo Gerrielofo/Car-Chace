@@ -11,6 +11,8 @@ public class CarController : MonoBehaviour
     [SerializeField] private PlayerInput playerInput = null;
     public PlayerInput PlayerInput => playerInput;
 
+    [Header("Wheel Settings")]
+    #region Wheel Settings
     [SerializeField] WheelCollider _leftFront;
     [SerializeField] WheelCollider _rightFront;
     [SerializeField] WheelCollider _leftBack;
@@ -18,36 +20,39 @@ public class CarController : MonoBehaviour
 
     [SerializeField] bool _frontWheelDrive;
 
-    [SerializeField] float _isMove;
-    [SerializeField] float _isExtraMove;
-    [SerializeField] float _isTurn;
-
     [SerializeField] float _minAngle;
     [SerializeField] float _maxAngle;
 
     [SerializeField] float _steerSensitivity;
     [SerializeField] float _steerAngle;
     [SerializeField] Transform _steeringWheelRotation;
+    #endregion
 
+    [Header("Inputs")]
+    #region Inputs
+    [SerializeField] float _isMove;
+    [SerializeField] float _isExtraMove;
+    [SerializeField] float _isTurn;
+    #endregion
+
+    [Header("Engine Options")]
+    #region Engine Options
     [SerializeField] float _reverseDelay = 1f;
     [SerializeField] bool _canReverse;
     [SerializeField] float _brakeForce = 1000;
     [SerializeField] float _acceleration;
-
-    float _reverseTimer;
-
-    [SerializeField] Rigidbody _carRigidbody;
-    [SerializeField] Transform _carCenterOfMass;
-
-    [SerializeField] float _velocity;
-    [SerializeField] TMP_Text _speedTxt;
-
     [SerializeField] Gear[] _gears;
     [SerializeField] int _currentGear;
+    float _reverseTimer;
+    #endregion
+
+    [SerializeField] Vector3 _respawnHeightOffset = new Vector3(0, 1, 0);
+
+    [SerializeField] float _velocity;
+
+    [SerializeField] TMP_Text _speedTxt;
     [SerializeField] TMP_Text _gearTxt;
 
-    [SerializeField] Transform _resetTransform;
-    [SerializeField] Transform _camOffset;
 
     [SerializeField] GameObject _steeringWheelHolder;
 
@@ -56,17 +61,29 @@ public class CarController : MonoBehaviour
 
     [SerializeField] float _speed;
 
+    [Header("Siren")]
+    #region Siren
     [SerializeField] AudioSource _sirenAudio;
     [SerializeField] Animator _sirenAnimator;
     [SerializeField] GameObject _redLightGO;
     [SerializeField] GameObject _blueLightGO;
+    #endregion
 
+
+    [Header("Powerups")]
+    #region Powerups
     [SerializeField] float _speedBoost = 1;
     [SerializeField] float _speedMultiplier = 1;
     [SerializeField] float _damageMultiplier = 1;
 
     [SerializeField] GameObject _spikestripPrefab;
     [SerializeField] Transform _spikestripSpawnPoint;
+    #endregion
+
+    [Header("Upgrades")]
+    #region Upgrades
+    [SerializeField] GameObject[] _carMods;
+    #endregion
 
     ParticleSystem _speedParticle;
     [SerializeField] float _minSpeedForParticle = 10;
@@ -86,7 +103,6 @@ public class CarController : MonoBehaviour
         playerInput.actions.FindAction("ExtraGasBrake").canceled += OnExtraMove;
 
         playerInput.actions.FindAction("Reset").started += OnRespawm;
-        // playerInput.actions.FindAction("Reset").performed += OnReset;
         playerInput.actions.FindAction("Reset").canceled += OnRespawm;
     }
 
@@ -105,17 +121,22 @@ public class CarController : MonoBehaviour
         playerInput.actions.FindAction("ExtraGasBrake").canceled -= OnExtraMove;
 
         playerInput.actions.FindAction("Reset").started -= OnRespawm;
-        // playerInput.actions.FindAction("Reset").performed -= OnReset;
         playerInput.actions.FindAction("Reset").canceled -= OnRespawm;
     }
 
     private void Start()
     {
-        // _carRigidbody.centerOfMass = _carCenterOfMass.position;
         _speedParticle = GetComponentInChildren<ParticleSystem>();
 
-        Vector3 Cringe = new Vector3(0, Vector3.Distance(_camOffset.position, _resetTransform.position), 0);
-        _camOffset.localPosition = Cringe;
+        for (int i = 0; i < PlayerPrefs.GetInt("carModIndex"); i++)
+        {
+            if (_carMods.Length >= i)
+            {
+                _carMods[i].SetActive(true);
+                continue;
+            }
+            break;
+        }
     }
 
     private void OnGas(InputAction.CallbackContext context)
@@ -148,16 +169,26 @@ public class CarController : MonoBehaviour
         _isExtraMove = context.ReadValue<Vector2>().y;
         _isExtraMove /= 2;
     }
-
+    bool _canRespawn = true;
     private void OnRespawm(InputAction.CallbackContext context)
     {
-        transform.position = _respawnTransform.position;
-        transform.rotation = _respawnTransform.rotation;
+        if (_canRespawn)
+        {
+            StartCoroutine(Respawn());
+        }
+    }
+
+    IEnumerator Respawn()
+    {
+        _canRespawn = false;
+        transform.position = transform.position + _respawnHeightOffset; ;
+        transform.rotation = Quaternion.Euler(new Vector3(0, transform.rotation.y, 0));
+        yield return new WaitForSeconds(1);
+        _canRespawn = true;
     }
 
     private void Update()
     {
-        // _carRigidbody.AddForce(Vector3.down * 9.81f);
         if (_velocity > _minSpeedForParticle)
         {
             EmitParticles();
@@ -188,7 +219,7 @@ public class CarController : MonoBehaviour
                     _rightFront.motorTorque = 0;
                 }
 
-                if (myApproximation(_velocity, 0, 0.5f))
+                if (MyApproximation(_velocity, 0, 0.5f))
                 {
                     _canReverse = false;
 
@@ -217,7 +248,7 @@ public class CarController : MonoBehaviour
         }
         else
         {
-            if (myApproximation(_velocity, 0, 0.5f) && _reverseTimer <= 0f && !_canReverse)
+            if (MyApproximation(_velocity, 0, 0.5f) && _reverseTimer <= 0f && !_canReverse)
             {
                 _reverseTimer = _reverseDelay;
             }
@@ -313,7 +344,7 @@ public class CarController : MonoBehaviour
         _speed = _gears[_currentGear].speed * _isMove * (1 + _isExtraMove) * _speedMultiplier * _speedBoost;
     }
 
-    private bool myApproximation(float a, float b, float tolerance)
+    private bool MyApproximation(float a, float b, float tolerance)
     {
         return (Mathf.Abs(a - b) < tolerance);
     }
