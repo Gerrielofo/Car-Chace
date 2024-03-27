@@ -48,7 +48,6 @@ public class EnemyManager : MonoBehaviour
     IEnumerator SpawnEnemy(int amountToSpawn)
     {
         Debug.Log($"Spawning {amountToSpawn} more enemies");
-        Debug.Log("IsSpawning");
         _isSpawning = true;
 
         Transform randomTransform = GetRandomSpawnPoint();

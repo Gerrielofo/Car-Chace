@@ -4,25 +4,39 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Linq;
 
 public class GameMenuManager : MonoBehaviour
 {
-    [SerializeField] GameObject[] _gameEndCanvases;
+    [SerializeField] List<GameObject> _gameEndCanvases;
     [SerializeField] TMP_Text[] _timeSurvivedText;
 
 
     private void Start()
     {
-        if (GameManager.Instance != null)
-            GameManager.Instance.gameEnded += EndGame;
+        _gameEndCanvases.Clear();
+        _gameEndCanvases = GameObject.FindGameObjectsWithTag("EndScreen").ToList();
 
-        for (int i = 0; i < _gameEndCanvases.Length; i++)
+        for (int i = 0; i < _gameEndCanvases.Count; i++)
         {
             _gameEndCanvases[i].SetActive(false);
         }
         Time.timeScale = 1;
         GameManager.Instance.isPlaying = true;
         GameManager.Instance.timePassed = 0;
+
+    }
+
+    private void OnEnable()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.gameEnded += EndGame;
+    }
+
+    private void OnDisable()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.gameEnded -= EndGame;
     }
 
     private void Update()
@@ -44,7 +58,7 @@ public class GameMenuManager : MonoBehaviour
 
     public void EndGame()
     {
-        for (int i = 0; i < _gameEndCanvases.Length; i++)
+        for (int i = 0; i < _gameEndCanvases.Count; i++)
         {
             _gameEndCanvases[i].SetActive(true);
         }

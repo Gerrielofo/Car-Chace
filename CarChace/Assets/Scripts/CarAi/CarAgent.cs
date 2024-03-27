@@ -122,7 +122,6 @@ public class CarAgent : MonoBehaviour
                     _currentWaypoint = _currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints[rng];
                 if (_onIntersection)
                 {
-                    Debug.Log("Came Of Intersection");
                     _onIntersection = false;
                 }
             }

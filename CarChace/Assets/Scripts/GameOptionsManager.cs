@@ -22,7 +22,7 @@ public class GameOptionsManager : MonoBehaviour
         else
         {
             Debug.LogError($"Found A Second Instance! Destroyed The One On {gameObject.name}");
-            Destroy(this);
+            Destroy(gameObject);
         }
 
         DontDestroyOnLoad(gameObject);

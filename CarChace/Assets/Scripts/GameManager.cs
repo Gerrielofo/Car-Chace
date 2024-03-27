@@ -29,19 +29,32 @@ public class GameManager : MonoBehaviour
     ShopManager _shopManager;
     private void Awake()
     {
-        if (Instance == this)
+        if (Instance != null && Instance != this)
         {
+            Debug.LogWarning("Another instance of GameManager already exists. Deleting this instance.");
+            Destroy(gameObject);
             return;
         }
-        else if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
+
+        Instance = this;
+
         DontDestroyOnLoad(gameObject);
+        // if (Instance == this)
+        // {
+        //     return;
+        // }
+        // else if (Instance == null)
+        // {
+        //     Instance = this;
+        // }
+        // else
+        // {
+        //     Destroy(this);
+        // }
+        // DontDestroyOnLoad(gameObject);
+
+
+
     }
 
     private void Start()
@@ -52,23 +65,6 @@ public class GameManager : MonoBehaviour
         _shopManager.UpdatePointCount();
     }
 
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneloaded;
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneloaded;
-    }
-
-    private void OnSceneloaded(Scene scene, LoadSceneMode sceneLoadMode)
-    {
-        if (scene.name == mainMenuScene)
-        {
-            timePassed = 0f;
-        }
-    }
     public bool updateCount;
     private void Update()
     {
@@ -93,10 +89,8 @@ public class GameManager : MonoBehaviour
     {
         isPlaying = false;
         Time.timeScale = 0;
-        if (gameEnded != null)
-        {
-            gameEnded.Invoke();
-        }
+
+        gameEnded?.Invoke();
     }
 
     public void BackToMainMenu()

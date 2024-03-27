@@ -6,6 +6,7 @@ using TMPro;
 using UnityEditor;
 using System;
 using Unity.XR.CoreUtils;
+using UnityEngine.UI;
 public class CarController : MonoBehaviour
 {
     [SerializeField] private PlayerInput playerInput = null;
@@ -28,6 +29,14 @@ public class CarController : MonoBehaviour
     [SerializeField] float _steerSensitivity;
     [SerializeField] float _steerAngle;
     [SerializeField] Transform _steeringWheelRotation;
+    #endregion
+
+    [Header("Stats")]
+    #region Stats
+    [SerializeField] float _startHealth;
+    [SerializeField] float _health;
+    [SerializeField] Slider _healthSlider;
+    [SerializeField] float _defence;
     #endregion
 
     [Header("Inputs")]
@@ -131,6 +140,26 @@ public class CarController : MonoBehaviour
         _speedParticle = GetComponentInChildren<ParticleSystem>();
         _animator = GetComponent<Animator>();
 
+        _health = _startHealth;
+        _healthSlider.maxValue = _startHealth;
+        UpdateHealthSlider(_health);
+
+        switch (PlayerPrefs.GetInt("carModIndex"))
+        {
+            case 0:
+                _defence = 1f;
+                break;
+            case 1:
+                _defence = 1.5f;
+                break;
+            case 2:
+                _defence = 2f;
+                break;
+            case 3:
+                _defence = 3f;
+                break;
+        }
+
         for (int i = 0; i < PlayerPrefs.GetInt("carModIndex"); i++)
         {
             if (_carMods.Length > i)
@@ -192,7 +221,9 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
-        float speed = _velocity / 15;
+        float speed = _velocity;
+        _healthSlider.value = _health;
+
         _animator.SetFloat("Speed", speed);
 
         if (_velocity > _minSpeedForParticle)
@@ -200,16 +231,14 @@ public class CarController : MonoBehaviour
             EmitParticles();
         }
 
-        if (Input.GetKeyDown("r"))
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            transform.position = _respawnTransform.position;
-            transform.rotation = _respawnTransform.rotation;
+            transform.SetPositionAndRotation(_respawnTransform.position, _respawnTransform.rotation);
         }
         if (_isMove >= 0)
         {
             if (_canReverse)
             {
-                Debug.Log("Breaking Cuz Reverse");
                 _leftBack.brakeTorque = _brakeForce;
                 _rightBack.brakeTorque = _brakeForce;
 
@@ -317,8 +346,6 @@ public class CarController : MonoBehaviour
 
         _velocity = GetComponent<Rigidbody>().velocity.magnitude;
 
-        _speedTxt.text = (_velocity * 10).ToString("0");
-
         if (_gearTxt != null)
             _gearTxt.text = (_currentGear + 1).ToString();
 
@@ -350,9 +377,14 @@ public class CarController : MonoBehaviour
         _speed = _gears[_currentGear].speed * _isMove * (1 + _isExtraMove) * _speedMultiplier * _speedBoost;
     }
 
+    void Die()
+    {
+        Debug.LogError("AUGH MY BONES (died)");
+    }
+
     private bool MyApproximation(float a, float b, float tolerance)
     {
-        return (Mathf.Abs(a - b) < tolerance);
+        return Mathf.Abs(a - b) < tolerance;
     }
 
     private void OnCollisionEnter(Collision other)
@@ -360,7 +392,39 @@ public class CarController : MonoBehaviour
         if (other.transform.CompareTag("Enemy"))
         {
             other.transform.GetComponent<Enemy>().TakeDamage(_velocity * _damageMultiplier);
+            if (_defence < 3)
+            {
+                TakeDamage(_velocity);
+            }
         }
+        else if (other.transform.CompareTag("Death"))
+        {
+            Die();
+        }
+        else if (other.transform.CompareTag("Obstacle"))
+        {
+            TakeDamage(_velocity);
+        }
+    }
+
+    void TakeDamage(float speed)
+    {
+        float damage = speed * 5;
+        Debug.Log($"Calculate damage({damage} / by defence({_defence}) = {damage / _defence}))");
+
+        damage /= _defence;
+
+        _health -= damage;
+        UpdateHealthSlider(_health);
+        if (_health < 0)
+        {
+            Die();
+        }
+    }
+
+    void UpdateHealthSlider(float health)
+    {
+        _healthSlider.value = health;
     }
 
     void EmitParticles()
