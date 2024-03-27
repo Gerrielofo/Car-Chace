@@ -72,6 +72,8 @@ public class CarController : MonoBehaviour
 
     [SerializeField] float _speed;
 
+    [SerializeField] ParticleSystem _smokeEffect;
+
     [Header("Siren")]
     #region Siren
     [SerializeField] AudioSource _sirenAudio;
@@ -96,7 +98,7 @@ public class CarController : MonoBehaviour
     [SerializeField] GameObject[] _carMods;
     #endregion
 
-    ParticleSystem _speedParticle;
+    [SerializeField] ParticleSystem _speedParticle;
     [SerializeField] float _minSpeedForParticle = 10;
 
     private void OnEnable()
@@ -137,7 +139,6 @@ public class CarController : MonoBehaviour
 
     private void Start()
     {
-        _speedParticle = GetComponentInChildren<ParticleSystem>();
         _animator = GetComponent<Animator>();
 
         _health = _startHealth;
@@ -410,12 +411,20 @@ public class CarController : MonoBehaviour
     void TakeDamage(float speed)
     {
         float damage = speed * 5;
-        Debug.Log($"Calculate damage({damage} / by defence({_defence}) = {damage / _defence}))");
 
         damage /= _defence;
 
         _health -= damage;
         UpdateHealthSlider(_health);
+        if (_health < _startHealth / 2)
+        {
+            Debug.Log("Car Smoking");
+            _smokeEffect.Play();
+        }
+        else
+        {
+            _smokeEffect.Stop();
+        }
         if (_health < 0)
         {
             Die();

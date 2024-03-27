@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
-        Debug.Log($"Hittting car for {playerSpeed * _damageMultiplier}");
+
         _canvas.gameObject.SetActive(true);
         _healthTimer = _healthShowTime;
 
