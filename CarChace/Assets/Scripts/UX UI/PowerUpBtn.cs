@@ -110,6 +110,7 @@ public class PowerUpBtn : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        UpdateText();
         _canUse = false;
         StartCoroutine(ResetUse());
     }

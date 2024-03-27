@@ -11,6 +11,8 @@ public class CarController : MonoBehaviour
     [SerializeField] private PlayerInput playerInput = null;
     public PlayerInput PlayerInput => playerInput;
 
+    Animator _animator;
+
     [Header("Wheel Settings")]
     #region Wheel Settings
     [SerializeField] WheelCollider _leftFront;
@@ -127,10 +129,11 @@ public class CarController : MonoBehaviour
     private void Start()
     {
         _speedParticle = GetComponentInChildren<ParticleSystem>();
+        _animator = GetComponent<Animator>();
 
         for (int i = 0; i < PlayerPrefs.GetInt("carModIndex"); i++)
         {
-            if (_carMods.Length >= i)
+            if (_carMods.Length > i)
             {
                 _carMods[i].SetActive(true);
                 continue;
@@ -189,6 +192,9 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
+        float speed = _velocity / 15;
+        _animator.SetFloat("Speed", speed);
+
         if (_velocity > _minSpeedForParticle)
         {
             EmitParticles();

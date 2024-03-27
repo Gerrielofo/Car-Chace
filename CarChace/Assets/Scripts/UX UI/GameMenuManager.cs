@@ -20,6 +20,9 @@ public class GameMenuManager : MonoBehaviour
         {
             _gameEndCanvases[i].SetActive(false);
         }
+        Time.timeScale = 1;
+        GameManager.Instance.isPlaying = true;
+        GameManager.Instance.timePassed = 0;
     }
 
     private void Update()
@@ -49,7 +52,6 @@ public class GameMenuManager : MonoBehaviour
 
     public void Retry()
     {
-        Time.timeScale = 1;
         SceneManager.LoadScene(GameManager.Instance.gameScene);
     }
 
