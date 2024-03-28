@@ -18,6 +18,8 @@ public class Waypoint : MonoBehaviour
 
     public float angleToNextPoint;
 
+    public bool isBridge;
+
     [SerializeField] LayerMask _wayPointMask;
     [SerializeField] float _wayPointRadius;
 

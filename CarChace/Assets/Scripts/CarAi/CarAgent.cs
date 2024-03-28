@@ -170,6 +170,15 @@ public class CarAgent : MonoBehaviour
     {
         if (_currentWaypoint != null)
         {
+            if (_currentWaypoint.GetComponent<Waypoint>().isBridge && _currentWaypoint.GetComponentInParent<Bridge>().isOpened)
+            {
+                _carAgent.isStopped = true;
+                return;
+            }
+            else
+            {
+                _carAgent.isStopped = false;
+            }
             float distanceFromCar = Vector3.Distance(transform.position, carTransform.position);
 
             float angleBetweenWayPoints = _currentWaypoint.GetComponent<Waypoint>().angleToNextPoint;

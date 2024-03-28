@@ -192,6 +192,7 @@ MonoBehaviour:
   - {fileID: 1461781502433504732}
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 1
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -352,6 +353,7 @@ MonoBehaviour:
   - {fileID: 1588581098769920992}
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 1
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -428,6 +430,7 @@ MonoBehaviour:
   _possibleNextWaypoints: []
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 1
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
@@ -686,6 +689,7 @@ MonoBehaviour:
   _possibleNextWaypoints: []
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 1
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
