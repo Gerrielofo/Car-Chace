@@ -39,10 +39,14 @@ public class CarManager : MonoBehaviour
         _damageIndex = PlayerPrefs.GetInt("damageIndex");
         _carModIndex = PlayerPrefs.GetInt("carModIndex");
 
-        _speedPowerUpAmount = PlayerPrefs.GetInt(GameManager.Instance.speedPower);
-        _spikePowerUpAmount = PlayerPrefs.GetInt(GameManager.Instance.spikePower);
-        _helicopterPowerUpAmount = PlayerPrefs.GetInt(GameManager.Instance.helicopterPower);
-        _reinforcementPowerUpAmount = PlayerPrefs.GetInt(GameManager.Instance.reinforcementPower);
+        if (GameManager.Instance)
+        {
+            _speedPowerUpAmount = PlayerPrefs.GetInt(GameManager.Instance.speedPower);
+            _spikePowerUpAmount = PlayerPrefs.GetInt(GameManager.Instance.spikePower);
+            _helicopterPowerUpAmount = PlayerPrefs.GetInt(GameManager.Instance.helicopterPower);
+            _reinforcementPowerUpAmount = PlayerPrefs.GetInt(GameManager.Instance.reinforcementPower);
+        }
+
         AddPowerUps();
 
         if (_speedIndex > 0)

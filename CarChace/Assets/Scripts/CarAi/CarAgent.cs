@@ -130,9 +130,9 @@ public class CarAgent : MonoBehaviour
 
     }
 
-    void GetNewRANDOMWaypoints()
+    public void GetNewRandomWaypoint()
     {
-        Debug.LogWarning("Getting New Waypoints");
+        Debug.LogWarning("Getting New Waypoint");
 
         _colliders = Physics.OverlapSphere(transform.position, _waypointCheckRange, _wayPointMask);
 

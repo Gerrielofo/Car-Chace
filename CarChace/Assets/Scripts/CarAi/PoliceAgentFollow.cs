@@ -11,7 +11,6 @@ public class PoliceAgentFollow : MonoBehaviour
     [SerializeField] GameObject _carAgentPrefab;
 
     [SerializeField] WheelCollider[] _wheelColliders;
-
     [SerializeField] Transform[] _wheelTransforms;
 
     [SerializeField] float _minSpeedForTurn = 2f;
@@ -19,15 +18,20 @@ public class PoliceAgentFollow : MonoBehaviour
     [SerializeField] float _maxWheelTorque = 400f;
     [SerializeField] float _brakeTorque = 1000f;
 
+    [SerializeField] float _timeToDespawn = 10f;
+
     [Header("Info")]
     [SerializeField] float _currentSpeed;
     [SerializeField] Vector3 localTarget;
     [SerializeField] float targetAngle;
     [SerializeField] float _preferredDistanceFromAgent;
 
+    float _distanceFromAgent;
+
+    float _despawnTimer;
+
     public float maxLifeSpan;
 
-    float _distanceFromAgent;
 
     void Start()
     {
@@ -45,6 +49,21 @@ public class PoliceAgentFollow : MonoBehaviour
     {
         _distanceFromAgent = Vector3.Distance(transform.position, _carAgent.transform.position);
         _currentSpeed = GetComponent<Rigidbody>().velocity.magnitude;
+
+        if (_currentSpeed < 0.1f)
+        {
+            _despawnTimer += Time.deltaTime;
+            if (_despawnTimer > _timeToDespawn * 3)
+            {
+                Destroy(_carAgent.gameObject);
+                Destroy(gameObject);
+                return;
+            }
+        }
+        else
+        {
+            _despawnTimer = 0;
+        }
 
 
         localTarget = transform.InverseTransformPoint(_carAgent.transform.position);

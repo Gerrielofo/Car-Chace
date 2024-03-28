@@ -28,8 +28,16 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         _carAI = GetComponent<CarAgentFollow>();
-        _health = _startHealth * (GameOptionsManager.Instance.enemyHealthPrc / 100);
-        _healthSlider.maxValue = _startHealth * (GameOptionsManager.Instance.enemyHealthPrc / 100);
+        if (GameOptionsManager.Instance)
+        {
+            _health = _startHealth * (GameOptionsManager.Instance.enemyHealthPrc / 100);
+            _healthSlider.maxValue = _startHealth * (GameOptionsManager.Instance.enemyHealthPrc / 100);
+        }
+        else
+        {
+            _health = _startHealth;
+            _healthSlider.maxValue = _startHealth;
+        }
         _healthSlider.value = _health;
         _carAI.isAlive = true;
         _isAlive = true;

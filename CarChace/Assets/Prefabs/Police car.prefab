@@ -2754,6 +2754,7 @@ MonoBehaviour:
   _respawnTransform: {fileID: 0}
   _isReset: 0
   _speed: 0
+  _smokeEffect: {fileID: 4422944606743226208}
   _sirenAudio: {fileID: 8960614589391030291}
   _sirenAnimator: {fileID: 9085463273902176175}
   _redLightGO: {fileID: 2612349318069717025}
@@ -2765,6 +2766,7 @@ MonoBehaviour:
   _spikestripSpawnPoint: {fileID: 2812847201702198254}
   _carMods:
   - {fileID: 498997157295971237}
+  _speedParticle: {fileID: 492971374961758971}
   _minSpeedForParticle: 15
 --- !u!114 &9125834235423983322
 MonoBehaviour:
@@ -4898,7 +4900,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8159
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: bf3ad6102215e9e4d93c319bf70392f7, type: 2}
   m_TargetDisplay: 0
@@ -9889,7 +9891,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8159
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 7b0f6b3a12aa5a947875e111812c8446, type: 2}
   m_TargetDisplay: 0
@@ -10147,6 +10149,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4588968046219523922}
   - {fileID: 8797043882015307007}
   - {fileID: 3767456334621653893}
   - {fileID: 3255664677416335843}
@@ -23739,3 +23742,70 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
+--- !u!1001 &7253612617221245528
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1718767676654408191}
+    m_Modifications:
+    - target: {fileID: 6558727741377346826, guid: 3ca795cbe5429004da94316f8e6a81f1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558727741377346826, guid: 3ca795cbe5429004da94316f8e6a81f1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558727741377346826, guid: 3ca795cbe5429004da94316f8e6a81f1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.803
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558727741377346826, guid: 3ca795cbe5429004da94316f8e6a81f1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558727741377346826, guid: 3ca795cbe5429004da94316f8e6a81f1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.707107
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558727741377346826, guid: 3ca795cbe5429004da94316f8e6a81f1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558727741377346826, guid: 3ca795cbe5429004da94316f8e6a81f1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558727741377346826, guid: 3ca795cbe5429004da94316f8e6a81f1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558727741377346826, guid: 3ca795cbe5429004da94316f8e6a81f1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558727741377346826, guid: 3ca795cbe5429004da94316f8e6a81f1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561509194049075544, guid: 3ca795cbe5429004da94316f8e6a81f1, type: 3}
+      propertyPath: m_Name
+      value: Smoke
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3ca795cbe5429004da94316f8e6a81f1, type: 3}
+--- !u!198 &4422944606743226208 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6470395658446269752, guid: 3ca795cbe5429004da94316f8e6a81f1, type: 3}
+  m_PrefabInstance: {fileID: 7253612617221245528}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4588968046219523922 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6558727741377346826, guid: 3ca795cbe5429004da94316f8e6a81f1, type: 3}
+  m_PrefabInstance: {fileID: 7253612617221245528}
+  m_PrefabAsset: {fileID: 0}

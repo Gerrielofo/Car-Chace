@@ -22,20 +22,24 @@ public class GameMenuManager : MonoBehaviour
             _gameEndCanvases[i].SetActive(false);
         }
         Time.timeScale = 1;
-        GameManager.Instance.isPlaying = true;
-        GameManager.Instance.timePassed = 0;
+
+        if (GameManager.Instance)
+        {
+            GameManager.Instance.isPlaying = true;
+            GameManager.Instance.timePassed = 0;
+        }
 
     }
 
     private void OnEnable()
     {
-        if (GameManager.Instance != null)
+        if (GameManager.Instance)
             GameManager.Instance.gameEnded += EndGame;
     }
 
     private void OnDisable()
     {
-        if (GameManager.Instance != null)
+        if (GameManager.Instance)
             GameManager.Instance.gameEnded -= EndGame;
     }
 
@@ -49,6 +53,8 @@ public class GameMenuManager : MonoBehaviour
 
     public string GetTimeText()
     {
+        if (!GameManager.Instance)
+            return "XX:XX";
         float totalTime = GameManager.Instance.timePassed;
         int seconds = (int)totalTime % 60;
         int minutes = (int)totalTime / 60;
@@ -66,11 +72,25 @@ public class GameMenuManager : MonoBehaviour
 
     public void Retry()
     {
-        SceneManager.LoadScene(GameManager.Instance.gameScene);
+        if (GameManager.Instance)
+        {
+            SceneManager.LoadScene(GameManager.Instance.gameScene);
+        }
+        else
+        {
+            SceneManager.LoadScene("Game");
+        }
     }
 
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene(GameManager.Instance.mainMenuScene);
+        if (GameManager.Instance)
+        {
+            SceneManager.LoadScene(GameManager.Instance.mainMenuScene);
+        }
+        else
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
     }
 }

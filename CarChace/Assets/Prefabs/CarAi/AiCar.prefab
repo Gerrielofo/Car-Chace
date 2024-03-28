@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7318222845368315629}
   - component: {fileID: 1934844021324815512}
   - component: {fileID: 4876232435822440910}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,6 +142,7 @@ MonoBehaviour:
   _maxSteerAngle: 45
   _maxWheelTorque: 400
   _brakeTorque: 1000
+  _timeToDespawn: 10
   _maxArrestSpeed: 1
   _timeToArrest: 3
   _arrestTimer: 0
@@ -449,7 +450,7 @@ GameObject:
   - component: {fileID: 3976001718368514505}
   - component: {fileID: 4282765863900285817}
   - component: {fileID: 7946482624425315104}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CarHealthCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,7 +551,7 @@ GameObject:
   - component: {fileID: 126722678107253788}
   - component: {fileID: 3448976042719625707}
   - component: {fileID: 7592037289758684619}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -623,7 +624,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7289853258188816064}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -660,7 +661,7 @@ GameObject:
   m_Component:
   - component: {fileID: 937260791272795506}
   - component: {fileID: 455908098609148609}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HealthSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,6 +19,10 @@ public class CarAgentFollow : MonoBehaviour
     [SerializeField] float _maxSteerAngle;
     [SerializeField] float _maxWheelTorque;
     [SerializeField] float _brakeTorque;
+
+    [SerializeField] int _maxReroutes = 5;
+    [SerializeField] float _timeToDespawn = 10f;
+
     [Header("Arrest Setting")]
     [SerializeField] float _maxArrestSpeed = 1f;
     [SerializeField] float _timeToArrest = 3f;
@@ -25,6 +30,7 @@ public class CarAgentFollow : MonoBehaviour
     [SerializeField] float _arrestRange = 4f;
     [SerializeField] LayerMask _policeMask;
     [SerializeField] MeshRenderer[] _colorChangeParts;
+
 
     [Header("Info")]
     [SerializeField] float _currentSpeed;
@@ -34,6 +40,10 @@ public class CarAgentFollow : MonoBehaviour
 
     [SerializeField] float _preferredDistanceFromAgent;
     float _distanceFromAgent;
+
+    float _despawnTimer;
+    int _rerouteAttempts;
+
 
     void Start()
     {
@@ -63,6 +73,29 @@ public class CarAgentFollow : MonoBehaviour
         {
             _arrestTimer = 0f;
         }
+
+        if (_currentSpeed < 0.1f)
+        {
+            _despawnTimer += Time.deltaTime;
+            if (_rerouteAttempts > _maxReroutes)
+            {
+                Destroy(_carAgent.gameObject);
+                Destroy(gameObject);
+            }
+            if (_despawnTimer > _timeToDespawn)
+            {
+                _carAgent.GetComponent<CarAgent>().GetNewRandomWaypoint();
+                _rerouteAttempts++;
+                _despawnTimer = 0f;
+            }
+        }
+        else
+        {
+            _rerouteAttempts = 0;
+            _despawnTimer = 0;
+        }
+
+
 
         _distanceFromAgent = Vector3.Distance(transform.position, _carAgent.transform.position);
         _currentSpeed = GetComponent<Rigidbody>().velocity.magnitude;
