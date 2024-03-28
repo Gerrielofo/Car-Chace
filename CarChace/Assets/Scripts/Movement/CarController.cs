@@ -398,7 +398,7 @@ public class CarController : MonoBehaviour
                 TakeDamage(_velocity);
             }
         }
-        else if (other.transform.CompareTag("Death"))
+        else if (other.transform.CompareTag("Water"))
         {
             Die();
         }
