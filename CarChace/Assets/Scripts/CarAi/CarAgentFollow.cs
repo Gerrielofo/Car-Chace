@@ -22,6 +22,7 @@ public class CarAgentFollow : MonoBehaviour
 
     [SerializeField] int _maxReroutes = 5;
     [SerializeField] float _timeToDespawn = 10f;
+    [SerializeField] float[] _slopeAngles;
 
     [Header("Arrest Setting")]
     [SerializeField] float _maxArrestSpeed = 1f;
@@ -33,6 +34,7 @@ public class CarAgentFollow : MonoBehaviour
 
 
     [Header("Info")]
+    [SerializeField] float _slopeMultiplier = 1f;
     [SerializeField] float _currentSpeed;
     [SerializeField] Vector3 localTarget;
     [SerializeField] float targetAngle;
@@ -43,6 +45,8 @@ public class CarAgentFollow : MonoBehaviour
 
     float _despawnTimer;
     int _rerouteAttempts;
+
+    RaycastHit _slopeHit;
 
 
     void Start()
@@ -73,6 +77,8 @@ public class CarAgentFollow : MonoBehaviour
         {
             _arrestTimer = 0f;
         }
+
+        CalculateSlopeSpeed();
 
         if (_currentSpeed < 0.1f)
         {
@@ -156,14 +162,48 @@ public class CarAgentFollow : MonoBehaviour
             if (_currentSpeed < _carAgent.speed)
             {
                 UnBrake();
-                _wheelColliders[2].motorTorque = _maxWheelTorque;
-                _wheelColliders[3].motorTorque = _maxWheelTorque;
+                _wheelColliders[2].motorTorque = _maxWheelTorque * _slopeMultiplier;
+                _wheelColliders[3].motorTorque = _maxWheelTorque * _slopeMultiplier;
             }
             else
             {
                 Idle(_currentSpeed / _carAgent.speed);
             }
 
+        }
+    }
+
+    float GetSlopAngle()
+    {
+        float angle = 0;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out _slopeHit))
+        {
+            angle = Vector3.Angle(_slopeHit.normal, Vector3.up);
+        }
+
+        return angle;
+    }
+
+    void CalculateSlopeSpeed()
+    {
+        if (GetSlopAngle() > _slopeAngles[0])
+        {
+            if (GetSlopAngle() > _slopeAngles[1])
+            {
+                if (GetSlopAngle() > _slopeAngles[2])
+                {
+                    _slopeMultiplier = 2.5f;
+                    return;
+                }
+                _slopeMultiplier = 2f;
+                return;
+            }
+            _slopeMultiplier = 1.5f;
+        }
+        else
+        {
+            _slopeMultiplier = 1f;
         }
     }
 

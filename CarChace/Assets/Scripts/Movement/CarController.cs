@@ -380,6 +380,7 @@ public class CarController : MonoBehaviour
 
     void Die()
     {
+        GameManager.Instance.EndGame();
         Debug.LogError("AUGH MY BONES (died)");
     }
 
@@ -398,7 +399,7 @@ public class CarController : MonoBehaviour
                 TakeDamage(_velocity);
             }
         }
-        else if (other.transform.CompareTag("Water"))
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
         {
             Die();
         }

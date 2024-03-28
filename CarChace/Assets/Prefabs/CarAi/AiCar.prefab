@@ -142,7 +142,12 @@ MonoBehaviour:
   _maxSteerAngle: 45
   _maxWheelTorque: 400
   _brakeTorque: 1000
+  _maxReroutes: 5
   _timeToDespawn: 10
+  _slopeAngles:
+  - 15
+  - 35
+  - 50
   _maxArrestSpeed: 1
   _timeToArrest: 3
   _arrestTimer: 0
@@ -183,6 +188,7 @@ MonoBehaviour:
   - {fileID: 1837893111310606785}
   - {fileID: 9054011858405821428}
   - {fileID: 7127527079538153148}
+  _slopeMultiplier: 1
   _currentSpeed: 0
   localTarget: {x: 0, y: 0, z: 0}
   targetAngle: 0

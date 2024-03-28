@@ -18,6 +18,8 @@ public class PoliceAgentFollow : MonoBehaviour
     [SerializeField] float _maxWheelTorque = 400f;
     [SerializeField] float _brakeTorque = 1000f;
 
+    [SerializeField] float[] _slopeAngles;
+
     [SerializeField] float _timeToDespawn = 10f;
 
     [Header("Info")]
@@ -26,7 +28,11 @@ public class PoliceAgentFollow : MonoBehaviour
     [SerializeField] float targetAngle;
     [SerializeField] float _preferredDistanceFromAgent;
 
+    [SerializeField] float _slopeMultiplier = 1f;
+
     float _distanceFromAgent;
+
+    RaycastHit _slopeHit;
 
     float _despawnTimer;
 
@@ -88,6 +94,40 @@ public class PoliceAgentFollow : MonoBehaviour
         }
     }
 
+    float GetSlopAngle()
+    {
+        float angle = 0;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out _slopeHit))
+        {
+            angle = Vector3.Angle(_slopeHit.normal, Vector3.up);
+        }
+
+        return angle;
+    }
+
+    void CalculateSlopeSpeed()
+    {
+        if (GetSlopAngle() > _slopeAngles[0])
+        {
+            if (GetSlopAngle() > _slopeAngles[1])
+            {
+                if (GetSlopAngle() > _slopeAngles[2])
+                {
+                    _slopeMultiplier = 2.5f;
+                    return;
+                }
+                _slopeMultiplier = 2f;
+                return;
+            }
+            _slopeMultiplier = 1.5f;
+        }
+        else
+        {
+            _slopeMultiplier = 1f;
+        }
+    }
+
     void HandleAcceleration()
     {
         if (targetAngle > _maxSteerAngle && _currentSpeed > _minSpeedForTurn)
@@ -103,8 +143,8 @@ public class PoliceAgentFollow : MonoBehaviour
             if (_currentSpeed < _carAgent.speed)
             {
                 UnBrake();
-                _wheelColliders[2].motorTorque = _maxWheelTorque;
-                _wheelColliders[3].motorTorque = _maxWheelTorque;
+                _wheelColliders[2].motorTorque = _maxWheelTorque * _slopeMultiplier;
+                _wheelColliders[3].motorTorque = _maxWheelTorque * _slopeMultiplier;
             }
             else
             {
