@@ -21,6 +21,8 @@ public class CarController : MonoBehaviour
     [SerializeField] WheelCollider _leftBack;
     [SerializeField] WheelCollider _rightBack;
 
+    [SerializeField] float _averageRpm;
+
     [SerializeField] bool _frontWheelDrive;
 
     [SerializeField] float _minAngle;
@@ -55,6 +57,7 @@ public class CarController : MonoBehaviour
     [SerializeField] Gear[] _gears;
     [SerializeField] int _currentGear;
     float _reverseTimer;
+    CarAudioController _carAudioController;
     #endregion
 
     [SerializeField] Vector3 _respawnHeightOffset = new Vector3(0, 1, 0);
@@ -141,6 +144,8 @@ public class CarController : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
 
+        _carAudioController = GetComponent<CarAudioController>();
+
         _health = _startHealth;
         _healthSlider.maxValue = _startHealth;
         UpdateHealthSlider(_health);
@@ -226,6 +231,9 @@ public class CarController : MonoBehaviour
         _healthSlider.value = _health;
 
         _animator.SetFloat("Speed", speed);
+
+        _averageRpm = (_leftBack.rpm + _leftFront.rpm + _rightBack.rpm + _rightFront.rpm) / 4;
+        _carAudioController.rpm = _averageRpm;
 
         if (_velocity > _minSpeedForParticle)
         {

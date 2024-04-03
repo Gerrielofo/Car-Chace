@@ -2624,6 +2624,7 @@ GameObject:
   - component: {fileID: 9125834235423983322}
   - component: {fileID: 2624263772724499948}
   - component: {fileID: 5378519008579041711}
+  - component: {fileID: 283193954410877563}
   m_Layer: 12
   m_Name: Police car
   m_TagString: Untagged
@@ -2835,6 +2836,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &283193954410877563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502627797713764400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6614dc75adaacc64498d415fc92466ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  engineNotes: []
+  rpm: 0
+  masterVolume: 0
 --- !u!1 &1528784052635836792
 GameObject:
   m_ObjectHideFlags: 0
@@ -23750,6 +23766,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1718767676654408191}
     m_Modifications:
+    - target: {fileID: 6470395658446269752, guid: 3ca795cbe5429004da94316f8e6a81f1, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].repeatInterval
+      value: 0.08
+      objectReference: {fileID: 0}
     - target: {fileID: 6558727741377346826, guid: 3ca795cbe5429004da94316f8e6a81f1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
