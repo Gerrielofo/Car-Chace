@@ -136,6 +136,9 @@ public class CarAgent : MonoBehaviour
 
         _colliders = Physics.OverlapSphere(transform.position, _waypointCheckRange, _wayPointMask);
 
+        if (_colliders.Length == 0)
+            return;
+
         List<Transform> validWaypoints = new();
         for (int i = 0; i < _colliders.Length; i++)
         {
@@ -162,7 +165,7 @@ public class CarAgent : MonoBehaviour
             }
         }
 
-        _currentWaypoint = validWaypoints[Random.Range(0, validWaypoints.Count - 1)];
+        _currentWaypoint = validWaypoints[Random.Range(0, validWaypoints.Count)];
         _colliders = null;
     }
 

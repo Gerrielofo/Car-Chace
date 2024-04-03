@@ -77,11 +77,18 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
         _isAlive = false;
-        float pointMultiplier = _maxPointGain / _timeAlive * 10;
+        float pointMultiplier = _maxPointGain / (_timeAlive / 80);
         int pointsToGain = (int)pointMultiplier;
+
+        if (pointsToGain > _maxPointGain)
+        {
+            pointsToGain = (int)_maxPointGain;
+        }
+
+        Debug.Log($"you get this much points: {pointsToGain}");
 
         _carAI.isAlive = false;
         _canvas.gameObject.SetActive(false);
@@ -90,6 +97,8 @@ public class Enemy : MonoBehaviour
         {
             GameManager.Instance.AddPoints(pointsToGain);
         }
+
+        FindObjectOfType<EnemyManager>().RemoveEnemy(this);
 
         GetComponent<CarCrash>().crash = true;
 

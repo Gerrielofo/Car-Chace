@@ -128,7 +128,7 @@ public class CarAgentFollow : MonoBehaviour
         else
         {
             Debug.Log("Ay you arrested that fool yo");
-            Die();
+            GetComponent<Enemy>().Die();
         }
     }
 
@@ -235,7 +235,6 @@ public class CarAgentFollow : MonoBehaviour
 
     public void Die()
     {
-        FindObjectOfType<EnemyManager>().RemoveEnemy(GetComponent<Enemy>());
         isAlive = false;
         GetComponent<CarCrash>().crash = true;
         Destroy(_carAgent.gameObject);
