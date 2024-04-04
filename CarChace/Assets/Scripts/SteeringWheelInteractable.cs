@@ -9,7 +9,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class SteeringWheelInteractable : XRBaseInteractable
 {
     [SerializeField] Transform _wheelTransform;
-    [SerializeField] Transform _holderTransform;
 
     [SerializeField] float _currentAngle;
 
@@ -45,8 +44,7 @@ public class SteeringWheelInteractable : XRBaseInteractable
         float angleDifference = _currentAngle - totalAngle;
 
         _currentAngle = totalAngle;
-        // _wheelTransform.localRotation = Quaternion.Euler(new Vector3(0, 0, totalAngle));
-        _holderTransform.localRotation = Quaternion.Euler(new Vector3(0, 0, totalAngle));
+        _wheelTransform.localRotation = Quaternion.Euler(new Vector3(0, 0, totalAngle));
         onTurning?.Invoke(angleDifference);
     }
 
