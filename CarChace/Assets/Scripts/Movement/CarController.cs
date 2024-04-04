@@ -53,7 +53,6 @@ public class CarController : MonoBehaviour
     [SerializeField] float _reverseDelay = 1f;
     [SerializeField] bool _canReverse;
     [SerializeField] float _brakeForce = 1000;
-    [SerializeField] float _acceleration;
     [SerializeField] Gear[] _gears;
     [SerializeField] int _currentGear;
     float _reverseTimer;
@@ -98,7 +97,9 @@ public class CarController : MonoBehaviour
 
     [Header("Upgrades")]
     #region Upgrades
-    [SerializeField] GameObject[] _carMods;
+    [SerializeField] GameObject[] _carMods1;
+    [SerializeField] GameObject[] _carMods2;
+    [SerializeField] GameObject[] _carMods3;
     #endregion
 
     [SerializeField] ParticleSystem _speedParticle;
@@ -168,12 +169,30 @@ public class CarController : MonoBehaviour
 
         for (int i = 0; i < PlayerPrefs.GetInt("carModIndex"); i++)
         {
-            if (_carMods.Length > i)
+            if (i == 0)
             {
-                _carMods[i].SetActive(true);
-                continue;
+                for (int one = 0; one < _carMods1.Length; one++)
+                {
+                    _carMods1[one].SetActive(true);
+                }
             }
-            break;
+
+            if (i == 1)
+            {
+                for (int two = 0; two < _carMods1.Length; two++)
+                {
+                    _carMods2[two].SetActive(true);
+                }
+            }
+
+            if (i == 2)
+            {
+                for (int three = 0; three < _carMods1.Length; three++)
+                {
+                    _carMods3[three].SetActive(true);
+                }
+            }
+
         }
     }
 
@@ -371,7 +390,6 @@ public class CarController : MonoBehaviour
                 _currentGear--;
             }
             _speed = _gears[_currentGear].speed;
-            _acceleration = _gears[_currentGear].acceleration;
             return;
         }
         if (_currentGear != 0 && _velocity < _gears[_currentGear].minimumSpeed)
