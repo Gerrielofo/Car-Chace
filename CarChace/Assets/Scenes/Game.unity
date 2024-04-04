@@ -196,6 +196,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fb314b532dba5b4d8ee865fdc097192, type: 3}
+--- !u!4 &13099997 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1726429750415654725, guid: 1fb314b532dba5b4d8ee865fdc097192, type: 3}
+  m_PrefabInstance: {fileID: 13099996}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &181128905
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,6 +406,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2278274372663170079, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
+      propertyPath: _respawnTransform
+      value: 
+      objectReference: {fileID: 13099997}
     - target: {fileID: 2278274372663170079, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
       propertyPath: _carMods1.Array.size
       value: 4
