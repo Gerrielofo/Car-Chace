@@ -454,6 +454,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1594608446799945233, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1162727976}
+    - target: {fileID: 1594608446799945233, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EndGame
+      objectReference: {fileID: 0}
     - target: {fileID: 1962217824121762531, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -522,9 +530,37 @@ PrefabInstance:
       propertyPath: _carMods3.Array.data[0]
       value: 
       objectReference: {fileID: 437756459}
+    - target: {fileID: 3511234357703807313, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6982316435996192394, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
       propertyPath: m_Name
       value: New Police Car
+      objectReference: {fileID: 0}
+    - target: {fileID: 7508617772869808558, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1162727976}
+    - target: {fileID: 7508617772869808558, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Retry
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100947416636992785, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1162727976}
+    - target: {fileID: 9100947416636992785, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EndGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152518462001256089, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1162727976}
+    - target: {fileID: 9152518462001256089, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EndGame
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
