@@ -14,6 +14,10 @@ public class CarController : MonoBehaviour
 
     Animator _animator;
 
+    [SerializeField] Transform _helicopterFollowPoint;
+    [SerializeField]
+    Vector3 _helicopterOffset = new Vector3(10, 40, 0);
+
     [Header("Wheel Settings")]
     #region Wheel Settings
     [SerializeField] WheelCollider _leftFront;
@@ -63,7 +67,6 @@ public class CarController : MonoBehaviour
 
     [SerializeField] float _velocity;
 
-    [SerializeField] TMP_Text _speedTxt;
     [SerializeField] TMP_Text _gearTxt;
 
 
@@ -246,6 +249,7 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
+        _helicopterFollowPoint.position = transform.position + _helicopterOffset;
         float speed = _velocity;
         _healthSlider.value = _health;
 

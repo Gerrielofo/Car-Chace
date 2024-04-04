@@ -178,7 +178,7 @@ PrefabInstance:
     - target: {fileID: 5847166191306797661, guid: 1fb314b532dba5b4d8ee865fdc097192, type: 3}
       propertyPath: _camPoint
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 707641085}
     - target: {fileID: 5847166191306797661, guid: 1fb314b532dba5b4d8ee865fdc097192, type: 3}
       propertyPath: _followPos
       value: 
@@ -479,6 +479,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2278274372663170079, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
+      propertyPath: _helicopterFollowPoint
+      value: 
+      objectReference: {fileID: 707641085}
+    - target: {fileID: 2278274372663170079, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
       propertyPath: _carMods1.Array.data[0]
       value: 
       objectReference: {fileID: 437756463}
@@ -701,7 +705,7 @@ GameObject:
   m_Component:
   - component: {fileID: 707641085}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: HelicopterFollowPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -715,8 +719,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707641084}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -22.9, y: 40, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
