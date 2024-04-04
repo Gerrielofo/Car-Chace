@@ -45,12 +45,6 @@ public class MainMenuManager : MonoBehaviour
         _actionBasedSnapTurnProvider = _playerObj.GetComponent<ActionBasedSnapTurnProvider>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     #region Audio
 
     public void ChangeMasterVol(float prc)
@@ -118,6 +112,16 @@ public class MainMenuManager : MonoBehaviour
     {
         GameManager.Instance.isPlaying = true;
         SceneManager.LoadScene(GameManager.Instance.gameScene);
+    }
+
+    public void AddPoints(int amount)
+    {
+        if (amount > 0)
+            GameManager.Instance.AddPoints(amount);
+        else
+        {
+            Debug.LogError("Point Amount Not Set!");
+        }
     }
 
 
