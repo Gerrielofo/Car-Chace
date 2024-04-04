@@ -7,9 +7,6 @@ using UnityEngine.InputSystem;
 public class ResetCamPos : MonoBehaviour
 {
     [SerializeField] PlayerInput playerInput;
-
-    [SerializeField] Transform _camera;
-    [SerializeField] Transform _camOffset;
     [SerializeField] Transform _desiredCamPos;
 
     [SerializeField] bool _doReset;
