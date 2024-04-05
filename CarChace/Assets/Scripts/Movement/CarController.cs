@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
-using UnityEditor;
 using System;
 using Unity.XR.CoreUtils;
 using UnityEngine.UI;
+
 public class CarController : MonoBehaviour
 {
     [SerializeField] private PlayerInput playerInput = null;
@@ -15,8 +15,7 @@ public class CarController : MonoBehaviour
     Animator _animator;
 
     [SerializeField] Transform _helicopterFollowPoint;
-    [SerializeField]
-    Vector3 _helicopterOffset = new Vector3(10, 40, 0);
+    [SerializeField] Vector3 _helicopterOffset = new Vector3(10, 40, 0);
 
     [Header("Wheel Settings")]
     #region Wheel Settings
@@ -35,6 +34,7 @@ public class CarController : MonoBehaviour
     [SerializeField] float _steerSensitivity;
     [SerializeField] float _steerAngle;
     [SerializeField] Transform _steeringWheelRotation;
+    [SerializeField] GameObject _steeringWheelHolder;
     #endregion
 
     [Header("Stats")]
@@ -56,7 +56,7 @@ public class CarController : MonoBehaviour
     #region Engine Options
     [SerializeField] float _reverseDelay = 1f;
     [SerializeField] bool _canReverse;
-    [SerializeField] float _brakeForce = 1000;
+    [SerializeField] float _brakeForce = 1000f;
     [SerializeField] Gear[] _gears;
     [SerializeField] int _currentGear;
     float _reverseTimer;
@@ -70,7 +70,6 @@ public class CarController : MonoBehaviour
     [SerializeField] TMP_Text _gearTxt;
 
 
-    [SerializeField] GameObject _steeringWheelHolder;
 
     [SerializeField] Transform _respawnTransform;
     [SerializeField] bool _isReset;
@@ -250,12 +249,20 @@ public class CarController : MonoBehaviour
     private void Update()
     {
         _helicopterFollowPoint.position = transform.position + _helicopterOffset;
+
         float speed = _velocity;
         _healthSlider.value = _health;
 
         _animator.SetFloat("Speed", speed);
 
-        _averageRpm = (_leftBack.rpm + _leftFront.rpm + _rightBack.rpm + _rightFront.rpm) / 4;
+        if (_frontWheelDrive)
+        {
+            _averageRpm = (_leftBack.rpm + _leftFront.rpm + _rightBack.rpm + _rightFront.rpm) / 4;
+        }
+        else
+        {
+            _averageRpm = (_leftBack.rpm + _rightBack.rpm) / 2;
+        }
         _carAudioController.rpm = _averageRpm;
 
         if (_velocity > _minSpeedForParticle)
@@ -393,7 +400,7 @@ public class CarController : MonoBehaviour
             {
                 _currentGear--;
             }
-            _speed = _gears[_currentGear].speed;
+            _speed = _gears[_currentGear].speed * _isMove * (1 + _isExtraMove) * _speedMultiplier * _speedBoost;
             return;
         }
         if (_currentGear != 0 && _velocity < _gears[_currentGear].minimumSpeed)

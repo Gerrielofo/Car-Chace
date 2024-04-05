@@ -88,8 +88,6 @@ public class Enemy : MonoBehaviour
             pointsToGain = (int)_maxPointGain;
         }
 
-        Debug.Log($"you get this much points: {pointsToGain}");
-
         _carAI.isAlive = false;
         _canvas.gameObject.SetActive(false);
 
