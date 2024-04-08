@@ -458,10 +458,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1162727976}
-    - target: {fileID: 1594608446799945233, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EndGame
-      objectReference: {fileID: 0}
     - target: {fileID: 1962217824121762531, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -475,123 +471,34 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 13099997}
     - target: {fileID: 2278274372663170079, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-      propertyPath: _carMods1.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2278274372663170079, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-      propertyPath: _carMods2.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2278274372663170079, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-      propertyPath: _carMods3.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2278274372663170079, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
       propertyPath: _helicopterFollowPoint
       value: 
       objectReference: {fileID: 707641085}
-    - target: {fileID: 2278274372663170079, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-      propertyPath: _carMods1.Array.data[0]
-      value: 
-      objectReference: {fileID: 437756463}
-    - target: {fileID: 2278274372663170079, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-      propertyPath: _carMods1.Array.data[1]
-      value: 
-      objectReference: {fileID: 437756462}
-    - target: {fileID: 2278274372663170079, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-      propertyPath: _carMods1.Array.data[2]
-      value: 
-      objectReference: {fileID: 437756461}
-    - target: {fileID: 2278274372663170079, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-      propertyPath: _carMods1.Array.data[3]
-      value: 
-      objectReference: {fileID: 437756460}
-    - target: {fileID: 2278274372663170079, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-      propertyPath: _carMods1.Array.data[4]
-      value: 
-      objectReference: {fileID: 437756463}
-    - target: {fileID: 2278274372663170079, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-      propertyPath: _carMods1.Array.data[5]
-      value: 
-      objectReference: {fileID: 437756462}
-    - target: {fileID: 2278274372663170079, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-      propertyPath: _carMods1.Array.data[6]
-      value: 
-      objectReference: {fileID: 437756461}
-    - target: {fileID: 2278274372663170079, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-      propertyPath: _carMods1.Array.data[7]
-      value: 
-      objectReference: {fileID: 437756460}
-    - target: {fileID: 2278274372663170079, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-      propertyPath: _carMods2.Array.data[0]
-      value: 
-      objectReference: {fileID: 1258512696}
-    - target: {fileID: 2278274372663170079, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-      propertyPath: _carMods3.Array.data[0]
-      value: 
-      objectReference: {fileID: 437756459}
-    - target: {fileID: 3511234357703807313, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6982316435996192394, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
       propertyPath: m_Name
       value: New Police Car
       objectReference: {fileID: 0}
-    - target: {fileID: 7508617772869808558, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
+    - target: {fileID: 7360416785245557429, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1162727976}
     - target: {fileID: 7508617772869808558, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Retry
-      objectReference: {fileID: 0}
-    - target: {fileID: 9100947416636992785, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1162727976}
     - target: {fileID: 9100947416636992785, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EndGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 9152518462001256089, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1162727976}
     - target: {fileID: 9152518462001256089, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EndGame
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1162727976}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
---- !u!1 &437756459 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7705440615551433139, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-  m_PrefabInstance: {fileID: 437756458}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &437756460 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2849197537754072826, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-  m_PrefabInstance: {fileID: 437756458}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &437756461 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4428973610042499440, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-  m_PrefabInstance: {fileID: 437756458}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &437756462 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6381617472596084165, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-  m_PrefabInstance: {fileID: 437756458}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &437756463 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4344933813288088177, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-  m_PrefabInstance: {fileID: 437756458}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &537303275
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,7 +623,7 @@ MonoBehaviour:
   _enemies: []
   _allWaypoints: []
   _enemyPrefab: {fileID: 2108462753893103753, guid: 6a259804e3434fb4da46f60debd217eb, type: 3}
-  _enemiesToSpawn: 1
+  _enemiesToSpawn: 3
   _spawnDelay: 1
   _possibleColors:
   - {r: 1, g: 1, b: 1, a: 1}
@@ -995,11 +902,6 @@ MonoBehaviour:
   - {fileID: 80060724}
   - {fileID: 80060728}
   - {fileID: 80060726}
---- !u!1 &1258512696 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2765391462618976853, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
-  m_PrefabInstance: {fileID: 437756458}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1280978709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1026,7 +928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8693758855903660830, guid: 6a259804e3434fb4da46f60debd217eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -203.9
+      value: -49.43
       objectReference: {fileID: 0}
     - target: {fileID: 8693758855903660830, guid: 6a259804e3434fb4da46f60debd217eb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1034,7 +936,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8693758855903660830, guid: 6a259804e3434fb4da46f60debd217eb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -105.250015
+      value: 2.19
       objectReference: {fileID: 0}
     - target: {fileID: 8693758855903660830, guid: 6a259804e3434fb4da46f60debd217eb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1559,5 +1461,5 @@ SceneRoots:
   - {fileID: 537303276}
   - {fileID: 13099996}
   - {fileID: 332141745}
-  - {fileID: 1280978709}
   - {fileID: 437756458}
+  - {fileID: 1280978709}

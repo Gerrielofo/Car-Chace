@@ -146,6 +146,8 @@ public class CarController : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        _blueLightGO.SetActive(false);
+        _redLightGO.SetActive(false);
 
         _carAudioController = GetComponent<CarAudioController>();
 
@@ -477,6 +479,7 @@ public class CarController : MonoBehaviour
     void EmitParticles()
     {
         int emitionAmount = (int)(_speed / 500);
+        Debug.Log($"Emiiting {emitionAmount} particles");
         _speedParticle.Emit(emitionAmount);
     }
 

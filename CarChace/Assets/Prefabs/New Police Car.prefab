@@ -1518,7 +1518,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2278274372663170079}
         m_TargetAssemblyTypeName: CarController, Assembly-CSharp
         m_MethodName: ToggleSiren
         m_Mode: 1
@@ -5105,18 +5105,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!1 &2977029901872059969
 GameObject:
   m_ObjectHideFlags: 0
@@ -5884,18 +5872,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &3118894659659899416
 GameObject:
@@ -6685,6 +6661,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6047189806913089352}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &3619667656252888767
 GameObject:
@@ -7921,7 +7909,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 150
+      scalar: 1
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -15832,7 +15820,7 @@ GameObject:
   - component: {fileID: 4354044894037978497}
   - component: {fileID: 2683245965117404422}
   - component: {fileID: 6603273135241590119}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: New Police Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15957,6 +15945,7 @@ MonoBehaviour:
   _steerSensitivity: 2
   _steerAngle: 0
   _steeringWheelRotation: {fileID: 7880352950845776757}
+  _steeringWheelHolder: {fileID: 0}
   _startHealth: 2000
   _health: 0
   _healthSlider: {fileID: 2421628154693122587}
@@ -15977,7 +15966,6 @@ MonoBehaviour:
   _respawnHeightOffset: {x: 0, y: 1, z: 0}
   _velocity: 0
   _gearTxt: {fileID: 1761667625567455747}
-  _steeringWheelHolder: {fileID: 0}
   _respawnTransform: {fileID: 0}
   _isReset: 0
   _speed: 0
@@ -16001,7 +15989,7 @@ MonoBehaviour:
   _carMods3:
   - {fileID: 7705440615551433139}
   _speedParticle: {fileID: 6507957731060104523}
-  _minSpeedForParticle: 15
+  _minSpeedForParticle: 7
 --- !u!114 &2334933695347467012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16099,7 +16087,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 9012725527252938135, guid: 87e6ae95f3e99a744a81bd067a8130f2, type: 2}
-  m_audioClip: {fileID: 8300000, guid: a2433afdf39a6f842a45e18593605af0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 945cb281b315dd94aa858429bac79b62, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
