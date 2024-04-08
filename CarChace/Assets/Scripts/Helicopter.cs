@@ -42,6 +42,10 @@ public class Helicopter : MonoBehaviour
 
     private void Update()
     {
+        if (_startPos == null)
+        {
+            return;
+        }
         _isLanded = Vector3.Distance(transform.position, _startPos.position) < _landDistance;
 
         if (transform.position.y < _flyHeight && _canFly)

@@ -116,9 +116,9 @@ public class CarAgent : MonoBehaviour
             }
             else
             {
-                int rng = Random.Range(0, _currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints.Length - 1);
+                int rng = Random.Range(0, _currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints.Count - 1);
 
-                if (_currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints.Length != 0)
+                if (_currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints.Count != 0)
                     _currentWaypoint = _currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints[rng];
                 if (_onIntersection)
                 {

@@ -12,7 +12,7 @@ public class Waypoint : MonoBehaviour
         set { _wayPointIndex = value; }
     }
 
-    public Transform[] _possibleNextWaypoints;
+    public List<Transform> _possibleNextWaypoints;
 
     public Transform interSection;
 
@@ -28,14 +28,14 @@ public class Waypoint : MonoBehaviour
 
     private void Start()
     {
-        if (WayPointIndex == 0 && _possibleNextWaypoints.Length == 0)
+        if (WayPointIndex == 0 && _possibleNextWaypoints.Count == 0)
         {
             Intersection();
         }
-        else if (_possibleNextWaypoints.Length == 0)
+        else if (_possibleNextWaypoints.Count == 0)
         {
-            _possibleNextWaypoints = GetNextWayPoints().ToArray();
-            if (_possibleNextWaypoints.Length != 0)
+            _possibleNextWaypoints = GetNextWayPoints();
+            if (_possibleNextWaypoints.Count != 0)
             {
                 angleToNextPoint = Vector3.Angle(transform.position, _possibleNextWaypoints[0].position);
             }
@@ -49,29 +49,62 @@ public class Waypoint : MonoBehaviour
 
     }
 
+    [SerializeField] List<Transform> validOptions = new();
     void Intersection()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, _wayPointRadius, _wayPointMask);
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (colliders[i].GetComponent<Waypoint>()._wayPointIndex == 1 && colliders[i].transform != this.transform)
+            Waypoint waypoint = colliders[i].GetComponent<Waypoint>();
+            if (waypoint != this && waypoint._possibleNextWaypoints.Count == 0)
             {
-                transforms1.Add(colliders[i].transform);
+                waypoint._wayPointIndex = 3;
             }
-            else if (colliders[i].GetComponent<Waypoint>()._wayPointIndex == 2 && colliders[i].transform != this.transform)
+            else
             {
-                transforms2.Add(colliders[i].transform);
+                if (waypoint != this)
+                {
+                    validOptions.Add(waypoint.transform);
+                    Debug.Log("Added A Valid Option");
+                }
             }
+
         }
 
-
-        for (int i = 0; i < transforms1.Count; i++)
+        for (int i = 0; i < colliders.Length; i++)
         {
-            transforms1[i].GetComponent<Waypoint>().interSection = this.transform;
-        }
+            Waypoint waypoint = colliders[i].GetComponent<Waypoint>();
+            if (waypoint.WayPointIndex == 3)
+            {
+                Debug.Log("Index Was 3");
+            }
 
-        for (int i = 0; i < transforms2.Count; i++)
-        {
+            Debug.Log("Checklist Length == " + validOptions.Count);
+            float closestRange = Mathf.Infinity;
+            Transform closestTransform = null;
+            for (int w = 0; w < validOptions.Count; w++)
+            {
+                if (closestTransform == null)
+                {
+                    closestTransform = validOptions[w];
+                    closestRange = Vector3.Distance(validOptions[w].transform.position, closestTransform.position);
+                }
+                else if (Vector3.Distance(waypoint.transform.position, closestTransform.position) < closestRange)
+                {
+                    closestRange = Vector3.Distance(validOptions[w].transform.position, closestTransform.position);
+                    closestTransform = validOptions[w];
+                }
+            }
+            if (closestTransform != null && validOptions.Contains(closestTransform))
+            {
+                Debug.Log($"Removing {closestTransform.gameObject.name} from valid points for {waypoint.gameObject.name}");
+                waypoint._possibleNextWaypoints = validOptions;
+                waypoint._possibleNextWaypoints.Remove(closestTransform);
+            }
+            else
+            {
+                continue;
+            }
             transforms2[i].GetComponent<Waypoint>().interSection = this.transform;
         }
     }
@@ -127,7 +160,6 @@ public class Waypoint : MonoBehaviour
         {
             Gizmos.color = Color.blue;
         }
-
         Gizmos.DrawWireSphere(transform.position, _wayPointRadius);
     }
 }
