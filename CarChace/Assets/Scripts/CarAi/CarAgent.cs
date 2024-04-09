@@ -172,7 +172,8 @@ public class CarAgent : MonoBehaviour
                 }
             }
         }
-
+        if (validWaypoints.Count == 0)
+            return;
         _currentWaypoint = validWaypoints[Random.Range(0, validWaypoints.Count)];
         _colliders = null;
     }

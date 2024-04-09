@@ -156,12 +156,12 @@ MonoBehaviour:
   - {fileID: 6426012852856651328}
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &671832227407040873
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -272,12 +272,12 @@ MonoBehaviour:
   _possibleNextWaypoints: []
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &7849927938203021580
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -350,12 +350,12 @@ MonoBehaviour:
   - {fileID: 234172938818511485}
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &135108376376338305
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -533,12 +533,12 @@ MonoBehaviour:
   - {fileID: 3588565885197995822}
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &4487796738975261737
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -611,12 +611,12 @@ MonoBehaviour:
   - {fileID: 5760623689986947574}
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &2614277648615697045
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -835,12 +835,12 @@ MonoBehaviour:
   - {fileID: 3976380833842678711}
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &416490154028901055
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -911,12 +911,12 @@ MonoBehaviour:
   _possibleNextWaypoints: []
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &4805471389613408571
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -989,12 +989,12 @@ MonoBehaviour:
   - {fileID: 8900279886833571372}
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &9174030319220589130
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1172,12 +1172,12 @@ MonoBehaviour:
   - {fileID: 3976380833842678711}
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &5795317244064462385
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1249,12 +1249,12 @@ MonoBehaviour:
   - {fileID: 2456872604063682395}
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &1858243144065394337
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1327,12 +1327,12 @@ MonoBehaviour:
   - {fileID: 4629420812295943038}
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &9121162483062763766
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1404,12 +1404,12 @@ MonoBehaviour:
   - {fileID: 3663278809926429834}
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &3344770186555704358
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1481,12 +1481,12 @@ MonoBehaviour:
   - {fileID: 1163081841870177766}
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &1470969630907434533
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1554,15 +1554,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPointIndex: 3
-  _possibleNextWaypoints: []
+  _possibleNextWaypoints:
+  - {fileID: 4434734669857783703}
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &7613188537845317352
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1635,12 +1636,12 @@ MonoBehaviour:
   - {fileID: 2456872604063682395}
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &4007069413260039931
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1711,12 +1712,12 @@ MonoBehaviour:
   _possibleNextWaypoints: []
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &8656903709028064065
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1828,12 +1829,12 @@ MonoBehaviour:
   - {fileID: 5760623689986947574}
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &93915305358672151
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1905,12 +1906,12 @@ MonoBehaviour:
   - {fileID: 1017218591701918821}
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &3059421180683049296
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1981,12 +1982,12 @@ MonoBehaviour:
   _possibleNextWaypoints: []
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &8356818712413125752
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2091,12 +2092,12 @@ MonoBehaviour:
   - {fileID: 234172938818511485}
   interSection: {fileID: 0}
   angleToNextPoint: 0
+  isBridge: 0
   _wayPointMask:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &2607186375367365514
 BoxCollider:
   m_ObjectHideFlags: 0

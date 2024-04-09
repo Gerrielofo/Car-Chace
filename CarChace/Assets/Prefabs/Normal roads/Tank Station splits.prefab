@@ -86,7 +86,7 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
   validOptions: []
 --- !u!65 &333089408828278278
@@ -163,7 +163,7 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
   validOptions: []
 --- !u!65 &8964492293328357692
@@ -239,7 +239,7 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
   validOptions: []
 --- !u!65 &8173306338790948229
@@ -348,7 +348,7 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
   validOptions: []
 --- !u!65 &7455170226503400022

@@ -193,13 +193,13 @@ public class CarAgentFollow : MonoBehaviour
             {
                 if (GetSlopAngle() > _slopeAngles[2])
                 {
-                    _slopeMultiplier = 2.5f;
+                    _slopeMultiplier = 3f;
                     return;
                 }
-                _slopeMultiplier = 2f;
+                _slopeMultiplier = 2.5f;
                 return;
             }
-            _slopeMultiplier = 1.5f;
+            _slopeMultiplier = 2f;
         }
         else
         {
