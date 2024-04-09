@@ -56,6 +56,8 @@ public class PoliceAgentFollow : MonoBehaviour
         _distanceFromAgent = Vector3.Distance(transform.position, _carAgent.transform.position);
         _currentSpeed = GetComponent<Rigidbody>().velocity.magnitude;
 
+        _slopeMultiplier = GetSlopAngle() / 3 + 1;
+
         if (_currentSpeed < 0.1f)
         {
             _despawnTimer += Time.deltaTime;
@@ -104,28 +106,6 @@ public class PoliceAgentFollow : MonoBehaviour
         }
 
         return angle;
-    }
-
-    void CalculateSlopeSpeed()
-    {
-        if (GetSlopAngle() > _slopeAngles[0])
-        {
-            if (GetSlopAngle() > _slopeAngles[1])
-            {
-                if (GetSlopAngle() > _slopeAngles[2])
-                {
-                    _slopeMultiplier = 2.5f;
-                    return;
-                }
-                _slopeMultiplier = 2f;
-                return;
-            }
-            _slopeMultiplier = 1.5f;
-        }
-        else
-        {
-            _slopeMultiplier = 1f;
-        }
     }
 
     void HandleAcceleration()

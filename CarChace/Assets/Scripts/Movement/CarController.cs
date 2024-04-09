@@ -64,9 +64,9 @@ public class CarController : MonoBehaviour
     #endregion
 
     [SerializeField] Vector3 _respawnHeightOffset = new Vector3(0, 1, 0);
-
+    [SerializeField] float _slopeSpeedMultiplier;
     [SerializeField] float _velocity;
-
+    [SerializeField] RaycastHit _slopeHit;
     [SerializeField] TMP_Text _gearTxt;
 
 
@@ -256,6 +256,7 @@ public class CarController : MonoBehaviour
         _healthSlider.value = _health;
 
         _animator.SetFloat("Speed", speed);
+        _slopeSpeedMultiplier = GetSlopAngle() / 3 + 1;
 
         if (_frontWheelDrive)
         {
@@ -393,6 +394,17 @@ public class CarController : MonoBehaviour
         HandleSpeed();
     }
 
+    float GetSlopAngle()
+    {
+        float angle = 0;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out _slopeHit))
+        {
+            angle = Vector3.Angle(_slopeHit.normal, Vector3.up);
+        }
+
+        return angle;
+    }
 
     void HandleSpeed()
     {
@@ -414,7 +426,7 @@ public class CarController : MonoBehaviour
             _currentGear++;
         }
 
-        _speed = _gears[_currentGear].speed * _isMove * (1 + _isExtraMove) * _speedMultiplier * _speedBoost;
+        _speed = _gears[_currentGear].speed * _isMove * (1 + _isExtraMove) * _speedMultiplier * _speedBoost * _slopeSpeedMultiplier;
     }
 
     void Die()
