@@ -35,27 +35,12 @@ public class Boat : MonoBehaviour
 
     void Update()
     {
-        if (_navMeshAgent.destination != transform.position)
-        {
-            _distanceFromPoint = Vector3.Distance(transform.position, _navMeshAgent.destination);
-        }
+        _distanceFromPoint = Vector3.Distance(transform.position, _navMeshAgent.destination);
 
         if (_distanceFromPoint < _minDistanceFromPoint)
         {
             _navMeshAgent.destination = GetRandomDestination();
         }
-    }
-
-    private bool CheckForAngle(Vector3 point, Vector3 boat, Vector3 direction) //calculates the angle between the boat and the postion 
-    {
-        Vector3 distance = (point - boat).normalized;
-        float CosAngle = Vector3.Dot(distance, direction);
-        float Angle = Mathf.Acos(CosAngle) * Mathf.Rad2Deg;
-
-        if (Angle < _fov)
-            return true;
-        else
-            return false;
     }
 
     Vector3 GetRandomDestination()
