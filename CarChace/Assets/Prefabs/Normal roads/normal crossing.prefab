@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8102035517182894489}
   - component: {fileID: 1490224177833014398}
-  - component: {fileID: 6996694856425008480}
   m_Layer: 9
   m_Name: Waypoint
   m_TagString: Untagged
@@ -54,60 +53,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 9
-  transforms1: []
-  transforms2: []
---- !u!65 &6996694856425008480
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1017420068457676069}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &2655716868091371134
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8042218675108677237}
-  m_Layer: 0
-  m_Name: Waypoints
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8042218675108677237
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2655716868091371134}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.8228407, y: 1.7696209, z: -1.796524}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8981660148960439224}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  validOptions: []
 --- !u!1001 &8876591759995227219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -174,9 +120,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: f7dfc3dd16dcd4b48bdd56ebb9b34404, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8102035517182894489}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: f7dfc3dd16dcd4b48bdd56ebb9b34404, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8042218675108677237}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f7dfc3dd16dcd4b48bdd56ebb9b34404, type: 3}
       insertIndex: -1

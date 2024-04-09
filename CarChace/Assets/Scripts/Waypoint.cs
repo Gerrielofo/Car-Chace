@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class Waypoint : MonoBehaviour
@@ -22,9 +20,6 @@ public class Waypoint : MonoBehaviour
 
     [SerializeField] LayerMask _wayPointMask;
     [SerializeField] float _wayPointRadius;
-
-    [SerializeField] List<Transform> transforms1 = new();
-    [SerializeField] List<Transform> transforms2 = new();
 
     private void Start()
     {
@@ -65,7 +60,6 @@ public class Waypoint : MonoBehaviour
                 if (waypoint != this)
                 {
                     validOptions.Add(waypoint.transform);
-                    Debug.Log("Added A Valid Option");
                 }
             }
 
@@ -74,38 +68,34 @@ public class Waypoint : MonoBehaviour
         for (int i = 0; i < colliders.Length; i++)
         {
             Waypoint waypoint = colliders[i].GetComponent<Waypoint>();
-            if (waypoint.WayPointIndex == 3)
-            {
-                Debug.Log("Index Was 3");
-            }
 
-            Debug.Log("Checklist Length == " + validOptions.Count);
             float closestRange = Mathf.Infinity;
             Transform closestTransform = null;
             for (int w = 0; w < validOptions.Count; w++)
             {
                 if (closestTransform == null)
                 {
-                    closestTransform = validOptions[w];
-                    closestRange = Vector3.Distance(validOptions[w].transform.position, closestTransform.position);
+                    closestTransform = validOptions[w].transform;
+                    closestRange = Vector3.Distance(colliders[i].transform.position, closestTransform.position);
                 }
-                else if (Vector3.Distance(waypoint.transform.position, closestTransform.position) < closestRange)
+                else if (Vector3.Distance(validOptions[w].transform.position, colliders[i].transform.position) < closestRange)
                 {
-                    closestRange = Vector3.Distance(validOptions[w].transform.position, closestTransform.position);
-                    closestTransform = validOptions[w];
+                    closestRange = Vector3.Distance(validOptions[w].transform.position, colliders[i].transform.position);
+                    closestTransform = validOptions[w].transform;
                 }
             }
             if (closestTransform != null && validOptions.Contains(closestTransform))
             {
-                Debug.Log($"Removing {closestTransform.gameObject.name} from valid points for {waypoint.gameObject.name}");
-                waypoint._possibleNextWaypoints = validOptions;
+                for (int w = 0; w < validOptions.Count; w++)
+                {
+                    waypoint._possibleNextWaypoints.Add(validOptions[w]);
+                }
                 waypoint._possibleNextWaypoints.Remove(closestTransform);
             }
             else
             {
                 continue;
             }
-            transforms2[i].GetComponent<Waypoint>().interSection = this.transform;
         }
     }
 
