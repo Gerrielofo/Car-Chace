@@ -29,7 +29,6 @@ public class CarAgent : MonoBehaviour
     [SerializeField] float _carRange = 8;
     [SerializeField] LayerMask _wayPointMask;
     [SerializeField] LayerMask _carMask;
-    [SerializeField] LayerMask _enemyMask;
 
     [SerializeField] float _currentLifeSpan;
     public float maxLifeSpan;

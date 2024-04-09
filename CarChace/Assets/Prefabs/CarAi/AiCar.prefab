@@ -141,14 +141,14 @@ MonoBehaviour:
   - {fileID: 4872917409191840221}
   _minSpeedForTurn: 2
   _maxSteerAngle: 45
-  _maxWheelTorque: 400
+  _maxWheelTorque: 500
   _brakeTorque: 1000
   _maxReroutes: 5
   _timeToDespawn: 10
   _slopeAngles:
-  - 15
-  - 35
-  - 50
+  - 3
+  - 6
+  - 9
   _maxArrestSpeed: 1
   _timeToArrest: 3
   _arrestTimer: 0
@@ -190,11 +190,12 @@ MonoBehaviour:
   - {fileID: 9054011858405821428}
   - {fileID: 7127527079538153148}
   _slopeMultiplier: 1
+  _currentAngle: 0
   _currentSpeed: 0
   localTarget: {x: 0, y: 0, z: 0}
   targetAngle: 0
   isAlive: 0
-  _preferredDistanceFromAgent: 0
+  _preferredDistanceFromAgent: 2
 --- !u!54 &8062819118473807388
 Rigidbody:
   m_ObjectHideFlags: 0

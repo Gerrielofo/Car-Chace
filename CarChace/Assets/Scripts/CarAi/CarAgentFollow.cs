@@ -35,6 +35,7 @@ public class CarAgentFollow : MonoBehaviour
 
     [Header("Info")]
     [SerializeField] float _slopeMultiplier = 1f;
+    [SerializeField] float _currentAngle;
     [SerializeField] float _currentSpeed;
     [SerializeField] Vector3 localTarget;
     [SerializeField] float targetAngle;
@@ -69,6 +70,9 @@ public class CarAgentFollow : MonoBehaviour
         if (!isAlive)
             return;
 
+        _currentAngle = GetSlopAngle();
+        _slopeMultiplier = GetSlopAngle() / 3 + 1;
+
         if (_currentSpeed < _maxArrestSpeed)
         {
             CheckArrest();
@@ -77,8 +81,6 @@ public class CarAgentFollow : MonoBehaviour
         {
             _arrestTimer = 0f;
         }
-
-        CalculateSlopeSpeed();
 
         if (_currentSpeed < 0.1f)
         {
