@@ -7,7 +7,7 @@ public class Boat : MonoBehaviour
 {
     NavMeshAgent _navMeshAgent;
 
-    Transform _boatFront;
+    [SerializeField] Transform _boatFront;
 
     [Header("Settings")]
     [SerializeField] float _desiredSpeed;
@@ -20,7 +20,7 @@ public class Boat : MonoBehaviour
     public bool ShowGizmos;
 
     [SerializeField] float _minDistanceFromPoint;
-    float _distanceFromPoint;
+    [SerializeField] float _distanceFromPoint;
 
     [Header("Info")]
     [SerializeField] bool _hasOpened;
@@ -45,9 +45,12 @@ public class Boat : MonoBehaviour
 
     Vector3 GetRandomDestination()
     {
-        Vector3 direction = new Vector3(0, Random.Range(-_fov + transform.rotation.y, _fov + transform.rotation.y), 0);
+        Vector3 direction = new Vector3(0, Random.Range(transform.localRotation.y - _fov, transform.localRotation.y + _fov), 0);
+        // Debug.Log($"Random Direction: {direction}");
+        // Debug.Log($"y rotation {_navMeshAgent.transform.localRotation.y} + -fov {-_fov} = {transform.rotation.y - _fov}");
         // Vector3 _randomDirection = Random.insideUnitSphere * _randomDestinationRadius;
-        NavMesh.SamplePosition(direction, out NavMeshHit hit, _randomDestinationRadius, _waterMask);
+        NavMesh.SamplePosition(transform.position, out NavMeshHit hit, _randomDestinationRadius, _waterMask);
+        // Debug.Log($"random pos :{hit.position}");
         return hit.position;
     }
 

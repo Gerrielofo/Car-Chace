@@ -68,6 +68,10 @@ public class Waypoint : MonoBehaviour
         for (int i = 0; i < colliders.Length; i++)
         {
             Waypoint waypoint = colliders[i].GetComponent<Waypoint>();
+            if (waypoint.WayPointIndex != 3)
+            {
+                continue;
+            }
 
             float closestRange = Mathf.Infinity;
             Transform closestTransform = null;

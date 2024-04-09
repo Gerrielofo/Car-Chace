@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 293246646162671677}
   - component: {fileID: 5351442351713840742}
   - component: {fileID: 8963663766137750896}
+  - component: {fileID: 4209995119331139821}
   m_Layer: 10
   m_Name: AiCar
   m_TagString: Enemy
@@ -361,6 +362,22 @@ MonoBehaviour:
   _currentSpeed: 0
   _isAlive: 0
   _timeAlive: 0
+--- !u!114 &4209995119331139821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108462753893103753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8fa2179975524672b8a3f57852993d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 8062819118473807388}
+  wheelL: {fileID: 6743659647438386205}
+  wheelR: {fileID: 2452541597788215911}
+  antiRollVal: 5000
 --- !u!1 &2697971519194702700
 GameObject:
   m_ObjectHideFlags: 0

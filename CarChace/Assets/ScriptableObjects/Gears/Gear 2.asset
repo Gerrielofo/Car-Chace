@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimumSpeed: 3
   acceleration: 75
-  speed: 800
+  speed: 1000

@@ -103,27 +103,35 @@ public class CarAgent : MonoBehaviour
         else
         {
             Waypoint waypoint = _currentWaypoint.GetComponent<Waypoint>();
-            if (waypoint.interSection != null && !_onIntersection)
+            // if (waypoint.interSection != null && !_onIntersection)
+            // {
+            //     Transform[] availableWaypoints = waypoint.interSection.GetComponent<Waypoint>().GetWayPointConnections(waypoint.WayPointIndex, _currentWaypoint).ToArray();
+            //     _onIntersection = true;
+            //     if (availableWaypoints.Length == 0)
+            //     {
+            //         Debug.LogError("Intersection Did Not Have Any Availlable Connections");
+            //         return;
+            //     }
+            //     _currentWaypoint = availableWaypoints[Random.Range(0, availableWaypoints.Length - 1)];
+            // }
+            // else
+            // {
+            //     int rng = Random.Range(0, _currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints.Count - 1);
+
+            //     if (_currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints.Count != 0)
+            //         _currentWaypoint = _currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints[rng];
+            //     if (_onIntersection)
+            //     {
+            //         _onIntersection = false;
+            //     }
+            // }
+            if (waypoint._possibleNextWaypoints.Count == 0)
             {
-                Transform[] availableWaypoints = waypoint.interSection.GetComponent<Waypoint>().GetWayPointConnections(waypoint.WayPointIndex, _currentWaypoint).ToArray();
-                _onIntersection = true;
-                if (availableWaypoints.Length == 0)
-                {
-                    Debug.LogError("Intersection Did Not Have Any Availlable Connections");
-                    return;
-                }
-                _currentWaypoint = availableWaypoints[Random.Range(0, availableWaypoints.Length - 1)];
+                Debug.LogError("This Waypoint Does Not Have A Next Waypoint");
             }
             else
             {
-                int rng = Random.Range(0, _currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints.Count - 1);
-
-                if (_currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints.Count != 0)
-                    _currentWaypoint = _currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints[rng];
-                if (_onIntersection)
-                {
-                    _onIntersection = false;
-                }
+                _currentWaypoint = waypoint._possibleNextWaypoints[Random.Range(0, waypoint._possibleNextWaypoints.Count)];
             }
         }
         _carAgent.destination = _currentWaypoint.position;

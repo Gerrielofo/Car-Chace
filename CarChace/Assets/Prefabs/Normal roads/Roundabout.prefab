@@ -74,10 +74,9 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!1 &1567881468416046431
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,10 +151,9 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!1 &1756169123776112966
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,10 +229,9 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!1 &1854705665697514695
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,10 +305,9 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!1 &2918950838480512048
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,10 +383,9 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!1 &3003150202139856162
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,10 +461,9 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!1 &3497548157900748487
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,10 +571,9 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!1 &4341921027001492561
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,16 +641,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPointIndex: 2
-  _possibleNextWaypoints: []
+  _possibleNextWaypoints:
+  - {fileID: 7734837439727336942}
   interSection: {fileID: 0}
   angleToNextPoint: 0
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!1 &4764849916216396375
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,10 +725,9 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!1 &5296954116896204511
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,10 +883,9 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!1 &6065480220478049216
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,10 +959,9 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!1 &6899732132973178595
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,10 +1136,9 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!1 &7212748309621479329
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,10 +1212,9 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!1 &7769011953913686884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,10 +1289,9 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!1 &7916438183894975739
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,16 +1359,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPointIndex: 1
-  _possibleNextWaypoints: []
+  _possibleNextWaypoints:
+  - {fileID: 6596067337286184352}
   interSection: {fileID: 0}
   angleToNextPoint: 0
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!1 &8041755917627279648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,10 +1443,9 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!1 &8111057043188574882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1535,10 +1521,9 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!1 &8638640650929191360
 GameObject:
   m_ObjectHideFlags: 0
@@ -1613,10 +1598,9 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!1 &8933039758040448863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1691,10 +1675,9 @@ MonoBehaviour:
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!1 &8967278560756531619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,16 +1745,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPointIndex: 2
-  _possibleNextWaypoints: []
+  _possibleNextWaypoints:
+  - {fileID: 1854837712174611541}
   interSection: {fileID: 0}
   angleToNextPoint: 0
   isBridge: 0
   _wayPointMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!1001 &1389521127999062496
 PrefabInstance:
   m_ObjectHideFlags: 0

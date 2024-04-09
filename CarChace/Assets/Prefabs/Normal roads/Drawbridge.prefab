@@ -153,8 +153,8 @@ GameObject:
   - component: {fileID: 8442909348396777799}
   - component: {fileID: 1277335015313551340}
   - component: {fileID: 7675193512021868091}
-  m_Layer: 0
-  m_Name: Begin
+  m_Layer: 9
+  m_Name: Eind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -188,8 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPointIndex: 2
-  _possibleNextWaypoints:
-  - {fileID: 1461781502433504732}
+  _possibleNextWaypoints: []
   interSection: {fileID: 0}
   angleToNextPoint: 0
   isBridge: 1
@@ -197,8 +196,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &7675193512021868091
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -314,7 +312,7 @@ GameObject:
   - component: {fileID: 8577847714953498446}
   - component: {fileID: 2459318762832369617}
   - component: {fileID: 163238107488394149}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Begin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,8 +356,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &163238107488394149
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -392,8 +389,8 @@ GameObject:
   - component: {fileID: 1461781502433504732}
   - component: {fileID: 5993290723307874767}
   - component: {fileID: 7506348843463778196}
-  m_Layer: 0
-  m_Name: Eind
+  m_Layer: 9
+  m_Name: Begin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -427,7 +424,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPointIndex: 2
-  _possibleNextWaypoints: []
+  _possibleNextWaypoints:
+  - {fileID: 8442909348396777799}
   interSection: {fileID: 0}
   angleToNextPoint: 0
   isBridge: 1
@@ -435,8 +433,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &7506348843463778196
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -651,7 +648,7 @@ GameObject:
   - component: {fileID: 1588581098769920992}
   - component: {fileID: 9036740220656733495}
   - component: {fileID: 6037509785008388355}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Eind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -694,8 +691,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   _wayPointRadius: 3
-  transforms1: []
-  transforms2: []
+  validOptions: []
 --- !u!65 &6037509785008388355
 BoxCollider:
   m_ObjectHideFlags: 0

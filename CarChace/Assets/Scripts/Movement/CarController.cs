@@ -183,7 +183,7 @@ public class CarController : MonoBehaviour
 
             if (i == 1)
             {
-                for (int two = 0; two < _carMods1.Length; two++)
+                for (int two = 0; two < _carMods2.Length; two++)
                 {
                     _carMods2[two].SetActive(true);
                 }
@@ -191,7 +191,7 @@ public class CarController : MonoBehaviour
 
             if (i == 2)
             {
-                for (int three = 0; three < _carMods1.Length; three++)
+                for (int three = 0; three < _carMods3.Length; three++)
                 {
                     _carMods3[three].SetActive(true);
                 }
