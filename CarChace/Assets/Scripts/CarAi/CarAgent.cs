@@ -23,10 +23,16 @@ public class CarAgent : MonoBehaviour
     [SerializeField] float _fov = 80;
     [SerializeField] float _minWaypointDistance = 1.8f;
     [SerializeField] float _baseSpeed = 10f;
+    public float BaseSpeed
+    {
+        get { return _baseSpeed; }
+        set { _baseSpeed = value; }
+    }
 
     [SerializeField] int _maxWaypoints = 5;
     [SerializeField] float _waypointCheckRange = 10;
     [SerializeField] float _carRange = 8;
+    [SerializeField] float _distanceTolarance = 0.65f;
     [SerializeField] LayerMask _wayPointMask;
     [SerializeField] LayerMask _carMask;
 
@@ -102,28 +108,7 @@ public class CarAgent : MonoBehaviour
         else
         {
             Waypoint waypoint = _currentWaypoint.GetComponent<Waypoint>();
-            // if (waypoint.interSection != null && !_onIntersection)
-            // {
-            //     Transform[] availableWaypoints = waypoint.interSection.GetComponent<Waypoint>().GetWayPointConnections(waypoint.WayPointIndex, _currentWaypoint).ToArray();
-            //     _onIntersection = true;
-            //     if (availableWaypoints.Length == 0)
-            //     {
-            //         Debug.LogError("Intersection Did Not Have Any Availlable Connections");
-            //         return;
-            //     }
-            //     _currentWaypoint = availableWaypoints[Random.Range(0, availableWaypoints.Length - 1)];
-            // }
-            // else
-            // {
-            //     int rng = Random.Range(0, _currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints.Count - 1);
 
-            //     if (_currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints.Count != 0)
-            //         _currentWaypoint = _currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints[rng];
-            //     if (_onIntersection)
-            //     {
-            //         _onIntersection = false;
-            //     }
-            // }
             if (waypoint._possibleNextWaypoints.Count == 0)
             {
                 Debug.LogError("This Waypoint Does Not Have A Next Waypoint");
@@ -206,7 +191,7 @@ public class CarAgent : MonoBehaviour
                 _carAgent.isStopped = false;
             }
             _distanceFromWaypoint = Vector3.Distance(transform.position, _currentWaypoint.position);
-            if (_distanceFromWaypoint <= _minWaypointDistance)
+            if (_distanceFromWaypoint <= _minWaypointDistance && MyApproximation(distanceFromCar, carTransform.GetComponent<CarAgentFollow>().PreferredDistanceFromAgent, _distanceTolarance))
             {
                 if (_passedWaypoints.Count >= _maxWaypoints)
                 {
@@ -249,13 +234,9 @@ public class CarAgent : MonoBehaviour
         }
     }
 
-    float DistanceSpeedModifier(float distance)
+    private bool MyApproximation(float a, float b, float tolerance)
     {
-        float distanceSpeedModifier = 0;
-
-        distanceSpeedModifier = (100 + distance) / 100;
-
-        return distanceSpeedModifier;
+        return Mathf.Abs(a - b) < tolerance;
     }
 
     private void OnDrawGizmos()

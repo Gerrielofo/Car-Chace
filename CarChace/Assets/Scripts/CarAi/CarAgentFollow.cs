@@ -24,6 +24,10 @@ public class CarAgentFollow : MonoBehaviour
     [SerializeField] float _timeToDespawn = 10f;
     [SerializeField] float[] _slopeAngles;
 
+    [SerializeField] float _distanceTolarance = 0.65f;
+    [SerializeField] float _addativeAgentSpeed = 1.5f;
+    [SerializeField] float _addativeCarSpeed = 1.5f;
+
     [Header("Arrest Setting")]
     [SerializeField] float _maxArrestSpeed = 1f;
     [SerializeField] float _timeToArrest = 3f;
@@ -34,20 +38,31 @@ public class CarAgentFollow : MonoBehaviour
 
 
     [Header("Info")]
+    [SerializeField] float _addativeSpeed = 0;
     [SerializeField] float _slopeMultiplier = 1f;
     [SerializeField] float _currentAngle;
     [SerializeField] float _currentSpeed;
     [SerializeField] Vector3 localTarget;
     [SerializeField] float targetAngle;
     public bool isAlive;
+    [SerializeField] bool _idling;
+    [SerializeField] float _idleTime;
+    [SerializeField] float _idleThreshold = 3;
 
     [SerializeField] float _preferredDistanceFromAgent;
-    float _distanceFromAgent;
+    public float PreferredDistanceFromAgent
+    {
+        get { return _preferredDistanceFromAgent; }
+    }
+    [SerializeField] float _distanceFromAgent;
 
     float _despawnTimer;
     int _rerouteAttempts;
 
     RaycastHit _slopeHit;
+
+    bool _reversing;
+    [SerializeField] float _reverseTime = 2f;
 
 
     void Start()
@@ -70,6 +85,29 @@ public class CarAgentFollow : MonoBehaviour
         if (!isAlive)
             return;
 
+        if (_reversing)
+        {
+            DoReverse();
+        }
+
+        if (_idling && _idleThreshold > _idleTime)
+        {
+            _idleTime += Time.deltaTime;
+        }
+        else if (_idling && _idleTime > _idleThreshold)
+        {
+            if (_addativeSpeed < 7)
+            {
+                _carAgent.GetComponent<CarAgent>().BaseSpeed += _addativeAgentSpeed;
+                _addativeSpeed += _addativeCarSpeed;
+            }
+            _idleTime = 0;
+        }
+        else
+        {
+            _idleTime = 0;
+        }
+
         _currentAngle = GetSlopAngle();
         _slopeMultiplier = GetSlopAngle() / 3 + 1;
 
@@ -90,11 +128,12 @@ public class CarAgentFollow : MonoBehaviour
                 Destroy(_carAgent.gameObject);
                 Destroy(gameObject);
             }
-            if (_despawnTimer > _timeToDespawn)
+            if (_despawnTimer > _timeToDespawn && !_reversing)
             {
                 _carAgent.GetComponent<CarAgent>().GetNewRandomWaypoint();
                 _rerouteAttempts++;
                 _despawnTimer = 0f;
+                StartCoroutine(Reverse());
             }
         }
         else
@@ -153,23 +192,27 @@ public class CarAgentFollow : MonoBehaviour
     {
         if (targetAngle > _maxSteerAngle && _currentSpeed > _minSpeedForTurn)
         {
+            _idling = false;
             Brake();
         }
         else if (_distanceFromAgent < _preferredDistanceFromAgent)
         {
+            _idling = false;
             Brake();
         }
         else
         {
-            if (_currentSpeed < _carAgent.speed)
+            // THIS SHOULD BE BETTER IDK HOW maybe a different check
+            if (MyApproximation(_distanceFromAgent, _preferredDistanceFromAgent, _distanceTolarance))
             {
-                UnBrake();
-                _wheelColliders[2].motorTorque = _maxWheelTorque * _slopeMultiplier;
-                _wheelColliders[3].motorTorque = _maxWheelTorque * _slopeMultiplier;
+                Idle(_currentSpeed / _carAgent.speed);
             }
             else
             {
-                Idle(_currentSpeed / _carAgent.speed);
+                _idling = false;
+                UnBrake();
+                _wheelColliders[2].motorTorque = _maxWheelTorque * _slopeMultiplier + _addativeSpeed;
+                _wheelColliders[3].motorTorque = _maxWheelTorque * _slopeMultiplier + _addativeSpeed;
             }
 
         }
@@ -187,30 +230,28 @@ public class CarAgentFollow : MonoBehaviour
         return angle;
     }
 
-    void CalculateSlopeSpeed()
+    IEnumerator Reverse()
     {
-        if (GetSlopAngle() > _slopeAngles[0])
+        _reversing = true;
+        yield return new WaitForSeconds(_reverseTime);
+        _reversing = false;
+    }
+
+    void DoReverse()
+    {
+        for (int i = 0; i < _wheelColliders.Length; i++)
         {
-            if (GetSlopAngle() > _slopeAngles[1])
-            {
-                if (GetSlopAngle() > _slopeAngles[2])
-                {
-                    _slopeMultiplier = 3f;
-                    return;
-                }
-                _slopeMultiplier = 2.5f;
-                return;
-            }
-            _slopeMultiplier = 2f;
-        }
-        else
-        {
-            _slopeMultiplier = 1f;
+            _wheelColliders[i].brakeTorque = 0;
+            _wheelColliders[i].motorTorque = -_maxWheelTorque;
         }
     }
 
     void Brake()
     {
+        Debug.Log("BRAKE");
+        _addativeSpeed = 0;
+        _carAgent.GetComponent<CarAgent>().BaseSpeed = 10;
+
         for (int i = 0; i < _wheelColliders.Length; i++)
         {
             _wheelColliders[i].brakeTorque = _brakeTorque * _currentSpeed;
@@ -228,6 +269,7 @@ public class CarAgentFollow : MonoBehaviour
 
     void Idle(float currentSpeed)
     {
+        _idling = true;
         for (int i = 0; i < _wheelColliders.Length; i++)
         {
             _wheelColliders[i].brakeTorque = 0;
@@ -241,6 +283,11 @@ public class CarAgentFollow : MonoBehaviour
         GetComponent<CarCrash>().crash = true;
         Destroy(_carAgent.gameObject);
         Destroy(gameObject, 5f);
+    }
+
+    private bool MyApproximation(float a, float b, float tolerance)
+    {
+        return Mathf.Abs(a - b) < tolerance;
     }
 
     private void OnDrawGizmos()
