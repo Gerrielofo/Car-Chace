@@ -9,6 +9,7 @@ TagManager:
   - EndScreen
   - Obstacle
   - Death
+  - ReinforcementSpawn
   layers:
   - Default
   - TransparentFX

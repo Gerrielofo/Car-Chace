@@ -12,7 +12,7 @@ public class PowerUpBtn : MonoBehaviour
 
     [SerializeField] Button _button;
     [SerializeField] CarController _carController;
-    [SerializeField] Helicopter _helicopter;
+    [SerializeField] Helicopter[] _helicopters;
     [SerializeField] Reinforcements _reinforcements;
     [SerializeField] PowerUp _powerUp;
 
@@ -39,7 +39,7 @@ public class PowerUpBtn : MonoBehaviour
                 _button.onClick.AddListener(delegate { UseSpikePowerup(); });
                 break;
             case PowerUp.PowerUpType.HELICOPTER:
-                _helicopter = FindObjectOfType<Helicopter>();
+                _helicopters = FindObjectsOfType<Helicopter>();
                 _button.onClick.AddListener(delegate { UseHelicopterPowerup(); });
                 break;
             case PowerUp.PowerUpType.REINFORCEMENTS:
@@ -97,7 +97,21 @@ public class PowerUpBtn : MonoBehaviour
         _buttonSound.Play();
         _powerUpAmount--;
         PlayerPrefs.SetInt(GameManager.Instance.helicopterPower, _powerUpAmount);
-        _helicopter.StartHelicopter(_powerUp.powerUpDuration);
+
+        int closestIndex = 0;
+        float closestDistance = Mathf.Infinity;
+
+        for (int i = 0; i < _helicopters.Length; i++)
+        {
+            float distance = Vector3.Distance(_helicopters[closestIndex].transform.position, _helicopters[i].transform.position);
+            if (distance <= closestDistance)
+            {
+                closestDistance = distance;
+                closestIndex = i;
+            }
+        }
+
+        _helicopters[closestIndex].StartHelicopter(_powerUp.powerUpDuration);
         if (_powerUpAmount < 1)
         {
             Destroy(gameObject);

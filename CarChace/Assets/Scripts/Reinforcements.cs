@@ -5,10 +5,19 @@ using UnityEngine;
 public class Reinforcements : MonoBehaviour
 {
     [SerializeField] GameObject _reinforcementPrefab;
-    [SerializeField] Transform _spawnTransform;
+    [SerializeField] List<Transform> _spawnTransforms = new();
     [SerializeField] float _spawnDelay;
 
     float amountToSpawn;
+
+    private void Start()
+    {
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("ReinforcementSpawn");
+        for (int i = 0; i < gameObjects.Length; i++)
+        {
+            _spawnTransforms.Add(gameObjects[i].transform);
+        }
+    }
 
     public void SpawnReinforcements(float amount, float duration)
     {
@@ -18,9 +27,19 @@ public class Reinforcements : MonoBehaviour
 
     IEnumerator SpawnCar(float spawnDelay, float duration)
     {
-
         yield return new WaitForSeconds(spawnDelay);
-        GameObject car = Instantiate(_reinforcementPrefab, _spawnTransform.position, _spawnTransform.rotation);
+        int closestIndex = 0;
+        float closestDistance = Mathf.Infinity;
+        for (int i = 0; i < _spawnTransforms.Count; i++)
+        {
+            float distance = Vector3.Distance(_spawnTransforms[closestIndex].position, _spawnTransforms[i].position);
+            if (distance < closestDistance)
+            {
+                closestIndex = i;
+                closestDistance = distance;
+            }
+        }
+        GameObject car = Instantiate(_reinforcementPrefab, _spawnTransforms[closestIndex].position, _spawnTransforms[closestIndex].rotation);
         car.GetComponent<PoliceAgentFollow>().maxLifeSpan = duration;
         amountToSpawn--;
         if (amountToSpawn > 0)
