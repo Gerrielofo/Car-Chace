@@ -29,6 +29,8 @@ public class Helicopter : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        _startPos = new GameObject("startPos").transform;
+        _startPos.position = transform.position;
     }
 
     public void StartHelicopter(float flyTime)

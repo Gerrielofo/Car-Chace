@@ -252,6 +252,7 @@ public class CarController : MonoBehaviour
     {
         _helicopterFollowPoint.position = transform.position + _helicopterOffset;
 
+
         float speed = _velocity;
         _healthSlider.value = _health;
 
