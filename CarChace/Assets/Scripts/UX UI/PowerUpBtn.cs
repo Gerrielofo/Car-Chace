@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class PowerUpBtn : MonoBehaviour
@@ -14,6 +15,8 @@ public class PowerUpBtn : MonoBehaviour
     [SerializeField] Helicopter _helicopter;
     [SerializeField] Reinforcements _reinforcements;
     [SerializeField] PowerUp _powerUp;
+
+    [SerializeField] AudioSource _buttonSound;
 
     [SerializeField] float _useDelay = 5f;
     bool _canUse;
@@ -54,7 +57,8 @@ public class PowerUpBtn : MonoBehaviour
     {
         if (!_canUse)
             return;
-        Debug.Log(" USE|ING SPEED");
+
+        _buttonSound.Play();
         _powerUpAmount--;
         PlayerPrefs.SetInt(GameManager.Instance.speedPower, _powerUpAmount);
         _carController.SpeedBoost(_powerUp.powerUpAmount, _powerUp.powerUpDuration);
@@ -71,6 +75,8 @@ public class PowerUpBtn : MonoBehaviour
     {
         if (!_canUse)
             return;
+
+        _buttonSound.Play();
         _powerUpAmount--;
         PlayerPrefs.SetInt(GameManager.Instance.spikePower, _powerUpAmount);
         _carController.SpawnSpikeStrip(_powerUp.powerUpDuration);
@@ -87,6 +93,8 @@ public class PowerUpBtn : MonoBehaviour
     {
         if (!_canUse)
             return;
+
+        _buttonSound.Play();
         _powerUpAmount--;
         PlayerPrefs.SetInt(GameManager.Instance.helicopterPower, _powerUpAmount);
         _helicopter.StartHelicopter(_powerUp.powerUpDuration);
@@ -103,6 +111,8 @@ public class PowerUpBtn : MonoBehaviour
     {
         if (!_canUse)
             return;
+
+        _buttonSound.Play();
         _powerUpAmount--;
         PlayerPrefs.SetInt(GameManager.Instance.reinforcementPower, _powerUpAmount);
         _reinforcements.SpawnReinforcements(_powerUp.powerUpAmount, _powerUp.powerUpDuration);
