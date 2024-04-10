@@ -19,7 +19,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 47.23, y: -4.553, z: -50.518}
+        value: {x: -34.743, y: 40.211, z: -59.005}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -29,7 +29,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Car/SpeedometerHolder
+    path: Police car details/SpeedomenterHolder
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
@@ -42,7 +42,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2323649267
+      path: 3193866030
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -78,7 +78,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 47.23
+        value: -34.743
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -89,7 +89,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Car/SpeedometerHolder
+    path: Police car details/SpeedomenterHolder
     classID: 4
     script: {fileID: 0}
     flags: 16
@@ -99,7 +99,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -4.553
+        value: 40.211
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -110,7 +110,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Car/SpeedometerHolder
+    path: Police car details/SpeedomenterHolder
     classID: 4
     script: {fileID: 0}
     flags: 16
@@ -120,7 +120,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -50.518
+        value: -59.005
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -131,7 +131,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Car/SpeedometerHolder
+    path: Police car details/SpeedomenterHolder
     classID: 4
     script: {fileID: 0}
     flags: 16
@@ -144,7 +144,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Car/SpeedometerHolder
+    path: Police car details/SpeedomenterHolder
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -156,7 +156,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Car/SpeedometerHolder
+    path: Police car details/SpeedomenterHolder
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -168,7 +168,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Car/SpeedometerHolder
+    path: Police car details/SpeedomenterHolder
     classID: 4
     script: {fileID: 0}
     flags: 0
