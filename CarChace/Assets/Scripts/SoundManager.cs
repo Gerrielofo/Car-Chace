@@ -22,12 +22,6 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioClip _clickSound;
     [SerializeField] AudioClip _scrollSound;
 
-
-    private void Start()
-    {
-
-    }
-
     #region Play Sounds
 
     public void PlayMusic()

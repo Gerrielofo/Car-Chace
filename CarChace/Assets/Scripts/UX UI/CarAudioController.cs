@@ -8,7 +8,7 @@ public class CarAudioController : MonoBehaviour
     public float rpm;
     public float masterVolume;
 
-    static readonly float[] workingVolumes = new float[1];
+    static readonly float[] workingVolumes = new float[3];
 
     private void Update()
     {

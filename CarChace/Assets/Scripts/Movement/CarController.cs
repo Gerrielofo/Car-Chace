@@ -1,10 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
-using System;
-using Unity.XR.CoreUtils;
 using UnityEngine.UI;
 
 public class CarController : MonoBehaviour
@@ -296,12 +293,9 @@ public class CarController : MonoBehaviour
                     _leftFront.motorTorque = 0;
                     _rightFront.motorTorque = 0;
                 }
+                _canReverse = false;
+                _reverseTimer = _reverseDelay;
 
-                if (MyApproximation(_velocity, 0, 0.5f))
-                {
-                    _canReverse = false;
-
-                }
             }
             else
             {
@@ -330,7 +324,7 @@ public class CarController : MonoBehaviour
             {
                 _reverseTimer = _reverseDelay;
             }
-            else if (_reverseTimer > 0)
+            else if (_reverseTimer > 0 && MyApproximation(_velocity, 0, 0.5f))
             {
                 _reverseTimer -= Time.deltaTime;
                 if (_reverseTimer <= 0)
@@ -341,6 +335,7 @@ public class CarController : MonoBehaviour
 
             if (_canReverse)
             {
+                Debug.Log("REVERSING");
                 _leftBack.motorTorque = _speed;
                 _rightBack.motorTorque = _speed;
 
@@ -361,6 +356,7 @@ public class CarController : MonoBehaviour
             }
             else
             {
+                Debug.Log("BRAKING");
                 _leftBack.brakeTorque = _brakeForce;
                 _rightBack.brakeTorque = _brakeForce;
 
@@ -492,7 +488,6 @@ public class CarController : MonoBehaviour
     void EmitParticles()
     {
         int emitionAmount = (int)(_speed / 500);
-        Debug.Log($"Emiiting {emitionAmount} particles");
         _speedParticle.Emit(emitionAmount);
     }
 

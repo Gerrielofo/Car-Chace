@@ -91,6 +91,13 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
 
         gameEnded?.Invoke();
+
+        AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
+        foreach (var audioSource in audioSources)
+        {
+            audioSource.Stop();
+        }
+        FindObjectOfType<SoundManager>().PlayMusic();
     }
 
     public void BackToMainMenu()

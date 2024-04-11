@@ -2637,7 +2637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 1083063440881122641}
-  _desiredCamPos: {fileID: 0}
+  _desiredCamPos: {fileID: 5139658563327102945}
   _doReset: 0
 --- !u!1 &1383366805001452113
 GameObject:
@@ -16610,7 +16610,7 @@ Transform:
   m_GameObject: {fileID: 6846929682900288130}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.294, y: 0.718, z: -0.0205}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16634,9 +16634,10 @@ GameObject:
   - component: {fileID: 2683245965117404422}
   - component: {fileID: 6603273135241590119}
   - component: {fileID: 326381484236852689}
+  - component: {fileID: 2050632431460366386}
   m_Layer: 12
   m_Name: New Police Car
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16769,7 +16770,7 @@ MonoBehaviour:
   _isTurn: 0
   _reverseDelay: 1
   _canReverse: 0
-  _brakeForce: 1000
+  _brakeForce: 20000
   _gears:
   - {fileID: 11400000, guid: 471d456a72735f34ea6aaba32a126c18, type: 2}
   - {fileID: 11400000, guid: c4641c45c304c5f4793ba912e898f02e, type: 2}
@@ -16879,7 +16880,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6982316435996192394}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6614dc75adaacc64498d415fc92466ba, type: 3}
   m_Name: 
@@ -16887,9 +16888,19 @@ MonoBehaviour:
   engineNotes:
   - source: {fileID: 6603273135241590119}
     minRPM: -1000
-    peakRPM: 200
-    maxRPM: 100000
-    pitchReferenceRPM: 100
+    peakRPM: 3000
+    maxRPM: 3000
+    pitchReferenceRPM: 1
+  - source: {fileID: 0}
+    minRPM: 2500
+    peakRPM: 5000
+    maxRPM: 5000
+    pitchReferenceRPM: 1
+  - source: {fileID: 0}
+    minRPM: 4500
+    peakRPM: 1000000
+    maxRPM: 1000000
+    pitchReferenceRPM: 1
   rpm: 0
   masterVolume: 1
 --- !u!82 &6603273135241590119
@@ -16902,10 +16913,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 9012725527252938135, guid: 87e6ae95f3e99a744a81bd067a8130f2, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 945cb281b315dd94aa858429bac79b62, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: f186ad87bc2428b4aa57ebd4ec295ab4, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0.7
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -17003,7 +17014,24 @@ MonoBehaviour:
   body: {fileID: 5070846198004162851}
   wheelL: {fileID: 1856429989807875881}
   wheelR: {fileID: 2493160494853907543}
-  antiRollVal: 5000
+  antiRollVal: 10000
+--- !u!114 &2050632431460366386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6982316435996192394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755a591e172318a4080f18411d9a739d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  engineAudioSource: {fileID: 6603273135241590119}
+  engineSound: {fileID: 8300000, guid: 945cb281b315dd94aa858429bac79b62, type: 3}
+  idleSound: {fileID: 8300000, guid: 7936431a28d1e7e41b3504a1fe44f6d4, type: 3}
+  maxPitch: 1.5
+  minPitch: 0.3
 --- !u!1 &6989482327157781018
 GameObject:
   m_ObjectHideFlags: 0
@@ -21421,6 +21449,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 884020912684249465, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
+      propertyPath: m_Pivot.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 884020912684249465, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 884020912684249465, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 884020912684249465, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00000028927738
+      objectReference: {fileID: 0}
+    - target: {fileID: 884020912684249465, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818316055802070486, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818316055802070486, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1935444697188240696, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -21428,6 +21484,26 @@ PrefabInstance:
     - target: {fileID: 1935444697188240696, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
       propertyPath: m_TagString
       value: EndScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774471455995825107, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774471455995825107, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774471455995825107, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774471455995825107, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00000032653028
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774471455995825107, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 3023706661724014865, guid: 40fd3570a36e88c49a544e4f67c9c058, type: 3}
       propertyPath: m_SortingLayerID
