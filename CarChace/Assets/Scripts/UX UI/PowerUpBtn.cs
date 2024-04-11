@@ -18,11 +18,14 @@ public class PowerUpBtn : MonoBehaviour
 
     [SerializeField] AudioSource _buttonSound;
 
+    Transform _carTransfrom;
+
     [SerializeField] float _useDelay = 5f;
     bool _canUse;
 
     public void SetPowerUpButton(PowerUp powerUp, int powerUpAmount)
     {
+        _carTransfrom = GameObject.FindWithTag("Car").transform;
         _powerUp = powerUp;
         _powerUpAmount = powerUpAmount;
         UpdateText();
@@ -103,7 +106,7 @@ public class PowerUpBtn : MonoBehaviour
 
         for (int i = 0; i < _helicopters.Length; i++)
         {
-            float distance = Vector3.Distance(_helicopters[closestIndex].transform.position, _helicopters[i].transform.position);
+            float distance = Vector3.Distance(_carTransfrom.position, _helicopters[i].transform.position);
             if (distance <= closestDistance)
             {
                 closestDistance = distance;

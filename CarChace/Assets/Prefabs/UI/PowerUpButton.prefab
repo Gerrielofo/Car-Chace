@@ -285,10 +285,10 @@ MonoBehaviour:
   _powerUpAmountTxt: {fileID: 1591275901210137309}
   _button: {fileID: 6720962394485545415}
   _carController: {fileID: 0}
-  _helicopter: {fileID: 0}
+  _helicopters: []
   _reinforcements: {fileID: 0}
   _powerUp: {fileID: 0}
-  _buttonSound: {fileID: 0}
+  _buttonSound: {fileID: 7584866399495758867}
   _useDelay: 5
 --- !u!82 &7584866399495758867
 AudioSource:

@@ -8,6 +8,8 @@ public class Reinforcements : MonoBehaviour
     [SerializeField] List<Transform> _spawnTransforms = new();
     [SerializeField] float _spawnDelay;
 
+    Transform _carTransform;
+
     float amountToSpawn;
 
     private void Start()
@@ -17,6 +19,7 @@ public class Reinforcements : MonoBehaviour
         {
             _spawnTransforms.Add(gameObjects[i].transform);
         }
+        _carTransform = GameObject.FindGameObjectWithTag("Car").transform;
     }
 
     public void SpawnReinforcements(float amount, float duration)
@@ -32,7 +35,7 @@ public class Reinforcements : MonoBehaviour
         float closestDistance = Mathf.Infinity;
         for (int i = 0; i < _spawnTransforms.Count; i++)
         {
-            float distance = Vector3.Distance(_spawnTransforms[closestIndex].position, _spawnTransforms[i].position);
+            float distance = Vector3.Distance(_carTransform.position, _spawnTransforms[i].position);
             if (distance < closestDistance)
             {
                 closestIndex = i;

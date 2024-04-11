@@ -37,7 +37,6 @@ public class MenuCarManager : MonoBehaviour
         {
             if (i == 2)
             {
-                Debug.Log("was three");
                 for (int three = 0; three < _carMods3.Length; three++)
                 {
                     _carMods3[three].SetActive(true);
@@ -46,7 +45,6 @@ public class MenuCarManager : MonoBehaviour
 
             if (i == 1)
             {
-                Debug.Log("was two");
                 for (int two = 0; two < _carMods2.Length; two++)
                 {
                     _carMods2[two].SetActive(true);
@@ -55,11 +53,9 @@ public class MenuCarManager : MonoBehaviour
 
             if (i == 0)
             {
-                Debug.Log("was one");
                 for (int one = 0; one < _carMods1.Length; one++)
                 {
                     _carMods1[one].SetActive(true);
-                    Debug.Log($"Set {one} to active");
                 }
             }
         }

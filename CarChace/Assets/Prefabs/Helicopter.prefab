@@ -122,8 +122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startPos: {fileID: 0}
   _followPos: {fileID: 0}
-  _flySpeed: 0
-  _rotationSpeed: 0
+  _flySpeed: 15
+  _rotationSpeed: 10
   _flyHeight: 40
   _upwardSpeed: 5
   _flyTime: 0

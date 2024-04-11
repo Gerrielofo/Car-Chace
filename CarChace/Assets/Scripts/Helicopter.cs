@@ -31,6 +31,8 @@ public class Helicopter : MonoBehaviour
         _animator = GetComponent<Animator>();
         _startPos = new GameObject("startPos").transform;
         _startPos.position = transform.position;
+
+        _followPos = GameObject.FindWithTag("Car").transform;
     }
 
     public void StartHelicopter(float flyTime)
