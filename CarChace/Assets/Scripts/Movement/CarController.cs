@@ -239,8 +239,21 @@ public class CarController : MonoBehaviour
     IEnumerator Respawn()
     {
         _canRespawn = false;
-        transform.position = transform.position + _respawnHeightOffset; ;
-        transform.rotation = Quaternion.Euler(new Vector3(0, transform.rotation.y, 0));
+        float closestDistance = Mathf.Infinity;
+        Waypoint[] waypoints = FindObjectsOfType<Waypoint>();
+
+        foreach (var waypoint in waypoints)
+        {
+            float distance = Vector3.Distance(transform.position, waypoint.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestWaypoint = waypoint.transform;
+            }
+        }
+
+        transform.position = closestWaypoint.position + _respawnHeightOffset;
+        transform.rotation = Quaternion.Euler(new Vector3(0, closestWaypoint.rotation.y, 0));
         yield return new WaitForSeconds(1);
         _canRespawn = true;
     }
