@@ -12905,6 +12905,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 326381484236852689, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
+      propertyPath: body
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 326381484236852689, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 843648246312225021, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -12923,6 +12931,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1962217824121762531, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050632431460366386, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2278274372663170079, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
