@@ -239,6 +239,8 @@ public class CarController : MonoBehaviour
     IEnumerator Respawn()
     {
         _canRespawn = false;
+
+        Transform closestWaypoint = null;
         float closestDistance = Mathf.Infinity;
         Waypoint[] waypoints = FindObjectsOfType<Waypoint>();
 
