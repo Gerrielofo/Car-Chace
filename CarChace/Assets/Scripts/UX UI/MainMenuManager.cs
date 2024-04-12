@@ -122,6 +122,7 @@ public class MainMenuManager : MonoBehaviour
         {
             Debug.LogError("Point Amount Not Set!");
         }
+        FindObjectOfType<ShopManager>().UpdatePointCount();
     }
 
 
