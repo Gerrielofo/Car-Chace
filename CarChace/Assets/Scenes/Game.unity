@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.22261316, g: 0.43032354, b: 0.82702744, a: 1}
+  m_IndirectSpecularColor: {r: 0.22221136, g: 0.43037522, b: 0.824119, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -78595,6 +78595,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1936516779}
+    - target: {fileID: 8899041908140124336, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9100947416636992785, guid: caa8f8facbbaaef4db200b100ad42e36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -78752,7 +78756,7 @@ MonoBehaviour:
   _enemies: []
   _allWaypoints: []
   _enemyPrefab: {fileID: 2108462753893103753, guid: 6a259804e3434fb4da46f60debd217eb, type: 3}
-  _enemiesToSpawn: 3
+  _enemiesToSpawn: 10
   _spawnDelay: 1
   _possibleColors:
   - {r: 1, g: 1, b: 1, a: 1}
