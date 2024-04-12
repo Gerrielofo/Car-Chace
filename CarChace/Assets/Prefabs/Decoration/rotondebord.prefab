@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rotondebord
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ed36cce7f8d5ad846b1047dbcf649dea, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
