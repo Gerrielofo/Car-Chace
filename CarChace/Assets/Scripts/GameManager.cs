@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
     {
         _shopManager = FindObjectOfType<ShopManager>();
         points = PlayerPrefs.GetInt("Points");
-        AddPoints(1000);
+        // AddPoints(1000);
         _shopManager.UpdatePointCount();
     }
 
