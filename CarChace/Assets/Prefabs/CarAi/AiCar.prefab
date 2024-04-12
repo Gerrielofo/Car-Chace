@@ -141,7 +141,7 @@ MonoBehaviour:
   - {fileID: 4872917409191840221}
   _minSpeedForTurn: 2
   _maxSteerAngle: 45
-  _maxWheelTorque: 500
+  _maxWheelTorque: 450
   _brakeTorque: 1000
   _maxReroutes: 5
   _timeToDespawn: 10
@@ -149,8 +149,15 @@ MonoBehaviour:
   - 3
   - 6
   - 9
+  _maxSpeed: 0
+  _distanceTolarance: 3.5
+  _brakeTolarance: 0.2
+  _slowDownTolarance: 2.9
+  _addativeAgentSpeed: 1.1
+  _addativeCarSpeed: 1.2
+  _addativeSlowDownSpeed: -1.1
   _maxArrestSpeed: 1
-  _timeToArrest: 3
+  _timeToArrest: 6
   _arrestTimer: 0
   _arrestRange: 4
   _policeMask:
@@ -189,13 +196,20 @@ MonoBehaviour:
   - {fileID: 1837893111310606785}
   - {fileID: 9054011858405821428}
   - {fileID: 7127527079538153148}
+  _addativeSpeed: 0
+  _addativeSlowDown: 0
   _slopeMultiplier: 1
   _currentAngle: 0
   _currentSpeed: 0
   localTarget: {x: 0, y: 0, z: 0}
   targetAngle: 0
   isAlive: 0
+  _idling: 0
+  _idleTime: 0
+  _idleThreshold: 1.7
   _preferredDistanceFromAgent: 2
+  _distanceFromAgent: 0
+  _reverseTime: 2
 --- !u!54 &8062819118473807388
 Rigidbody:
   m_ObjectHideFlags: 0

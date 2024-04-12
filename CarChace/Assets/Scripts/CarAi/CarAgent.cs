@@ -29,6 +29,9 @@ public class CarAgent : MonoBehaviour
         set { _baseSpeed = value; }
     }
 
+    [SerializeField] bool _carIsBehind;
+    [SerializeField] bool _inCity;
+
     [SerializeField] int _maxWaypoints = 5;
     [SerializeField] float _waypointCheckRange = 10;
     [SerializeField] float _carRange = 8;
@@ -162,10 +165,27 @@ public class CarAgent : MonoBehaviour
         _colliders = null;
     }
 
+    bool IsObjectBehind(Transform front, Transform back)
+    {
+        Vector3 directionToBackObject = back.position - front.position;
+        float dotProduct = Vector3.Dot(directionToBackObject.normalized, front.forward);
+
+        return dotProduct < 0;
+    }
+
     private void Update()
     {
+        _carIsBehind = IsObjectBehind(transform, carTransform);
         if (_currentWaypoint != null)
         {
+            if (_currentWaypoint.GetComponent<Waypoint>()._possibleNextWaypoints.Count > 1)
+            {
+                carTransform.GetComponent<CarAgentFollow>().MaxSpeed = 3.8f;
+            }
+            else
+            {
+                carTransform.GetComponent<CarAgentFollow>().MaxSpeed = 24f;
+            }
             if (_currentWaypoint.GetComponent<Waypoint>().isBridge && _currentWaypoint.GetComponentInParent<Bridge>().isOpened)
             {
                 _carAgent.isStopped = true;
@@ -175,14 +195,18 @@ public class CarAgent : MonoBehaviour
             {
                 _carAgent.isStopped = false;
             }
+
+
+
             float distanceFromCar = Vector3.Distance(transform.position, carTransform.position);
 
             float angleBetweenWayPoints = _currentWaypoint.GetComponent<Waypoint>().angleToNextPoint;
 
             float newDesiredSpeed = _baseSpeed - ((360 - angleBetweenWayPoints) / 100);
+
             _carAgent.speed = newDesiredSpeed;
 
-            if (distanceFromCar > _carRange)
+            if (distanceFromCar > _carRange && _carIsBehind && !_inCity)
             {
                 _carAgent.isStopped = true;
             }
@@ -190,8 +214,10 @@ public class CarAgent : MonoBehaviour
             {
                 _carAgent.isStopped = false;
             }
+
             _distanceFromWaypoint = Vector3.Distance(transform.position, _currentWaypoint.position);
-            if (_distanceFromWaypoint <= _minWaypointDistance && MyApproximation(distanceFromCar, carTransform.GetComponent<CarAgentFollow>().PreferredDistanceFromAgent, _distanceTolarance))
+
+            if (_distanceFromWaypoint <= _minWaypointDistance)
             {
                 if (_passedWaypoints.Count >= _maxWaypoints)
                 {

@@ -24,9 +24,20 @@ public class CarAgentFollow : MonoBehaviour
     [SerializeField] float _timeToDespawn = 10f;
     [SerializeField] float[] _slopeAngles;
 
+    [SerializeField] float _maxSpeed;
+    public float MaxSpeed
+    {
+        get { return _maxSpeed; }
+        set { _maxSpeed = value; }
+    }
+
     [SerializeField] float _distanceTolarance = 0.65f;
+    [SerializeField] float _brakeTolarance = 0.1f;
+    [SerializeField] float _slowDownTolarance = 0.8f;
+
     [SerializeField] float _addativeAgentSpeed = 1.5f;
     [SerializeField] float _addativeCarSpeed = 1.5f;
+    [SerializeField] float _addativeSlowDownSpeed = -1.1f;
 
     [Header("Arrest Setting")]
     [SerializeField] float _maxArrestSpeed = 1f;
@@ -39,6 +50,7 @@ public class CarAgentFollow : MonoBehaviour
 
     [Header("Info")]
     [SerializeField] float _addativeSpeed = 0;
+    [SerializeField] float _addativeSlowDown = 0;
     [SerializeField] float _slopeMultiplier = 1f;
     [SerializeField] float _currentAngle;
     [SerializeField] float _currentSpeed;
@@ -69,7 +81,7 @@ public class CarAgentFollow : MonoBehaviour
     {
         _carAgent = Instantiate(_carAgentPrefab, transform.position + transform.forward * 2, transform.rotation).GetComponent<NavMeshAgent>();
         _carAgent.GetComponent<CarAgent>().carTransform = transform;
-        _preferredDistanceFromAgent = _carAgent.GetComponent<CarAgent>().CarRange / 2.5f;
+        _preferredDistanceFromAgent = _carAgent.GetComponent<CarAgent>().CarRange / 2f;
     }
 
     public void ChangeColor(Color newColor)
@@ -96,7 +108,7 @@ public class CarAgentFollow : MonoBehaviour
         }
         else if (_idling && _idleTime > _idleThreshold)
         {
-            if (_addativeSpeed < 7)
+            if (_addativeSpeed < 5.8f)
             {
                 _carAgent.GetComponent<CarAgent>().BaseSpeed += _addativeAgentSpeed;
                 _addativeSpeed += _addativeCarSpeed;
@@ -109,7 +121,21 @@ public class CarAgentFollow : MonoBehaviour
         }
 
         _currentAngle = GetSlopAngle();
-        _slopeMultiplier = GetSlopAngle() / 3 + 1;
+        if (transform.rotation.x < 0)
+        {
+            _slopeMultiplier = GetSlopAngle() / 4.2f + 1;
+        }
+
+        _addativeSlowDownSpeed = 2.3f - (2.3f / (_distanceFromAgent + 2f));
+
+        if (_addativeSlowDown > 100 && _currentSpeed < _maxSpeed)
+        {
+            _addativeSlowDown -= _addativeSlowDownSpeed;
+        }
+        else if (_currentSpeed > _maxSpeed && _addativeSlowDown < 100)
+        {
+            _addativeSlowDown += _addativeSlowDownSpeed;
+        }
 
         if (_currentSpeed < _maxArrestSpeed)
         {
@@ -190,31 +216,42 @@ public class CarAgentFollow : MonoBehaviour
 
     void HandleAcceleration()
     {
-        if (targetAngle > _maxSteerAngle && _currentSpeed > _minSpeedForTurn)
+        if (targetAngle > _maxSteerAngle && _currentSpeed > _minSpeedForTurn || _currentSpeed > _maxSpeed * 2)
         {
             _idling = false;
             Brake();
+            _carAgent.GetComponent<CarAgent>().BaseSpeed = 10;
+            _addativeSlowDown = 0;
         }
-        else if (_distanceFromAgent < _preferredDistanceFromAgent)
+        else if (MyApproximation(_distanceFromAgent, _preferredDistanceFromAgent, _slowDownTolarance))
         {
             _idling = false;
-            Brake();
-        }
-        else
-        {
-            // THIS SHOULD BE BETTER IDK HOW maybe a different check
-            if (MyApproximation(_distanceFromAgent, _preferredDistanceFromAgent, _distanceTolarance))
+
+            if (_currentSpeed > 1)
             {
-                Idle(_currentSpeed / _carAgent.speed);
+                _addativeSlowDown += _addativeSlowDownSpeed;
+
+                _wheelColliders[2].motorTorque = _maxWheelTorque * _slopeMultiplier + _addativeSpeed - _addativeSlowDown;
+                _wheelColliders[3].motorTorque = _maxWheelTorque * _slopeMultiplier + _addativeSpeed - _addativeSlowDown;
+            }
+
+
+            if (MyApproximation(_distanceFromAgent, _preferredDistanceFromAgent, _brakeTolarance))
+            {
+                Brake();
+                _addativeSlowDown = 0;
             }
             else
             {
                 _idling = false;
                 UnBrake();
-                _wheelColliders[2].motorTorque = _maxWheelTorque * _slopeMultiplier + _addativeSpeed;
-                _wheelColliders[3].motorTorque = _maxWheelTorque * _slopeMultiplier + _addativeSpeed;
+                _wheelColliders[2].motorTorque = _maxWheelTorque * _slopeMultiplier + _addativeSpeed - _addativeSlowDown;
+                _wheelColliders[3].motorTorque = _maxWheelTorque * _slopeMultiplier + _addativeSpeed - _addativeSlowDown;
             }
-
+        }
+        else if (MyApproximation(_distanceFromAgent, _preferredDistanceFromAgent, _distanceTolarance))
+        {
+            Idle();
         }
     }
 
@@ -250,7 +287,6 @@ public class CarAgentFollow : MonoBehaviour
     {
         Debug.Log("BRAKE");
         _addativeSpeed = 0;
-        _carAgent.GetComponent<CarAgent>().BaseSpeed = 10;
 
         for (int i = 0; i < _wheelColliders.Length; i++)
         {
@@ -267,13 +303,20 @@ public class CarAgentFollow : MonoBehaviour
         }
     }
 
-    void Idle(float currentSpeed)
+    void Idle()
     {
         _idling = true;
+        _wheelColliders[2].motorTorque = _maxWheelTorque * _slopeMultiplier + _addativeSpeed - _addativeSlowDown;
+        _wheelColliders[3].motorTorque = _maxWheelTorque * _slopeMultiplier + _addativeSpeed - _addativeSlowDown;
+
+        if (MyApproximation(_distanceFromAgent, _preferredDistanceFromAgent, _slowDownTolarance))
+        {
+            _addativeSlowDown += _addativeSlowDownSpeed;
+        }
+
         for (int i = 0; i < _wheelColliders.Length; i++)
         {
             _wheelColliders[i].brakeTorque = 0;
-            _wheelColliders[i].motorTorque = currentSpeed;
         }
     }
 

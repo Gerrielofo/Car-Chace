@@ -16635,6 +16635,7 @@ GameObject:
   - component: {fileID: 6603273135241590119}
   - component: {fileID: 326381484236852689}
   - component: {fileID: 2050632431460366386}
+  - component: {fileID: 3462306807132762138}
   m_Layer: 12
   m_Name: New Police Car
   m_TagString: Car
@@ -17032,6 +17033,27 @@ MonoBehaviour:
   idleSound: {fileID: 8300000, guid: 7936431a28d1e7e41b3504a1fe44f6d4, type: 3}
   maxPitch: 1.5
   minPitch: 0.3
+--- !u!65 &3462306807132762138
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6982316435996192394}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.8265051, y: 0.16, z: 1.77}
+  m_Center: {x: 0, y: 1, z: -0.26}
 --- !u!1 &6989482327157781018
 GameObject:
   m_ObjectHideFlags: 0
